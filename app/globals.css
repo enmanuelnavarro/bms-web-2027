@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/* ==================================================================== */
+/* TOKENS DE MARCA — tema oscuro + dorado BMS                            */
+/* Tailwind v4 lee el theme desde aquí (tailwind.config.ts ya no se usa   */
+/* para colores). Cada token genera utilidades: bg-ink, text-gold, etc.   */
+/* ==================================================================== */
+@theme {
+  --color-ink: #0a0a0a; /* fondo general del sitio */
+  --color-elevated: #141414; /* cards, secciones alternas, footer */
+  --color-gold: #c9a227; /* dorado principal: titulares, iconos, CTAs */
+  --color-gold-light: #e3c567; /* hover y highlights */
+  --color-gold-dark: #9c7a1e; /* bordes y estados secundarios */
+  --color-body: #d9d4c7; /* párrafos largos (blanco-hueso atenuado) */
+  --color-hairline: rgba(201, 162, 39, 0.15); /* bordes sutiles */
+}
+
+/* Alias semánticos con los nombres de la guía de marca. */
+:root {
+  --bg-primary: var(--color-ink);
+  --bg-elevated: var(--color-elevated);
+  --border-subtle: var(--color-hairline);
+  --gold: var(--color-gold);
+  --gold-light: var(--color-gold-light);
+  --gold-dark: var(--color-gold-dark);
+  --text-body: var(--color-body);
+}
+
+/* ===== RESET Y BASE ===== */
+/* IMPORTANTE: todo esto va dentro de @layer base. Las utilidades de Tailwind v4
+   viven en @layer utilities, y en la cascada CSS cualquier regla SIN capa gana a
+   cualquier regla EN capa. Un reset suelto como `* { margin: 0; padding: 0 }`
+   fuera de capas anula todos los py-*, mb-*, p-*… del proyecto y provoca que el
+   contenido aparezca amontonado. */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background: var(--bg-primary);
+  }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-body);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Titulares en dorado por defecto; sobrescribible con utilidades. */
+  h1,
+  h2,
+  h3 {
+    color: var(--gold);
+  }
+  h4,
+  h5,
+  h6 {
+    color: var(--gold-light);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button,
+  a {
+    transition: all 0.25s ease;
+  }
+
+  /* El header es sticky (h-20 = 5rem): evita que los títulos queden ocultos
+     detrás de él al llegar a una sección por scroll o por ancla. */
+  section,
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  /* Foco visible sobre fondo oscuro (accesibilidad de teclado). */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-elevated);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ==================================================================== */
+/* COMPONENTES — en @layer components para que las utilidades de Tailwind */
+/* (mb-0, py-32, px-8…) siempre puedan sobrescribirlos puntualmente.      */
+/* ==================================================================== */
+@layer components {
+
+/* ===== CONTAINER PROFESIONAL ===== */
+.container-pro {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-pro {
+    padding: 0 2rem;
+  }
+}
+
+/* ===== SEPARACIÓN ENTRE SECCIONES ===== */
+/* Más aire vertical que en la versión anterior (5rem/7rem). */
+.section-pad {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ===== ANIMACIÓN SUTIL DE ENTRADA ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeUp {
+  animation: fadeUp 0.6s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeUp {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==================================================================== */
+/* ESTILO EDITORIAL — inspirado en SportsProAgency                       */
+/* ==================================================================== */
+
+/* --- Familias tipográficas (cargadas con next/font en layout.tsx) --- */
+.font-display {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.06;
+  text-transform: uppercase;
+}
+
+/* Párrafos y listas cómodos de leer en bloques largos. */
+main p,
+main li {
+  line-height: 1.75;
+}
+
+/* --- Eyebrow numerado tipo "01 — INICIO" --- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.eyebrow .eyebrow-num {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.eyebrow::before {
+  content: "";
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* --- Titulares sobredimensionados --- */
+/* margin-bottom por defecto para que Anton nunca quede pegado al texto. */
+.headline-xl {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  font-size: clamp(2.75rem, 9vw, 8rem);
+}
+.headline-lg {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+}
+.headline-xl,
+.headline-lg {
+  margin-bottom: 0.35em;
+}
+
+/* --- Enlace con flecha (hover subrayado) --- */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+.link-arrow .arrow {
+  transition: transform 0.3s ease;
+}
+.link-arrow:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* --- Botones --- */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: var(--gold);
+  color: var(--bg-primary);
+  font-weight: 700;
+  border: 1px solid var(--gold);
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--gold);
+  font-weight: 700;
+  border: 1px solid var(--gold-dark);
+}
+.btn-outline-gold:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(201, 162, 39, 0.08);
+}
+
+/* --- Superficie de card sobre negro --- */
+.card-dark {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+/* --- Número gigante fantasma de fondo --- */
+/* Decorativo puro: muy tenue y siempre por detrás del contenido. */
+.ghost-num {
+  font-family: var(--font-display), sans-serif;
+  line-height: 1;
+  font-size: clamp(5rem, 14vw, 12rem);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(201, 162, 39, 0.12);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Marquee de ligas --- */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 0;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* --- Líneas divisorias finas --- */
+.hairline {
+  height: 1px;
+  background: var(--border-subtle);
+}
+.hairline-light {
+  height: 1px;
+  background: rgba(201, 162, 39, 0.22);
+}
+
+} /* fin @layer components */

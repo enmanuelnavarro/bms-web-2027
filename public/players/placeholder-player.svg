@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Foto de jugador pendiente">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <!-- Silueta de jugador -->
+  <g fill="#1f1c14">
+    <circle cx="200" cy="175" r="62"/>
+    <path d="M92 470c0-72 48-128 108-128s108 56 108 128z"/>
+  </g>
+  <!-- Balón de baloncesto -->
+  <g transform="translate(288,300)">
+    <circle r="34" fill="#9c7a1e"/>
+    <g stroke="#0a0a0a" stroke-width="3" fill="none">
+      <line x1="-34" y1="0" x2="34" y2="0"/>
+      <line x1="0" y1="-34" x2="0" y2="34"/>
+      <path d="M-24 -24 C -6 -6, -6 6, -24 24"/>
+      <path d="M24 -24 C 6 -6, 6 6, 24 24"/>
+    </g>
+  </g>
+  <text x="200" y="492" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#9c7a1e">BMS · Foto pendiente</text>
+</svg>

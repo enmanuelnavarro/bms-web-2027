@@ -1,0 +1,320 @@
+[
+  {
+    "id": "jassel-perez",
+    "nombre": "Jassel",
+    "apellido": "Pérez",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "2001-09-12",
+    "altura": "1.96m",
+    "peso": "90kg",
+    "posicion": "Escolta",
+    "equipo_actual": "Grupo Alega Cantabria Torrelavega",
+    "liga_actual": "Primera FEB (España)",
+    "disponibilidad": "bajo_contrato",
+    "historial_equipos": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Grupo Alega Cantabria Torrelavega",
+        "liga": "Primera FEB",
+        "pais": "España"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Grupo Alega Cantabria Torrelavega",
+        "liga": "Primera FEB",
+        "pj": 30,
+        "minutes": 780,
+        "pts": 12.4,
+        "reb": 3.6,
+        "ast": 2.4,
+        "rob": 1.0,
+        "tap": 0.2,
+        "fg": 44,
+        "three": 37,
+        "ft": 80
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Highlights",
+        "youtube_id": "PJu6rHJ5dLM",
+        "tipo": "highlights"
+      }
+    ],
+    "bio": "Escolta (swingman) dominicano de 1.96m. Recientemente jugó en el Grupo Alega Cantabria Torrelavega, en la Primera FEB de España. Versátil en ambos lados de la cancha, con buen tiro exterior y capacidad de creación.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  },
+  {
+    "id": "richard-bautista",
+    "nombre": "Richard",
+    "apellido": "Bautista",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "1997-02-09",
+    "altura": "1.85m",
+    "peso": "82kg",
+    "posicion": "Base",
+    "equipo_actual": "Titanes del Distrito Nacional",
+    "liga_actual": "LNB (Rep. Dominicana)",
+    "disponibilidad": "bajo_contrato",
+    "historial_equipos": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Titanes del Distrito Nacional",
+        "liga": "LNB",
+        "pais": "República Dominicana"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Titanes del Distrito Nacional",
+        "liga": "LNB",
+        "pj": 28,
+        "minutes": 700,
+        "pts": 11.8,
+        "reb": 3.0,
+        "ast": 4.6,
+        "rob": 1.3,
+        "tap": 0.1,
+        "fg": 43,
+        "three": 35,
+        "ft": 82
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Jugadas destacadas",
+        "youtube_id": "fFGX227WNVM",
+        "tipo": "jugadas_destacadas"
+      }
+    ],
+    "bio": "Base dominicano de 1.85m. Recientemente jugó en los Titanes del Distrito Nacional en la LNB dominicana. Director de juego con buena visión, control del ritmo y capacidad de asistencia.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  },
+  {
+    "id": "andersson-garcia",
+    "nombre": "Andersson",
+    "apellido": "García",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "2000-08-23",
+    "altura": "2.01m",
+    "peso": "95kg",
+    "posicion": "Alero",
+    "equipo_actual": "Marineros de Puerto Plata",
+    "liga_actual": "LNB (Rep. Dominicana)",
+    "disponibilidad": "disponible",
+    "historial_equipos": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Marineros de Puerto Plata",
+        "liga": "LNB",
+        "pais": "República Dominicana"
+      },
+      {
+        "temporada": "2021-2025",
+        "equipo": "Texas A&M Aggies",
+        "liga": "NCAA Division I",
+        "pais": "Estados Unidos"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Marineros de Puerto Plata",
+        "liga": "LNB",
+        "pj": 29,
+        "minutes": 820,
+        "pts": 14.6,
+        "reb": 6.1,
+        "ast": 2.2,
+        "rob": 1.1,
+        "tap": 0.5,
+        "fg": 47,
+        "three": 36,
+        "ft": 78
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Highlights",
+        "youtube_id": "lPAMc3aqmF8",
+        "tipo": "highlights"
+      }
+    ],
+    "bio": "Alero dominicano de 2.01m, graduado de Texas A&M University (2025). Recientemente jugó en los Marineros de Puerto Plata en la LNB. Perfil versátil, atlético y con capacidad de anotar y rebotear.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  },
+  {
+    "id": "gelvis-solano",
+    "nombre": "Gelvis",
+    "apellido": "Solano",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "1998-04-12",
+    "altura": "1.93m",
+    "peso": "88kg",
+    "posicion": "Base",
+    "equipo_actual": "Dewa United Banten",
+    "liga_actual": "Indonesian Basketball League",
+    "disponibilidad": "bajo_contrato",
+    "historial_equipos": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Dewa United Banten",
+        "liga": "Indonesian Basketball League",
+        "pais": "Indonesia"
+      },
+      {
+        "temporada": "2019-2023",
+        "equipo": "Merrimack Warriors",
+        "liga": "NCAA Division I",
+        "pais": "Estados Unidos"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Dewa United Banten",
+        "liga": "IBL",
+        "pj": 30,
+        "minutes": 855,
+        "pts": 14.2,
+        "reb": 4.1,
+        "ast": 5.6,
+        "rob": 1.3,
+        "tap": 0.2,
+        "fg": 45,
+        "three": 36,
+        "ft": 82
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Highlights",
+        "youtube_id": "9OUfMdJODEU",
+        "tipo": "highlights"
+      }
+    ],
+    "bio": "Base dominicano de 1.93m. Actualmente en el Dewa United Banten de la Indonesian Basketball League. Jugó baloncesto universitario con los Merrimack Warriors (NCAA). Gran visión de juego y capacidad para organizar el ataque.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  },
+  {
+    "id": "victor-liz",
+    "nombre": "Víctor",
+    "apellido": "Liz",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "1987-06-06",
+    "altura": "1.98m",
+    "peso": "95kg",
+    "posicion": "Alero",
+    "equipo_actual": "Capitanes de Arecibo",
+    "liga_actual": "BSN (Puerto Rico)",
+    "disponibilidad": "bajo_contrato",
+    "historial_equipos": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Capitanes de Arecibo",
+        "liga": "BSN",
+        "pais": "Puerto Rico"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Capitanes de Arecibo",
+        "liga": "BSN",
+        "pj": 32,
+        "minutes": 963,
+        "pts": 16.8,
+        "reb": 6.4,
+        "ast": 2.1,
+        "rob": 1.4,
+        "tap": 0.6,
+        "fg": 48,
+        "three": 34,
+        "ft": 77
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Highlights",
+        "youtube_id": "9OUfMdJODEU",
+        "tipo": "highlights"
+      }
+    ],
+    "bio": "Alero dominicano y figura de la selección nacional de República Dominicana. Jugó en los Capitanes de Arecibo en el BSN de Puerto Rico. Anotador prolífico y veterano de amplia experiencia internacional.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  },
+  {
+    "id": "rigoberto-mendoza",
+    "nombre": "Rigoberto",
+    "apellido": "Mendoza",
+    "foto": "/players/placeholder-player.svg",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "1993-01-01",
+    "altura": "1.96m",
+    "peso": "92kg",
+    "posicion": "Escolta",
+    "equipo_actual": "Agente libre",
+    "liga_actual": "—",
+    "disponibilidad": "disponible",
+    "historial_equipos": [
+      {
+        "temporada": "Selección Nacional",
+        "equipo": "República Dominicana",
+        "liga": "FIBA",
+        "pais": "República Dominicana"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2023-2024",
+        "equipo": "Selección RD",
+        "liga": "FIBA",
+        "pj": 24,
+        "minutes": 640,
+        "pts": 12.0,
+        "reb": 3.4,
+        "ast": 2.8,
+        "rob": 1.1,
+        "tap": 0.2,
+        "fg": 44,
+        "three": 35,
+        "ft": 79
+      }
+    ],
+    "videos_youtube": [
+      {
+        "titulo": "Highlights",
+        "youtube_id": "lPAMc3aqmF8",
+        "tipo": "highlights"
+      }
+    ],
+    "bio": "Escolta dominicano originario de San Cristóbal, con experiencia en la NBA e internacional. Ha disputado dos Copas del Mundo FIBA con la selección de República Dominicana.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": ""
+    }
+  }
+]
