@@ -58,6 +58,14 @@ export const STOCK_IMAGES = {
  */
 export const BANNER_SLIDES = [
   {
+    src: "/banner/slide-1.jpg",
+    alt: "Cuatro jugadores representados por BMS con la equipación de sus clubes",
+    caption: "Talento BMS en las mejores ligas del mundo",
+    // Composición con cuatro caras en el tercio superior: se ancla arriba para
+    // que el recorte apaisado de escritorio no las decapite.
+    focus: "50% 12%",
+  },
+  {
     src: U(PHOTOS.action_bw, 1400, 1000),
     alt: "Jugadores disputando un balón bajo el aro",
     caption: "Talento disponible para la próxima temporada",

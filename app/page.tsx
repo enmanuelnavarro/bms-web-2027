@@ -62,10 +62,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/65" />
         </div>
 
-        <div className="container-pro relative z-10 py-24 md:py-32">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Columna de mensaje */}
-            <div className="lg:col-span-7">
+        <div className="container-pro relative z-10 pt-24 pb-16 md:pt-28 md:pb-20">
+          <div className="max-w-3xl">
+            <div>
               <div className="eyebrow text-gold-dark mb-10 animate-fadeUp">
                 <span className="eyebrow-num">01</span> Agencia FIBA · Representación de Jugadores
               </div>
@@ -98,11 +97,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Banner dinámico */}
-            <div className="lg:col-span-5 animate-fadeUp">
-              <HeroCarousel slides={[...BANNER_SLIDES]} className="h-[26rem] md:h-[32rem]" />
-            </div>
           </div>
+        </div>
+
+        {/* Banner dinámico — a todo el ancho: las láminas son composiciones con
+            varios jugadores repartidos de lado a lado, y en una columna estrecha
+            se perdían los de los extremos. */}
+        <div className="container-pro relative z-10 pb-24 md:pb-28 animate-fadeUp">
+          <HeroCarousel
+            slides={[...BANNER_SLIDES]}
+            className="h-[15rem] sm:h-[20rem] md:h-[26rem] lg:h-[32rem]"
+          />
         </div>
 
         {/* Barra de stats */}

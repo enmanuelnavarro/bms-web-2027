@@ -9,6 +9,12 @@ export type Slide = {
   alt: string;
   /** Rótulo corto que se superpone: jugador, jugada o liga. */
   caption?: string;
+  /**
+   * Punto focal del recorte (`object-position`). El banner cambia mucho de
+   * proporción entre móvil y escritorio; en composiciones con caras conviene
+   * anclar arriba para que no se corten. Por defecto, centrado.
+   */
+  focus?: string;
 };
 
 const INTERVAL = 6000;
@@ -89,6 +95,7 @@ export default function HeroCarousel({
             sizes="(max-width: 1024px) 100vw, 55vw"
             priority={i === 0}
             className="object-cover"
+            style={{ objectPosition: s.focus ?? "50% 50%" }}
           />
           <div className="hero-carousel__veil" />
           {s.caption && (
