@@ -118,7 +118,14 @@ npm run lint     # Verificar sintaxis y estilos
 
 ## 🔧 CONFIGURACIÓN DE VARIABLES DE ENTORNO
 
-Crear archivo `.env.local` en la raíz del proyecto con:
+Copiar la plantilla y rellenarla:
+
+```bash
+cp .env.example .env.local
+```
+
+`.env.local` no se sube a git porque lleva secretos. `.env.example` sí, con los
+valores públicos y los secretos en blanco. Contenido:
 
 ```env
 # Resend API (para envío de emails)
