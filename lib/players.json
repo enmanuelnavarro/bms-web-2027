@@ -169,13 +169,7 @@
         "ft": 82
       }
     ],
-    "videos_youtube": [
-      {
-        "titulo": "Jugadas destacadas",
-        "youtube_id": "fFGX227WNVM",
-        "tipo": "jugadas_destacadas"
-      }
-    ],
+    "videos_youtube": [],
     "bio": "Base dominicano de 1.85m. Recientemente jugó en los Titanes del Distrito Nacional en la LNB dominicana. Director de juego con buena visión, control del ritmo y capacidad de asistencia.",
     "redes_sociales": {
       "instagram": "",
@@ -226,13 +220,7 @@
         "ft": 78
       }
     ],
-    "videos_youtube": [
-      {
-        "titulo": "Highlights",
-        "youtube_id": "lPAMc3aqmF8",
-        "tipo": "highlights"
-      }
-    ],
+    "videos_youtube": [],
     "bio": "Alero dominicano de 2.01m, graduado de Texas A&M University (2025). Recientemente jugó en los Marineros de Puerto Plata en la LNB. Perfil versátil, atlético y con capacidad de anotar y rebotear.",
     "redes_sociales": {
       "instagram": "",
@@ -283,13 +271,7 @@
         "ft": 82
       }
     ],
-    "videos_youtube": [
-      {
-        "titulo": "Highlights",
-        "youtube_id": "9OUfMdJODEU",
-        "tipo": "highlights"
-      }
-    ],
+    "videos_youtube": [],
     "bio": "Base dominicano de 1.93m. Actualmente en el Dewa United Banten de la Indonesian Basketball League. Jugó baloncesto universitario con los Merrimack Warriors (NCAA). Gran visión de juego y capacidad para organizar el ataque.",
     "redes_sociales": {
       "instagram": "",
@@ -334,13 +316,7 @@
         "ft": 77
       }
     ],
-    "videos_youtube": [
-      {
-        "titulo": "Highlights",
-        "youtube_id": "9OUfMdJODEU",
-        "tipo": "highlights"
-      }
-    ],
+    "videos_youtube": [],
     "bio": "Alero dominicano y figura de la selección nacional de República Dominicana. Jugó en los Capitanes de Arecibo en el BSN de Puerto Rico. Anotador prolífico y veterano de amplia experiencia internacional.",
     "redes_sociales": {
       "instagram": "",
@@ -385,17 +361,81 @@
         "ft": 79
       }
     ],
-    "videos_youtube": [
-      {
-        "titulo": "Highlights",
-        "youtube_id": "lPAMc3aqmF8",
-        "tipo": "highlights"
-      }
-    ],
+    "videos_youtube": [],
     "bio": "Escolta dominicano originario de San Cristóbal, con experiencia en la NBA e internacional. Ha disputado dos Copas del Mundo FIBA con la selección de República Dominicana.",
     "redes_sociales": {
       "instagram": "",
       "twitter": ""
     }
+  },
+  {
+    "id": "jonathan-bello",
+    "nombre": "Jonathan",
+    "apellido": "Bello",
+    "foto": "/players/jonathan-bello.png",
+    "nacionalidad": "República Dominicana",
+    "fecha_nacimiento": "2001-10-24",
+    "altura": "1.95m",
+    "peso": "82kg",
+    "posicion": "Escolta-Alero",
+    "equipo_actual": "Club Deportes Las Ánimas",
+    "liga_actual": "LNB (Chile)",
+    "disponibilidad": "bajo_contrato",
+    "historial_equipos": [
+      {
+        "temporada": "2026",
+        "equipo": "Club Deportes Las Ánimas",
+        "liga": "LNB",
+        "pais": "Chile"
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Soles de Santo Domingo",
+        "liga": "LNB",
+        "pais": "República Dominicana"
+      }
+    ],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Club Deportes Las Ánimas",
+        "liga": "LNB (Chile)",
+        "pj": 1,
+        "minutes": 10.0,
+        "pts": 6.0,
+        "reb": 2.0,
+        "ast": 1.0,
+        "rob": 0.0,
+        "tap": 0.0,
+        "fg": 66.7,
+        "three": 0.0,
+        "ft": 50.0
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Soles de Santo Domingo",
+        "liga": "LNB (Rep. Dominicana)",
+        "pj": 12,
+        "minutes": 31.5,
+        "pts": 18.8,
+        "reb": 6.3,
+        "ast": 5.1,
+        "rob": 1.0,
+        "tap": 0.2,
+        "fg": 59.5,
+        "three": 30.0,
+        "ft": 57.0
+      }
+    ],
+    "videos_youtube": [],
+    "bio": "Escolta-alero dominicano de 1,95 m nacido en Santo Domingo en 2001. En la temporada 2026 firmó su mejor registro en la Liga Nacional de Baloncesto dominicana con los Soles de Santo Domingo, donde promedió 18,8 puntos, 6,3 rebotes y 5,1 asistencias en 12 partidos, con un 59,5 % en tiros de dos. Ese mismo año dio el salto al extranjero para incorporarse al Club Deportes Las Ánimas de la LNB de Chile. Perfil polivalente de perímetro: anota, rebotea desde su posición y asume tareas de generación de juego.",
+    "redes_sociales": {
+      "instagram": "",
+      "twitter": "",
+      "facebook": ""
+    },
+    "latinbasket_url": "https://basketball.latinbasket.com/player/Jonathan-Bello/662993",
+    "lugar_nacimiento": "Santo Domingo, Rep. Dominicana",
+    "seleccion": ""
   }
 ]

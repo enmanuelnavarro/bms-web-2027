@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(curl -s http://localhost:*)",
-      "Bash(curl -s -o /dev/null*)"
+      "Bash(curl -s -o /dev/null*)",
+      "Bash(python3 -c ' *)",
+      "WebFetch(domain:basketball.latinbasket.com)",
+      "Bash(curl -s -A \"Mozilla/5.0\" --max-time 30 \"https://basketball.latinbasket.com/player/Jonathan-Bello/662993\" -o /private/tmp/claude-501/-Users-Proyecto-Desarrollos-BMS-WEB-2027/e30180d1-ab90-49ca-b1a7-f21393102dd7/scratchpad/bello.html)",
+      "Bash(curl -s -A \"Mozilla/5.0\" --max-time 30 \"https://www.eurobasket.com/photos/Bello_Jonatan.jpg\" -o public/players/jonathan-bello.jpg)",
+      "Bash(python3 -)"
     ]
   }
 }
