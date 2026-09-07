@@ -189,17 +189,18 @@ export default function PlayerProfile({
       <section className="player-hero relative overflow-hidden">
         <div className="container-pro relative">
           {/* Foto anclada al pie de la banda, recortada por el borde. */}
-          <div className="hidden md:block absolute right-0 bottom-0 w-[19rem] lg:w-[23rem] h-full pointer-events-none">
+          <div className="absolute right-0 bottom-0 w-36 sm:w-56 md:w-[19rem] lg:w-[23rem] h-full pointer-events-none">
             <Image
               src={player.foto}
               alt={`${player.nombre} ${player.apellido}`}
               fill
               priority
+              sizes="(max-width: 640px) 9rem, (max-width: 768px) 14rem, (max-width: 1024px) 19rem, 23rem"
               className="object-contain object-bottom"
             />
           </div>
 
-          <div className="relative z-10 py-10 md:py-14 md:pr-[20rem] lg:pr-[24rem]">
+          <div className="relative z-10 py-10 md:py-14 pr-32 sm:pr-52 md:pr-[20rem] lg:pr-[24rem]">
             {/* Miga de pan */}
             <nav aria-label="Miga de pan" className="mb-8 text-xs text-body/55">
               <Link href="/" className="hover:text-gold transition">
