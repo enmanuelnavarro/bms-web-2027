@@ -142,10 +142,9 @@ NEXT_PUBLIC_IG_WIDGET_SRC=
 NEXT_PUBLIC_IG_WIDGET_HTML=
 
 # Redes sociales
-NEXT_PUBLIC_INSTAGRAM="https://instagram.com/bmsrdagency"
-NEXT_PUBLIC_TWITTER="https://twitter.com/bmsrdagency"
-NEXT_PUBLIC_YOUTUBE="https://youtube.com/@bmsrdagency"
-NEXT_PUBLIC_LINKEDIN="https://linkedin.com/company/bmsrdagency"
+NEXT_PUBLIC_FACEBOOK="https://www.facebook.com/BASKETMANAGEMENTSOLUTIONS"
+NEXT_PUBLIC_INSTAGRAM="https://www.instagram.com/bmsrdagency"
+NEXT_PUBLIC_TWITTER="https://x.com/bmsrdagency"
 ```
 
 ### Para Obtener Resend API Key

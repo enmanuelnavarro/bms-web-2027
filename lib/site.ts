@@ -37,11 +37,13 @@ export const SITE = {
   },
   /** Usuario de Instagram sin la arroba — fuente única para enlaces y feed. */
   instagramHandle: "bmsrdagency",
+  // Solo perfiles comprobados. YouTube y LinkedIn con el handle bmsrdagency
+  // devuelven 404, así que no se enlazan: un icono roto en el footer es peor
+  // que no tener el icono.
   social: {
-    facebook: "https://facebook.com/bmsrdagency",
-    twitter: "https://twitter.com/bmsrdagency",
-    youtube: "https://youtube.com/@bmsrdagency",
-    instagram: "https://instagram.com/bmsrdagency",
+    facebook: "https://www.facebook.com/BASKETMANAGEMENTSOLUTIONS",
+    instagram: "https://www.instagram.com/bmsrdagency",
+    twitter: "https://x.com/bmsrdagency",
   },
 } as const;
 
