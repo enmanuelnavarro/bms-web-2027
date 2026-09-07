@@ -135,11 +135,17 @@ NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS="55 NE 5th St, Miami, FL 33132, USA"
 NEXT_PUBLIC_OFFICE_MIAMI_PHONE="+1-305-926-4480"
 NEXT_PUBLIC_WHATSAPP_NUMBER="+1-809-781-5605"
 
+# Instagram — feed en directo de la home (ver sección más abajo)
+INSTAGRAM_ACCESS_TOKEN=
+INSTAGRAM_USER_ID=
+NEXT_PUBLIC_IG_WIDGET_SRC=
+NEXT_PUBLIC_IG_WIDGET_HTML=
+
 # Redes sociales
-NEXT_PUBLIC_INSTAGRAM="https://instagram.com/bmsagency"
-NEXT_PUBLIC_TWITTER="https://twitter.com/bmsagency"
-NEXT_PUBLIC_YOUTUBE="https://youtube.com/@bmsagency"
-NEXT_PUBLIC_LINKEDIN="https://linkedin.com/company/bmsagency"
+NEXT_PUBLIC_INSTAGRAM="https://instagram.com/bmsrdagency"
+NEXT_PUBLIC_TWITTER="https://twitter.com/bmsrdagency"
+NEXT_PUBLIC_YOUTUBE="https://youtube.com/@bmsrdagency"
+NEXT_PUBLIC_LINKEDIN="https://linkedin.com/company/bmsrdagency"
 ```
 
 ### Para Obtener Resend API Key
@@ -147,6 +153,78 @@ NEXT_PUBLIC_LINKEDIN="https://linkedin.com/company/bmsagency"
 2. Crear cuenta / Login
 3. Ir a Configuración → API Keys
 4. Copiar la clave y pegarla en `.env.local`
+5. Verificar el dominio `bmsrd.com` en Resend (registros DNS). Sin eso, el
+   remitente `noreply@bmsrd.com` que usa `app/api/contact/route.ts` es rechazado.
+
+---
+
+## 📸 FEED DE INSTAGRAM
+
+La sección **08 · En Directo** de la home muestra las publicaciones de
+[@bmsrdagency](https://instagram.com/bmsrdagency), cada post como una tarjeta
+independiente que enlaza al original.
+
+El componente elige camino solo, en este orden:
+
+| Orden | Condición | Qué se muestra |
+|---|---|---|
+| 1 | Hay `INSTAGRAM_ACCESS_TOKEN` | Rejilla propia con los posts reales de la API |
+| 2 | Hay `NEXT_PUBLIC_IG_WIDGET_SRC` | Widget del proveedor externo |
+| 3 | Ninguna de las dos | Bloque de respaldo que invita a seguir la cuenta |
+
+El respaldo **no inventa publicaciones**: enseña imágenes de archivo declaradas
+como tales. Publicar posts falsos con fechas y textos ficticios engañaría a quien
+visita la web.
+
+### Camino 1 — API oficial de Meta (recomendado)
+
+Gratis, sin marca de terceros y con el diseño de BMS. La antigua *Basic Display
+API* se apagó en diciembre de 2024, así que se usa la **Instagram Graph API**:
+
+1. La cuenta `@bmsrdagency` debe ser **Business** o **Creator**
+   (Instagram → Configuración → Tipo de cuenta).
+2. Entrar en [developers.facebook.com](https://developers.facebook.com) y crear
+   una app del tipo **Business**.
+3. Añadir el producto **Instagram** → *API con Instagram Login*.
+4. Vincular la cuenta y generar un **token de acceso de larga duración** con el
+   permiso `instagram_business_basic`.
+5. Pegar el token en `INSTAGRAM_ACCESS_TOKEN` (en local y en Vercel).
+
+⚠️ **El token caduca a los 60 días.** Hay que refrescarlo antes de que expire o
+la sección cae al respaldo. Cuando falla, `lib/instagram.ts` deja el motivo en el
+log del servidor y la home sigue funcionando con normalidad.
+
+El feed se cachea 1 hora (`INSTAGRAM_REVALIDATE` en `lib/instagram.ts`).
+
+### Camino 2 — Widget de terceros (plan B)
+
+Si el trámite con Meta se atasca, sirve cualquier proveedor
+([Behold](https://behold.so), [LightWidget](https://lightwidget.com),
+[Elfsight](https://elfsight.com)). Suelen costar entre 5 y 10 USD al mes y el
+diseño lo manda el proveedor, no nosotros.
+
+```env
+NEXT_PUBLIC_IG_WIDGET_SRC="https://w.behold.so/widget.js"
+NEXT_PUBLIC_IG_WIDGET_HTML='<div data-behold-id="TU_ID"></div>'
+```
+
+Solo se activa si `INSTAGRAM_ACCESS_TOKEN` está vacío.
+
+---
+
+## 🖼️ BANNER DINÁMICO DEL HERO
+
+`components/HeroCarousel.tsx` rota las láminas definidas en `BANNER_SLIDES`
+(`lib/images.ts`): avance automático cada 6 s, flechas, puntos de navegación,
+swipe en móvil, pausa al pasar el ratón y respeto por `prefers-reduced-motion`.
+
+**Las imágenes actuales son de archivo (Unsplash) y hay que sustituirlas por
+fotos propias de los jugadores.** Para hacerlo: subir los archivos a `/public` y
+cambiar `src`, `alt` y `caption` en `BANNER_SLIDES`. Ningún componente referencia
+una URL de Unsplash directamente, así que no hay que tocar nada más.
+
+Mientras sean fotos de archivo, los rótulos son genéricos a propósito: no se
+nombra a un jugador real sobre una imagen que no es suya.
 
 ---
 

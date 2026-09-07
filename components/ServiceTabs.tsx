@@ -19,13 +19,15 @@ const DATA: Record<"jugadores" | "clubes", readonly Service[]> = {
 };
 
 export default function ServiceTabs() {
-  const [tab, setTab] = useState<"jugadores" | "clubes">("jugadores");
+  // Arranca en "clubes": la web se dirige en primer lugar a los equipos que
+  // quieren fichar, no a los jugadores que buscan agencia.
+  const [tab, setTab] = useState<"jugadores" | "clubes">("clubes");
 
   return (
     <div>
       {/* Tabs */}
       <div className="flex items-center gap-3 mb-12">
-        {(["jugadores", "clubes"] as const).map((key) => (
+        {(["clubes", "jugadores"] as const).map((key) => (
           <button
             key={key}
             onClick={() => setTab(key)}

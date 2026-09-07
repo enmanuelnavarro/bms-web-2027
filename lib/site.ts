@@ -35,11 +35,13 @@ export const SITE = {
       phoneHref: "+18097815605",
     },
   },
+  /** Usuario de Instagram sin la arroba — fuente única para enlaces y feed. */
+  instagramHandle: "bmsrdagency",
   social: {
-    facebook: "https://facebook.com/bmssportsagency",
-    twitter: "https://twitter.com/bmssportsagency",
-    youtube: "https://youtube.com/@bmssportsagency",
-    instagram: "https://instagram.com/bmssportsagency",
+    facebook: "https://facebook.com/bmsrdagency",
+    twitter: "https://twitter.com/bmsrdagency",
+    youtube: "https://youtube.com/@bmsrdagency",
+    instagram: "https://instagram.com/bmsrdagency",
   },
 } as const;
 

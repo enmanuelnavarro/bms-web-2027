@@ -18,11 +18,11 @@ const sans = Inter({
 });
 
 const DESCRIPTION =
-  "BMS — Basket Manager Sport. Agencia con licencia FIBA fundada en 2009, con sedes en Miami y República Dominicana. Representación, desarrollo y gestión de jugadores de baloncesto profesional. Una empresa en la que puedes confiar.";
+  "BMS — Basket Manager Sport. Agencia con licencia FIBA desde 2009, con sedes en Miami y República Dominicana. Más de 100 jugadores de baloncesto profesional disponibles para clubes de todo el mundo: scouting, negociación y trámites FIBA de principio a fin.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: "BMS · Basket Manager Sport | Representación de Baloncesto Profesional",
+  title: "BMS · Basket Manager Sport | Ficha Jugadores de Baloncesto Profesional",
   description: DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     locale: "es_DO",
     url: SITE.url,
     siteName: SITE.legalName,
-    title: "BMS · Basket Manager Sport | Representación de Baloncesto Profesional",
+    title: "BMS · Basket Manager Sport | Ficha Jugadores de Baloncesto Profesional",
     description: DESCRIPTION,
   },
 };
@@ -108,13 +108,14 @@ export default function RootLayout({
           <div className="container-pro pt-24 pb-16">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-16">
               <h2 className="headline-lg text-gold max-w-3xl">
-                Vive el <span className="text-gold-light">baloncesto</span> con nosotros
+                El <span className="text-gold-light">jugador</span> que tu club busca,
+                lo tenemos nosotros
               </h2>
               <a
                 href="/contacto"
                 className="link-arrow text-gold-light text-lg whitespace-nowrap border-b-2 border-gold pb-1"
               >
-                Empieza tu carrera <span className="arrow">→</span>
+                Solicitar jugadores <span className="arrow">→</span>
               </a>
             </div>
 
@@ -175,9 +176,9 @@ export default function RootLayout({
                   <li><a href={`https://wa.me/${SITE.whatsappHref}`} target="_blank" rel="noopener noreferrer" className="text-body/80 hover:text-gold-light transition">WhatsApp · {SITE.whatsapp}</a></li>
                 </ul>
                 <div className="flex gap-3 mt-5">
-                  <a href="https://instagram.com/bmsagency" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">IG</a>
-                  <a href="https://twitter.com/bmsagency" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">X</a>
-                  <a href="https://youtube.com/@bmsagency" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-xs">YT</a>
+                  <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram de BMS (@${SITE.instagramHandle})`} className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">IG</a>
+                  <a href={SITE.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X de BMS" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">X</a>
+                  <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube de BMS" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-xs">YT</a>
                 </div>
               </div>
             </div>

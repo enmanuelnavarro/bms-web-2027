@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { STOCK_IMAGES } from "@/lib/images";
+import { BANNER_SLIDES, STOCK_IMAGES } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import CountUp from "@/components/CountUp";
+import HeroCarousel from "@/components/HeroCarousel";
+import InstagramSection from "@/components/InstagramSection";
 import ServiceTabs from "@/components/ServiceTabs";
 
 const featuredPlayers = [
@@ -60,28 +62,45 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/65" />
         </div>
 
-        <div className="container-pro relative z-10 py-28 md:py-36">
-          <div className="eyebrow text-gold-dark mb-10 animate-fadeUp">
-            <span className="eyebrow-num">01</span> Agencia de Baloncesto Profesional
-          </div>
+        <div className="container-pro relative z-10 py-24 md:py-32">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Columna de mensaje */}
+            <div className="lg:col-span-7">
+              <div className="eyebrow text-gold-dark mb-10 animate-fadeUp">
+                <span className="eyebrow-num">01</span> Agencia FIBA · Representación de Jugadores
+              </div>
 
-          <h1 className="headline-xl text-gold mb-10 animate-fadeUp">
-            Vive el<br />
-            <span className="text-gold-light">baloncesto</span>
-          </h1>
+              <h1 className="headline-xl text-gold mb-10 animate-fadeUp">
+                Tu próximo fichaje<br />
+                <span className="text-gold-light">está aquí</span>
+              </h1>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-end animate-fadeUp">
-            <p className="text-lg md:text-xl text-body leading-relaxed max-w-xl">
-              {SITE.mission} Con licencia FIBA y sedes en Miami y República
-              Dominicana desde {SITE.founded}.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
-              <Link href="/jugadores" className="btn-gold link-arrow">
-                Ver Jugadores <span className="arrow">→</span>
-              </Link>
-              <Link href="/contacto" className="btn-outline-gold">
-                Contactar
-              </Link>
+              <div className="animate-fadeUp">
+                <p className="text-lg md:text-xl text-body leading-relaxed max-w-xl mb-6">
+                  Conectamos a clubes de todo el mundo con más de 100 jugadores
+                  profesionales de baloncesto. Te presentamos perfiles que encajan con tu
+                  sistema, tu presupuesto y tu calendario.
+                </p>
+                <p className="text-base text-body/70 leading-relaxed max-w-xl mb-10">
+                  Agencia con licencia FIBA #{SITE.fibaLicense}, con sedes en Miami y
+                  República Dominicana desde {SITE.founded}. Nos ocupamos del scouting, la
+                  negociación y los trámites internacionales de principio a fin.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/jugadores" className="btn-gold link-arrow">
+                    Ver jugadores disponibles <span className="arrow">→</span>
+                  </Link>
+                  <Link href="/contacto" className="btn-outline-gold">
+                    Solicitar un perfil
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Banner dinámico */}
+            <div className="lg:col-span-5 animate-fadeUp">
+              <HeroCarousel slides={[...BANNER_SLIDES]} className="h-[26rem] md:h-[32rem]" />
             </div>
           </div>
         </div>
@@ -115,13 +134,14 @@ export default function Home() {
                 <span className="eyebrow-num">02</span> Quiénes Somos
               </div>
               <h2 className="headline-lg text-gold">
-                Más que una agencia,<br />
-                un <span className="text-gold-light">equipo</span> a tu lado
+                Un socio fiable<br />
+                para tu <span className="text-gold-light">plantilla</span>
               </h2>
               <p className="text-lg text-body leading-relaxed max-w-2xl mb-10">
-                Somos una agencia full-service con más de 25 años representando a jugadores
-                de baloncesto profesional. Acompañamos cada carrera de principio a fin:
-                contratos, desarrollo, imagen y proyección internacional.
+                Llevamos más de 25 años representando jugadores de baloncesto profesional,
+                y ese mismo tiempo trabajando con los clubes que los fichan. Conocemos a
+                cada jugador de nuestro roster de primera mano: su nivel real, su carácter
+                y qué necesita para rendir en tu equipo.
               </p>
               <Link href="/agencia" className="link-arrow text-gold-light border-b-2 border-gold pb-1">
                 Conoce la agencia <span className="arrow">→</span>
@@ -191,7 +211,8 @@ export default function Home() {
             </div>
             <h2 className="headline-lg text-gold">Servicios profesionales</h2>
             <p className="text-lg text-body">
-              Soluciones integrales para jugadores y clubes. Elige tu perfil.
+              Lo que ponemos sobre la mesa cuando un club nos llama — y lo que ofrecemos a
+              los jugadores que representamos. Elige tu perfil.
             </p>
           </div>
           <ServiceTabs />
@@ -209,7 +230,8 @@ export default function Home() {
             </div>
             <h2 className="headline-lg text-gold">En las mejores ligas</h2>
             <p className="text-lg text-body">
-              Representamos jugadores en las competiciones profesionales más prestigiosas del mundo.
+              Nuestros jugadores compiten —y nuestros clubes fichan— en las competiciones
+              profesionales más exigentes del mundo.
             </p>
           </div>
         </div>
@@ -311,6 +333,11 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
+      {/* 08 · INSTAGRAM EN DIRECTO                                     */}
+      {/* ============================================================ */}
+      <InstagramSection />
+
+      {/* ============================================================ */}
       {/* CTA FINAL                                                     */}
       {/* ============================================================ */}
       {/* z-10 en el contenido y z-0 en el número decorativo: el botón     */}
@@ -324,16 +351,18 @@ export default function Home() {
         </span>
         <div className="container-pro relative z-10 pt-24 pb-28 md:pt-28 md:pb-32">
           <h2 className="headline-lg text-ink max-w-3xl">
-            ¿Listo para el<br />siguiente nivel?
+            ¿Necesitas reforzar<br />tu plantilla?
           </h2>
           <p className="text-ink/80 text-lg max-w-2xl mb-12">
-            Contacta con nuestro equipo en República Dominicana o Miami y descubre cómo BMS puede potenciar tu carrera.
+            Dinos qué posición buscas, en qué liga compites y con qué presupuesto cuentas.
+            Te enviamos una preselección de jugadores con vídeo y estadísticas. Atendemos
+            desde República Dominicana y Miami, en español e inglés.
           </p>
           <Link
             href="/contacto"
             className="relative z-10 inline-flex items-center gap-2 px-8 py-4 bg-ink text-gold font-bold rounded-full hover:bg-elevated transition link-arrow"
           >
-            Contactar Ahora <span className="arrow">→</span>
+            Solicitar jugadores <span className="arrow">→</span>
           </Link>
         </div>
       </section>

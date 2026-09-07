@@ -353,4 +353,163 @@ main li {
   background: rgba(201, 162, 39, 0.22);
 }
 
+/* --- Banner dinámico del hero ---
+   El contenedor necesita una altura explícita (p. ej. h-[32rem]): todas las
+   láminas van en absolute y no aportan altura por sí solas. --- */
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--color-ink);
+  isolation: isolate;
+}
+.hero-carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* Sin transform: un scale sobre el <Image fill> provoca reflow en Safari. */
+  transition: opacity 900ms ease-in-out;
+  pointer-events: none;
+}
+.hero-carousel__slide[data-active="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero-carousel__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.92) 0%,
+    rgba(10, 10, 10, 0.35) 45%,
+    rgba(10, 10, 10, 0.1) 100%
+  );
+}
+.hero-carousel__caption {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 3.25rem;
+  right: 1.5rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 190, 0.92);
+}
+.hero-carousel__caption span {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 0.75rem;
+}
+.hero-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(10, 10, 10, 0.55);
+  color: var(--color-gold);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 200ms ease, background 200ms ease;
+}
+.hero-carousel:hover .hero-carousel__arrow,
+.hero-carousel__arrow:focus-visible {
+  opacity: 1;
+}
+.hero-carousel__arrow:hover {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+.hero-carousel__arrow--prev {
+  left: 0.85rem;
+}
+.hero-carousel__arrow--next {
+  right: 0.85rem;
+}
+/* En táctil no hay hover: las flechas se quedan visibles. */
+@media (hover: none) {
+  .hero-carousel__arrow {
+    opacity: 1;
+  }
+}
+.hero-carousel__dots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+}
+.hero-carousel__dot {
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgba(232, 220, 190, 0.28);
+  transition: background 250ms ease;
+}
+.hero-carousel__dot[data-active="true"] {
+  background: var(--color-gold);
+}
+.hero-carousel__dot:hover {
+  background: rgba(201, 162, 39, 0.7);
+}
+
+/* --- Tarjetas del feed de Instagram --- */
+.ig-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--color-elevated);
+  transition: border-color 250ms ease, transform 250ms ease;
+}
+.ig-card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+}
+.ig-card__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.55), transparent 55%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.ig-card:hover .ig-card__veil {
+  opacity: 1;
+}
+.ig-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: rgba(10, 10, 10, 0.7);
+  color: var(--color-gold);
+  font-size: 0.7rem;
+  backdrop-filter: blur(4px);
+}
+.ig-widget {
+  min-height: 320px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel__slide {
+    transition: none;
+  }
+  .ig-card:hover {
+    transform: none;
+  }
+}
+
 } /* fin @layer components */
