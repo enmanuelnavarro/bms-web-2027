@@ -1,7 +1,7 @@
 # BMS — Basket Manager Sport
 ## Sitio Web de Agencia de Representación de Jugadores de Baloncesto
 
-**Dominio:** bmsagency.net  
+**Dominio:** bmsrd.com  
 **Estado:** 100% Funcional  
 **Stack:** Next.js 16 + React + TypeScript + Tailwind CSS v4
 
@@ -125,15 +125,15 @@ Crear archivo `.env.local` en la raíz del proyecto con:
 NEXT_PUBLIC_RESEND_API_KEY=tu_api_key_aqui
 
 # Emails de contacto
-NEXT_PUBLIC_CONTACT_EMAIL=contact@bmsagency.net
-NEXT_PUBLIC_INFO_EMAIL=info@bmsagency.net
+NEXT_PUBLIC_CONTACT_EMAIL=players@bmsrd.com
+NEXT_PUBLIC_INFO_EMAIL=info@bmsrd.com
 
 # Datos de oficinas
-NEXT_PUBLIC_OFFICE_RD_ADDRESS="Calle Ejemplo, 123, Santo Domingo, República Dominicana"
-NEXT_PUBLIC_OFFICE_RD_PHONE="+1-809-XXX-XXXX"
-NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS="123 NW 1st Street, Miami, FL 33128, USA"
-NEXT_PUBLIC_OFFICE_MIAMI_PHONE="+1-305-XXX-XXXX"
-NEXT_PUBLIC_WHATSAPP_NUMBER="+1-809-XXXXXXX"
+NEXT_PUBLIC_OFFICE_RD_ADDRESS="La Vega, Rep. Dom."
+NEXT_PUBLIC_OFFICE_RD_PHONE="+1-809-781-5605"
+NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS="55 NE 5th St, Miami, FL 33132, USA"
+NEXT_PUBLIC_OFFICE_MIAMI_PHONE="+1-305-926-4480"
+NEXT_PUBLIC_WHATSAPP_NUMBER="+1-809-781-5605"
 
 # Redes sociales
 NEXT_PUBLIC_INSTAGRAM="https://instagram.com/bmsagency"
@@ -230,7 +230,7 @@ NEXT_PUBLIC_LINKEDIN="https://linkedin.com/company/bmsagency"
 
 ### Formulario de Contacto
 - Validación de campos
-- Envío real a contact@bmsagency.net
+- Envío real a players@bmsrd.com
 - Confirmación visual al usuario
 - Selector de oficina de interés (RD / Miami)
 - Manejo de errores
@@ -305,7 +305,7 @@ vercel login
 vercel --prod
 
 # 4. Configurar dominio en Vercel Dashboard
-# Agregar CNAME: bmsagency.net → vercel.com
+# Agregar CNAME: bmsrd.com → vercel.com
 ```
 
 ### Variables de Entorno en Vercel
@@ -351,9 +351,9 @@ Cuando BMS entregue la información real, actualizar:
 
 ## 📧 CONTACTO Y SOPORTE
 
-**Email de Contacto:** contact@bmsagency.net  
-**Email General:** info@bmsagency.net  
-**Sitio:** bmsagency.net
+**Email de Contacto:** players@bmsrd.com  
+**Email General:** info@bmsrd.com  
+**Sitio:** bmsrd.com
 
 ---
 
@@ -369,7 +369,7 @@ Propiedad de BMS — Basket Manager Sport
 2. **Obtener Resend API Key** para envío real de emails
 3. **Reemplazar fotos mock** con fotos reales de jugadores
 4. **Agregar más jugadores** (actualmente 10, objetivo 100+)
-5. **Configurar dominio bmsagency.net** en Vercel
+5. **Configurar dominio bmsrd.com** en Vercel
 6. **Deploy a producción** mediante Vercel
 7. **Testing final** en ambiente real
 8. **Monitoreo** con Google Analytics (opcional)

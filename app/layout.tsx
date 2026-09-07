@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
+import { SITE } from "@/lib/site";
 
 const display = Anton({
   subsets: ["latin"],
@@ -16,10 +17,22 @@ const sans = Inter({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "BMS — Basket Manager Sport. Agencia con licencia FIBA fundada en 2009, con sedes en Miami y República Dominicana. Representación, desarrollo y gestión de jugadores de baloncesto profesional. Una empresa en la que puedes confiar.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: "BMS · Basket Manager Sport | Representación de Baloncesto Profesional",
-  description:
-    "BMS — Basket Manager Sport. Agencia con licencia FIBA fundada en 2009, con sedes en Miami y República Dominicana. Representación, desarrollo y gestión de jugadores de baloncesto profesional. Una empresa en la que puedes confiar.",
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_DO",
+    url: SITE.url,
+    siteName: SITE.legalName,
+    title: "BMS · Basket Manager Sport | Representación de Baloncesto Profesional",
+    description: DESCRIPTION,
+  },
 };
 
 const navLinks = [
@@ -141,12 +154,14 @@ export default function RootLayout({
                 <h4 className="text-gold-dark font-bold text-xs mb-5 uppercase tracking-[0.2em]">Oficinas</h4>
                 <ul className="space-y-4 text-sm text-body/70">
                   <li>
-                    <p className="font-semibold text-gold-light">República Dominicana</p>
-                    <p>Oficina principal</p>
+                    <p className="font-semibold text-gold-light">{SITE.offices.rd.label}</p>
+                    <p>{SITE.offices.rd.address}</p>
+                    <a href={`tel:${SITE.offices.rd.phoneHref}`} className="hover:text-gold-light transition">{SITE.offices.rd.phone}</a>
                   </li>
                   <li>
-                    <p className="font-semibold text-gold-light">Miami, Florida</p>
-                    <p>Estados Unidos</p>
+                    <p className="font-semibold text-gold-light">{SITE.offices.miami.label}</p>
+                    <p>{SITE.offices.miami.address}</p>
+                    <a href={`tel:${SITE.offices.miami.phoneHref}`} className="hover:text-gold-light transition">{SITE.offices.miami.phone}</a>
                   </li>
                 </ul>
               </div>
@@ -155,8 +170,9 @@ export default function RootLayout({
               <div>
                 <h4 className="text-gold-dark font-bold text-xs mb-5 uppercase tracking-[0.2em]">Contacto</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="mailto:contact@bmsagency.net" className="text-body/80 hover:text-gold-light transition">contact@bmsagency.net</a></li>
-                  <li><a href="mailto:info@bmsagency.net" className="text-body/80 hover:text-gold-light transition">info@bmsagency.net</a></li>
+                  <li><a href={`mailto:${SITE.email}`} className="text-body/80 hover:text-gold-light transition">{SITE.email}</a></li>
+                  <li><a href={`mailto:${SITE.infoEmail}`} className="text-body/80 hover:text-gold-light transition">{SITE.infoEmail}</a></li>
+                  <li><a href={`https://wa.me/${SITE.whatsappHref}`} target="_blank" rel="noopener noreferrer" className="text-body/80 hover:text-gold-light transition">WhatsApp · {SITE.whatsapp}</a></li>
                 </ul>
                 <div className="flex gap-3 mt-5">
                   <a href="https://instagram.com/bmsagency" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">IG</a>

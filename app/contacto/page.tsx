@@ -110,18 +110,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm text-gold-dark">Teléfono</p>
-                    <a href={`tel:${SITE.phoneHref}`} className="font-semibold text-gold hover:text-gold-light">
-                      {SITE.phone}
-                    </a>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gold-dark">WhatsApp</p>
-                    <a
-                      href={`https://wa.me/${SITE.phoneHref.replace("+", "")}`}
-                      className="font-semibold text-gold hover:text-gold-light"
-                      target="_blank"
-                    >
-                      Chatear en WhatsApp
+                    <a href={`tel:${SITE.offices.miami.phoneHref}`} className="font-semibold text-gold hover:text-gold-light">
+                      {SITE.offices.miami.phone}
                     </a>
                   </div>
                 </div>
@@ -140,8 +130,19 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm text-gold-dark">Teléfono</p>
-                    <a href={`tel:${SITE.phoneHref}`} className="font-semibold text-gold hover:text-gold-light">
-                      {SITE.phone}
+                    <a href={`tel:${SITE.offices.rd.phoneHref}`} className="font-semibold text-gold hover:text-gold-light">
+                      {SITE.offices.rd.phone}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gold-dark">WhatsApp</p>
+                    <a
+                      href={`https://wa.me/${SITE.whatsappHref}`}
+                      className="font-semibold text-gold hover:text-gold-light"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {SITE.whatsapp}
                     </a>
                   </div>
                 </div>
@@ -153,12 +154,21 @@ export default function ContactPage() {
                 <h3 className="font-display text-xl text-ink mb-4">Email & Licencia</h3>
                 <div className="space-y-4 text-ink/80">
                   <div>
-                    <p className="text-sm text-ink/75">Contacto</p>
+                    <p className="text-sm text-ink/75">Jugadores</p>
                     <a
                       href={`mailto:${SITE.email}`}
                       className="font-semibold text-ink hover:underline break-all"
                     >
                       {SITE.email}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-sm text-ink/75">Información general</p>
+                    <a
+                      href={`mailto:${SITE.infoEmail}`}
+                      className="font-semibold text-ink hover:underline break-all"
+                    >
+                      {SITE.infoEmail}
                     </a>
                   </div>
                   <div>

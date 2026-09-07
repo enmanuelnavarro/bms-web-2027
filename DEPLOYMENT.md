@@ -46,13 +46,13 @@ En Vercel Dashboard:
 
 ```
 NEXT_PUBLIC_RESEND_API_KEY = tu_api_key_aqui
-NEXT_PUBLIC_CONTACT_EMAIL = contact@bmsagency.net
-NEXT_PUBLIC_INFO_EMAIL = info@bmsagency.net
-NEXT_PUBLIC_OFFICE_RD_ADDRESS = [dirección real]
-NEXT_PUBLIC_OFFICE_RD_PHONE = [teléfono real]
-NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS = [dirección real]
-NEXT_PUBLIC_OFFICE_MIAMI_PHONE = [teléfono real]
-NEXT_PUBLIC_WHATSAPP_NUMBER = [número real]
+NEXT_PUBLIC_CONTACT_EMAIL = players@bmsrd.com
+NEXT_PUBLIC_INFO_EMAIL = info@bmsrd.com
+NEXT_PUBLIC_OFFICE_RD_ADDRESS = "La Vega, Rep. Dom."
+NEXT_PUBLIC_OFFICE_RD_PHONE = "+1-809-781-5605"
+NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS = "55 NE 5th St, Miami, FL 33132, USA"
+NEXT_PUBLIC_OFFICE_MIAMI_PHONE = "+1-305-926-4480"
+NEXT_PUBLIC_WHATSAPP_NUMBER = "+1-809-781-5605"
 NEXT_PUBLIC_INSTAGRAM = https://instagram.com/bmsagency
 NEXT_PUBLIC_TWITTER = https://twitter.com/bmsagency
 NEXT_PUBLIC_YOUTUBE = https://youtube.com/@bmsagency
@@ -62,7 +62,7 @@ NEXT_PUBLIC_LINKEDIN = https://linkedin.com/company/bmsagency
 ### Paso 5: Configurar Dominio
 
 En Vercel Dashboard → Settings → Domains:
-1. Agregar dominio: `bmsagency.net`
+1. Agregar dominio: `bmsrd.com`
 2. Vercel proporciona CNAME records
 3. Ir a tu registrador de dominios
 4. Configurar CNAME records según instrucciones de Vercel
@@ -97,17 +97,17 @@ Reemplazar estos valores en `.env.local` y Vercel:
 
 ```env
 # Dirección exacta de oficina RD
-NEXT_PUBLIC_OFFICE_RD_ADDRESS = "Tu Calle 123, Santo Domingo, DO"
+NEXT_PUBLIC_OFFICE_RD_ADDRESS = "La Vega, Rep. Dom."
 
 # Dirección exacta de Miami
-NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS = "Tu Calle 456, Miami, FL 33128"
+NEXT_PUBLIC_OFFICE_MIAMI_ADDRESS = "55 NE 5th St, Miami, FL 33132, USA"
 
 # Teléfonos reales
-NEXT_PUBLIC_OFFICE_RD_PHONE = "+1-809-123-4567"
-NEXT_PUBLIC_OFFICE_MIAMI_PHONE = "+1-305-987-6543"
+NEXT_PUBLIC_OFFICE_RD_PHONE = "+1-809-781-5605"
+NEXT_PUBLIC_OFFICE_MIAMI_PHONE = "+1-305-926-4480"
 
 # Número de WhatsApp
-NEXT_PUBLIC_WHATSAPP_NUMBER = "+1-809-123-4567"
+NEXT_PUBLIC_WHATSAPP_NUMBER = "+1-809-781-5605"
 
 # Redes sociales reales
 NEXT_PUBLIC_INSTAGRAM = "https://instagram.com/bmsagency"
@@ -120,11 +120,11 @@ NEXT_PUBLIC_LINKEDIN = "https://linkedin.com/company/bmsagency"
 
 ## VERIFICAR DEPLOYMENT
 
-1. Ir a https://bmsagency.net
+1. Ir a https://bmsrd.com
 2. Probar todas las páginas
 3. Probar búsqueda y filtros
 4. Enviar email de prueba desde contacto
-5. Verificar que llega a contact@bmsagency.net
+5. Verificar que llega a players@bmsrd.com
 
 ---
 
@@ -159,7 +159,7 @@ NEXT_PUBLIC_GA_ID = "G-XXXXXXXXXX"
 Automático en Vercel dashboard
 
 ### Email Monitoring
-Revisar que los emails lleguen a contact@bmsagency.net
+Revisar que los emails lleguen a players@bmsrd.com
 
 ---
 

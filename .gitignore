@@ -15,3 +15,6 @@ out/
 # Build
 dist/
 build/
+
+# TypeScript
+*.tsbuildinfo

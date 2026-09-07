@@ -52,7 +52,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
       instagram: "https://instagram.com/frankbrito.bms",
       twitter: "https://twitter.com/FrankBritoBMS",
     },
-    email_contacto: "contact@bmsagency.net",
+    email_contacto: "info@bmsrd.com",
     telefono_contacto: "+1 (809) 781-5605",
     slug: "frank-brito",
   },

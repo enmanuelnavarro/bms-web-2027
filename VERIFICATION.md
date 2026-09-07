@@ -237,12 +237,12 @@
    - Emails de contacto
 
 3. **Configurar Dominio:**
-   - Apuntar bmsagency.net a Vercel
+   - Apuntar bmsrd.com a Vercel
    - Configurar CNAME/A records
 
 4. **Pruebas Finales:**
    - Enviar email de prueba desde formulario
-   - Verificar que llega a contact@bmsagency.net
+   - Verificar que llega a players@bmsrd.com
    - Probar en navegadores reales
    - Verificar mobile
 

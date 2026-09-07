@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
     // Email para el usuario (confirmación)
     const userEmailResponse = await resend.emails.send({
-      from: "BMS Agency <noreply@bmsagency.net>",
+      from: "BMS Agency <noreply@bmsrd.com>",
       to: email,
       subject: "Confirmación: Tu mensaje fue recibido - BMS",
       html: `
@@ -36,9 +36,9 @@ export async function POST(request: NextRequest) {
 
     // Email para BMS (recepción de consulta)
     const bmsEmailResponse = await resend.emails.send({
-      from: "BMS Agency <noreply@bmsagency.net>",
-      to: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@bmsagency.net",
-      cc: process.env.NEXT_PUBLIC_INFO_EMAIL || "info@bmsagency.net",
+      from: "BMS Agency <noreply@bmsrd.com>",
+      to: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "players@bmsrd.com",
+      cc: process.env.NEXT_PUBLIC_INFO_EMAIL || "info@bmsrd.com",
       subject: `Nueva solicitud de contacto - ${asunto}`,
       html: `
         <h2>Nueva solicitud de contacto recibida</h2>
