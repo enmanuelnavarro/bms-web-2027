@@ -22,9 +22,16 @@ const INTERVAL = 6000;
 export default function HeroCarousel({
   slides,
   className = "",
+  variant = "card",
 }: {
   slides: Slide[];
   className?: string;
+  /**
+   * "card": tarjeta con borde redondeado y velo inferior.
+   * "hero": fondo a sangre con el titular encima — el velo se refuerza por la
+   * izquierda en escritorio para que el texto se lea sobre la imagen.
+   */
+  variant?: "card" | "hero";
 }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -68,7 +75,7 @@ export default function HeroCarousel({
 
   return (
     <div
-      className={`hero-carousel ${className}`}
+      className={`hero-carousel ${variant === "hero" ? "hero-carousel--hero" : ""} ${className}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

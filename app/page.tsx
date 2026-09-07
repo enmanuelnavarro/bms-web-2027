@@ -50,21 +50,23 @@ export default function Home() {
       {/* HERO                                                          */}
       {/* ============================================================ */}
       <section className="relative bg-ink text-body overflow-hidden">
-        {/* Imagen de fondo */}
-        <div className="absolute inset-0">
-          <Image
-            src={STOCK_IMAGES.hero.basketball_dunk}
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-20 grayscale"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/65" />
-        </div>
+        {/* Banner dinámico. Dirección de arte doble a propósito: la composición
+            es muy apaisada y en un hero vertical de móvil se perderían dos de
+            los cuatro jugadores, así que ahí va como banda por encima del
+            titular. A partir de lg pasa a fondo a sangre con el texto encima. */}
+        {/* El envoltorio acota el fondo a la cabecera: con inset-0 sobre toda la
+            sección, los puntos del carrusel caían encima de la barra de stats. */}
+        <div className="relative">
+          <div className="lg:absolute lg:inset-0 lg:z-0">
+            <HeroCarousel
+              slides={[...BANNER_SLIDES]}
+              variant="hero"
+              className="h-[16rem] sm:h-[22rem] lg:h-full lg:rounded-none lg:border-0"
+            />
+          </div>
 
-        <div className="container-pro relative z-10 pt-24 pb-16 md:pt-28 md:pb-20">
-          <div className="max-w-3xl">
-            <div>
+          <div className="container-pro relative z-10 pt-16 pb-16 lg:pt-36 lg:pb-28">
+            <div className="max-w-3xl">
               <div className="eyebrow text-gold-dark mb-10 animate-fadeUp">
                 <span className="eyebrow-num">01</span> Agencia FIBA · Representación de Jugadores
               </div>
@@ -96,18 +98,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
-        </div>
-
-        {/* Banner dinámico — a todo el ancho: las láminas son composiciones con
-            varios jugadores repartidos de lado a lado, y en una columna estrecha
-            se perdían los de los extremos. */}
-        <div className="container-pro relative z-10 pb-24 md:pb-28 animate-fadeUp">
-          <HeroCarousel
-            slides={[...BANNER_SLIDES]}
-            className="h-[15rem] sm:h-[20rem] md:h-[26rem] lg:h-[32rem]"
-          />
         </div>
 
         {/* Barra de stats */}

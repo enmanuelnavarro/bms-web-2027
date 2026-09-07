@@ -461,6 +461,43 @@ main li {
   background: rgba(201, 162, 39, 0.7);
 }
 
+/* Variante "hero": el banner es el fondo de la cabecera y el titular va encima.
+   En móvil el banner es una banda por encima del texto, así que basta el velo
+   inferior; a partir de lg el texto se superpone y hace falta oscurecer la
+   izquierda para que se lea sin tapar a los jugadores de la derecha. */
+.hero-carousel--hero .hero-carousel__veil {
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(10, 10, 10, 0.25) 55%,
+    rgba(10, 10, 10, 0.1) 100%
+  );
+}
+@media (min-width: 1024px) {
+  .hero-carousel--hero .hero-carousel__veil {
+    background:
+      linear-gradient(
+        to right,
+        rgba(10, 10, 10, 0.97) 0%,
+        rgba(10, 10, 10, 0.9) 32%,
+        rgba(10, 10, 10, 0.55) 56%,
+        rgba(10, 10, 10, 0.28) 100%
+      ),
+      linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, transparent 45%);
+  }
+  /* El rótulo y las flechas caerían justo encima del titular. */
+  .hero-carousel--hero .hero-carousel__caption,
+  .hero-carousel--hero .hero-carousel__arrow {
+    display: none;
+  }
+  /* Los puntos se van a la derecha, lejos de los botones de llamada. */
+  .hero-carousel--hero .hero-carousel__dots {
+    left: auto;
+    right: 2rem;
+    bottom: 2rem;
+  }
+}
+
 /* --- Tarjetas del feed de Instagram --- */
 .ig-card {
   display: block;
