@@ -1,0 +1,8 @@
+# Nunca enviar secretos ni artefactos locales a Vercel.
+# Las variables de entorno se configuran en el panel de Vercel, no por archivo.
+.env
+.env*.local
+.next
+node_modules
+.DS_Store
+.claude
