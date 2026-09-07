@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import playersData from "@/lib/players.json";
@@ -14,6 +14,17 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+
+type Totales = {
+  min: number;
+  pts: number;
+  fg2m: number;
+  fg2a: number;
+  fg3m: number;
+  fg3a: number;
+  ftm: number;
+  fta: number;
+};
 
 type TemporadaVista = {
   temporada: string;
@@ -29,6 +40,7 @@ type TemporadaVista = {
   fg: number;
   three: number;
   ft: number;
+  totales?: Totales | null;
 };
 
 type LiveProfile = {
@@ -37,6 +49,7 @@ type LiveProfile = {
   obtenido: string;
   equipo_actual: string | null;
   liga_actual: string | null;
+  seleccion: string | null;
   temporadas: Array<{
     temporada: string;
     competicion: string;
@@ -51,8 +64,11 @@ type LiveProfile = {
     fg2_pct: number;
     fg3_pct: number;
     ft_pct: number;
+    totales: Totales | null;
   }>;
 };
+
+type TabId = "estadisticas" | "trayectoria" | "videos" | "perfil";
 
 export default function PlayerProfile({
   params,
@@ -61,9 +77,13 @@ export default function PlayerProfile({
 }) {
   const { id } = use(params);
   const player = playersData.find((p: any) => p.id === id);
-  const [selectedVideo, setSelectedVideo] = useState(player?.videos_youtube[0]?.youtube_id || null);
+
+  const [selectedVideo, setSelectedVideo] = useState(
+    player?.videos_youtube?.[0]?.youtube_id || null
+  );
   const [mounted, setMounted] = useState(false);
   const [live, setLive] = useState<LiveProfile | null>(null);
+  const [tab, setTab] = useState<TabId>("estadisticas");
 
   useEffect(() => {
     setMounted(true);
@@ -91,23 +111,30 @@ export default function PlayerProfile({
   }, [id, player?.latinbasket_url]);
 
   // Las temporadas en vivo mandan sobre las locales cuando llegan.
-  const temporadas: TemporadaVista[] = live
-    ? live.temporadas.map((t) => ({
-        temporada: t.temporada,
-        equipo: t.equipo,
-        liga: t.competicion,
-        pj: t.pj,
-        minutes: t.min,
-        pts: t.pts,
-        reb: t.reb,
-        ast: t.ast,
-        rob: t.rob,
-        tap: t.tap,
-        fg: t.fg2_pct,
-        three: t.fg3_pct,
-        ft: t.ft_pct,
-      }))
-    : ((player?.estadisticas_temporada as TemporadaVista[]) ?? []);
+  const temporadas: TemporadaVista[] = useMemo(
+    () =>
+      live
+        ? live.temporadas.map((t) => ({
+            temporada: t.temporada,
+            equipo: t.equipo,
+            liga: t.competicion,
+            pj: t.pj,
+            minutes: t.min,
+            pts: t.pts,
+            reb: t.reb,
+            ast: t.ast,
+            rob: t.rob,
+            tap: t.tap,
+            fg: t.fg2_pct,
+            three: t.fg3_pct,
+            ft: t.ft_pct,
+            totales: t.totales,
+          }))
+        : ((player?.estadisticas_temporada as TemporadaVista[]) ?? []),
+    [live, player?.estadisticas_temporada]
+  );
+
+  const carrera = useMemo(() => calcularCarrera(temporadas), [temporadas]);
 
   const chartData = temporadas.map((s) => ({
     // Con varias competiciones en la misma temporada, el año solo no distingue.
@@ -121,7 +148,9 @@ export default function PlayerProfile({
     return (
       <div className="min-h-screen bg-ink flex items-center justify-center p-4">
         <div className="text-center">
-          <h1 className="text-2xl md:text-3xl font-black text-gold mb-4">Jugador no encontrado</h1>
+          <h1 className="text-2xl md:text-3xl font-black text-gold mb-4">
+            Jugador no encontrado
+          </h1>
           <Link href="/jugadores" className="text-gold-light font-bold hover:text-gold">
             ← Volver al directorio
           </Link>
@@ -132,172 +161,143 @@ export default function PlayerProfile({
 
   const statusStyles: Record<string, string> = {
     disponible: "bg-gold text-ink",
-    bajo_contrato: "bg-elevated text-body/80 border border-hairline",
-    en_negociacion: "bg-ink text-gold border border-gold",
+    bajo_contrato: "bg-ink/60 text-body/80 border border-hairline",
+    en_negociacion: "bg-ink/60 text-gold border border-gold",
   };
 
   const statusLabels: Record<string, string> = {
     disponible: "Disponible",
-    bajo_contrato: "Bajo Contrato",
-    en_negociacion: "En Negociación",
+    bajo_contrato: "Bajo contrato",
+    en_negociacion: "En negociación",
   };
+
+  const tabs: Array<{ id: TabId; label: string; visible: boolean }> = [
+    { id: "estadisticas", label: "Estadísticas de carrera", visible: temporadas.length > 0 },
+    {
+      id: "trayectoria",
+      label: "Trayectoria",
+      visible: (player.historial_equipos?.length ?? 0) > 0,
+    },
+    { id: "videos", label: "Vídeos", visible: (player.videos_youtube?.length ?? 0) > 0 },
+    { id: "perfil", label: "Perfil", visible: Boolean(player.bio) },
+  ];
+  const visibles = tabs.filter((t) => t.visible);
 
   return (
     <main className="min-h-screen bg-ink text-body">
-      {/* HEADER EDITORIAL CON FOTO */}
-      <section className="relative bg-ink text-body overflow-hidden border-b border-hairline">
-        <div className="container-pro relative py-16 md:py-24">
-          <Link href="/jugadores" className="link-arrow text-body/70 hover:text-gold mb-10 flex w-fit">
-            <span className="rotate-180 arrow">→</span> Volver al roster
-          </Link>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* FOTO */}
-            <div className="relative h-96 rounded-2xl overflow-hidden card-dark">
-              <Image
-                src={player.foto}
-                alt={player.nombre}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
-            </div>
+      {/* ===== BANDA DE CABECERA ===== */}
+      <section className="player-hero relative overflow-hidden">
+        <div className="container-pro relative">
+          {/* Foto anclada al pie de la banda, recortada por el borde. */}
+          <div className="hidden md:block absolute right-0 bottom-0 w-[19rem] lg:w-[23rem] h-full pointer-events-none">
+            <Image
+              src={player.foto}
+              alt={`${player.nombre} ${player.apellido}`}
+              fill
+              priority
+              className="object-contain object-bottom"
+            />
+          </div>
 
-            {/* INFO */}
-            <div className="md:col-span-2">
-              <p className="text-gold font-bold uppercase tracking-widest text-sm mb-4">{player.posicion}</p>
-              <h1 className="headline-lg text-gold">
+          <div className="relative z-10 py-10 md:py-14 md:pr-[20rem] lg:pr-[24rem]">
+            {/* Miga de pan */}
+            <nav aria-label="Miga de pan" className="mb-8 text-xs text-body/55">
+              <Link href="/" className="hover:text-gold transition">
+                Inicio
+              </Link>
+              <span className="mx-2">›</span>
+              <Link href="/jugadores" className="hover:text-gold transition">
+                Jugadores
+              </Link>
+              <span className="mx-2">›</span>
+              <span className="text-body/80">
                 {player.nombre} {player.apellido}
-              </h1>
+              </span>
+            </nav>
 
-              {/* BADGE DE DISPONIBILIDAD */}
+            <p className="text-gold font-bold uppercase tracking-[0.2em] text-xs mb-4">
+              {player.posicion}
+            </p>
+
+            {/* Nombre en dos pesos, como en las fichas federativas. */}
+            <h1 className="font-display leading-[0.92] mb-7">
+              <span className="block text-3xl md:text-5xl text-body/85">{player.nombre}</span>
+              <span className="block text-5xl md:text-7xl text-gold">{player.apellido}</span>
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`inline-block px-4 py-2 rounded-full font-bold mb-8 text-sm ${
+                className={`inline-block px-4 py-2 rounded-full font-bold text-xs ${
                   statusStyles[player.disponibilidad]
                 }`}
               >
                 {statusLabels[player.disponibilidad]}
               </span>
-
-              {/* DATOS CLAVE */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
-                {[
-                  { l: "Altura", v: player.altura },
-                  { l: "Peso", v: player.peso },
-                  { l: "País", v: player.nacionalidad },
-                  { l: "Equipo", v: player.equipo_actual },
-                  { l: "Liga", v: player.liga_actual },
-                  { l: "Nacimiento", v: player.fecha_nacimiento },
-                ].map((d, i) => (
-                  <div key={i} className="bg-elevated p-5">
-                    <p className="text-gold-dark text-xs uppercase tracking-wider mb-1.5">{d.l}</p>
-                    <p className="text-body font-bold">{d.v}</p>
-                  </div>
-                ))}
-              </div>
+              <Link
+                href={`/contacto?jugador=${player.id}`}
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold text-ink font-bold text-xs hover:bg-gold-light transition"
+              >
+                Solicitar información
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BIO */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="card-dark rounded-2xl p-8">
-            <h2 className="text-2xl font-bold text-gold mb-5">Perfil</h2>
-            <p className="text-body text-lg leading-relaxed">{player.bio}</p>
-          </div>
+      {/* ===== FRANJA DE DATOS CLAVE ===== */}
+      <section className="bg-gold text-ink">
+        <div className="container-pro grid grid-cols-2 lg:grid-cols-4 divide-x divide-ink/15">
+          {[
+            { l: "Fecha de nacimiento", v: formatFecha(player.fecha_nacimiento) },
+            { l: "Altura", v: `${player.altura}${player.peso ? ` · ${player.peso}` : ""}` },
+            {
+              l: "Equipo actual",
+              v: player.equipo_actual,
+              sub: player.liga_actual,
+            },
+            { l: "Nacionalidad", v: player.nacionalidad },
+          ].map((d, i) => (
+            <div key={i} className="py-5 px-5 first:pl-0 lg:first:pl-5">
+              <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-ink/60 mb-1.5">
+                {d.l}
+              </p>
+              <p className="font-bold leading-snug">{d.v}</p>
+              {d.sub && <p className="text-xs text-ink/65 mt-0.5">{d.sub}</p>}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* VIDEOS YOUTUBE */}
-      {player.videos_youtube && player.videos_youtube.length > 0 && (
-        <section className="py-24 px-4">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-lg md:text-xl font-bold text-gold mb-10">Highlights</h2>
+      {/* ===== PESTAÑAS ===== */}
+      <div className="border-b border-hairline bg-elevated/40 sticky top-20 z-30 backdrop-blur-sm">
+        <div
+          className="container-pro flex gap-8 overflow-x-auto"
+          role="tablist"
+          aria-label="Secciones de la ficha"
+        >
+          {visibles.map((t) => (
+            <button
+              key={t.id}
+              role="tab"
+              aria-selected={tab === t.id}
+              aria-controls={`panel-${t.id}`}
+              onClick={() => setTab(t.id)}
+              className="player-tab"
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
-            {/* VIDEO PRINCIPAL */}
-            {selectedVideo && (
-              <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                <div className="relative w-full bg-black" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full"
-                    src={`https://www.youtube.com/embed/${selectedVideo}`}
-                    title="Player Highlights"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            )}
-
-            {/* MINIATURAS DE VIDEOS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {player.videos_youtube.map((video: any, idx: number) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedVideo(video.youtube_id)}
-                  className="group relative overflow-hidden rounded-2xl card-dark hover:border-gold transition cursor-pointer"
-                >
-                  {/* THUMBNAIL */}
-                  <img
-                    src={`https://img.youtube.com/vi/${video.youtube_id}/hqdefault.jpg`}
-                    alt={video.titulo}
-                    className="w-full h-40 object-cover group-hover:scale-110 transition duration-300"
-                  />
-
-                  {/* PLAY BUTTON OVERLAY */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition flex items-center justify-center">
-                    <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-ink text-lg">
-                      ▶
-                    </div>
-                  </div>
-
-                  {/* TÍTULO */}
-                  <div className="p-4 bg-gradient-to-t from-ink to-transparent absolute bottom-0 left-0 right-0">
-                    <p className="text-gold-light font-bold">{video.titulo}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* HISTORIAL DE EQUIPOS */}
-      {player.historial_equipos && player.historial_equipos.length > 0 && (
-        <section className="py-24 px-4 bg-elevated border-y border-hairline">
-          <div className="container mx-auto max-w-7xl">
-            <h2 className="text-lg md:text-xl font-bold text-gold mb-10">Historial de Equipos</h2>
-            <div className="space-y-4">
-              {player.historial_equipos.map((team: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="bg-ink border border-hairline rounded-2xl p-6 hover:border-gold transition"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold text-gold mb-1.5">{team.equipo}</h3>
-                      <p className="text-body/70">
-                        {team.liga} • {team.pais}
-                      </p>
-                    </div>
-                    <span className="text-gold-light font-bold text-lg">{team.temporada}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ESTADÍSTICAS */}
-      {temporadas.length > 0 && (
-        <section className="py-24 px-4">
-          <div className="container mx-auto max-w-7xl">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-              <h2 className="text-lg md:text-xl font-bold text-gold">Estadísticas</h2>
+      <div className="container-pro py-14 md:py-20">
+        {/* ===== ESTADÍSTICAS ===== */}
+        {tab === "estadisticas" && temporadas.length > 0 && (
+          <section id="panel-estadisticas" role="tabpanel">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+              <h2 className="font-display text-2xl text-gold">Estadísticas de carrera</h2>
               {live && (
-                <p className="text-xs text-body/60">
+                <p className="text-xs text-body/55">
                   Datos actualizados desde{" "}
                   <a
                     href={live.fuente_url}
@@ -316,17 +316,72 @@ export default function PlayerProfile({
               )}
             </div>
 
-            {/* GRÁFICO DE EVOLUCIÓN */}
+            <div className="rounded-xl border border-hairline overflow-x-auto mb-10">
+              <table className="stat-table">
+                <thead>
+                  <tr>
+                    <th className="text-left">Temporada</th>
+                    <th className="text-left">Competición</th>
+                    <th className="text-left">Equipo</th>
+                    <th className="text-center">PJ</th>
+                    <th className="text-center">MIN</th>
+                    <th className="text-center">PTS</th>
+                    <th className="text-center">REB</th>
+                    <th className="text-center">AST</th>
+                    <th className="text-center">ROB</th>
+                    <th className="text-center">TAP</th>
+                    <th className="text-center">T2%</th>
+                    <th className="text-center">T3%</th>
+                    <th className="text-center">TL%</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {temporadas.map((s, idx) => (
+                    <tr key={idx}>
+                      <td className="font-bold text-gold-light">{s.temporada}</td>
+                      <td className="text-body/75">{s.liga}</td>
+                      <td className="text-body/75">{s.equipo}</td>
+                      <td className="text-center">{s.pj}</td>
+                      <td className="text-center">{s.minutes.toFixed(1)}</td>
+                      <td className="text-center font-bold text-gold">{s.pts.toFixed(1)}</td>
+                      <td className="text-center">{s.reb.toFixed(1)}</td>
+                      <td className="text-center">{s.ast.toFixed(1)}</td>
+                      <td className="text-center">{s.rob.toFixed(1)}</td>
+                      <td className="text-center">{s.tap.toFixed(1)}</td>
+                      <td className="text-center">{s.fg}%</td>
+                      <td className="text-center">{s.three}%</td>
+                      <td className="text-center">{s.ft}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+                {carrera && (
+                  <tfoot>
+                    <tr>
+                      <td colSpan={3}>Media total</td>
+                      <td className="text-center">{carrera.pj}</td>
+                      <td className="text-center">{carrera.min.toFixed(1)}</td>
+                      <td className="text-center">{carrera.pts.toFixed(1)}</td>
+                      <td className="text-center">{carrera.reb.toFixed(1)}</td>
+                      <td className="text-center">{carrera.ast.toFixed(1)}</td>
+                      <td className="text-center">{carrera.rob.toFixed(1)}</td>
+                      <td className="text-center">{carrera.tap.toFixed(1)}</td>
+                      <td className="text-center">{pct(carrera.fg2m, carrera.fg2a)}</td>
+                      <td className="text-center">{pct(carrera.fg3m, carrera.fg3a)}</td>
+                      <td className="text-center">{pct(carrera.ftm, carrera.fta)}</td>
+                    </tr>
+                  </tfoot>
+                )}
+              </table>
+            </div>
+
             {mounted && chartData.length > 0 && (
-              <div className="card-dark rounded-2xl p-6 mb-8">
-                <h3 className="text-lg font-bold text-gold mb-6">
-                  Promedios por Temporada (PTS · REB · AST)
-                </h3>
+              <div className="card-dark rounded-xl p-6">
+                <h3 className="font-bold text-gold mb-6">Promedios por temporada (PTS · REB · AST)</h3>
                 <div className="w-full h-72">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={chartData} margin={{ top: 8, right: 16, bottom: 8, left: -8 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(201,162,39,0.15)" />
-                      <XAxis dataKey="temporada" stroke="#9C7A1E" fontSize={12} />
+                      <XAxis dataKey="temporada" stroke="#9C7A1E" fontSize={11} />
                       <YAxis stroke="#9C7A1E" fontSize={12} />
                       <Tooltip
                         contentStyle={{
@@ -346,44 +401,169 @@ export default function PlayerProfile({
                 </div>
               </div>
             )}
+          </section>
+        )}
 
-            <div className="card-dark rounded-2xl overflow-x-auto">
-              <table className="w-full text-sm text-body/80">
-                <thead className="bg-elevated border-b border-hairline">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-bold text-gold">Temporada</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">PJ</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">MIN</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">PTS</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">REB</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">AST</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">FG%</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">3P%</th>
-                    <th className="px-4 py-3 text-center font-bold text-gold">FT%</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {temporadas.map((stat, idx) => (
-                    <tr key={idx} className="border-b border-hairline hover:bg-ink transition">
-                      <td className="px-4 py-3 font-bold text-gold-light">{stat.temporada}</td>
-                      <td className="px-4 py-3 text-center">{stat.pj}</td>
-                      <td className="px-4 py-3 text-center">{stat.minutes}</td>
-                      <td className="px-4 py-3 text-center font-bold text-gold">
-                        {stat.pts.toFixed(1)}
-                      </td>
-                      <td className="px-4 py-3 text-center">{stat.reb.toFixed(1)}</td>
-                      <td className="px-4 py-3 text-center">{stat.ast.toFixed(1)}</td>
-                      <td className="px-4 py-3 text-center">{stat.fg}%</td>
-                      <td className="px-4 py-3 text-center">{stat.three}%</td>
-                      <td className="px-4 py-3 text-center">{stat.ft}%</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        {/* ===== TRAYECTORIA ===== */}
+        {tab === "trayectoria" && (
+          <section id="panel-trayectoria" role="tabpanel">
+            <h2 className="font-display text-2xl text-gold mb-8">Trayectoria</h2>
+            <div className="rounded-xl border border-hairline overflow-hidden">
+              {player.historial_equipos.map((t: any, idx: number) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between gap-4 p-6 border-b border-hairline last:border-0 hover:bg-elevated/60 transition"
+                >
+                  <div>
+                    <h3 className="font-bold text-gold-light text-lg mb-1">{t.equipo}</h3>
+                    <p className="text-sm text-body/65">
+                      {t.liga} · {t.pais}
+                    </p>
+                  </div>
+                  <span className="font-display text-xl text-gold whitespace-nowrap">
+                    {t.temporada}
+                  </span>
+                </div>
+              ))}
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )}
+
+        {/* ===== VÍDEOS ===== */}
+        {tab === "videos" && (
+          <section id="panel-videos" role="tabpanel">
+            <h2 className="font-display text-2xl text-gold mb-8">Vídeos</h2>
+            {selectedVideo && (
+              <div className="mb-8 rounded-xl overflow-hidden border border-hairline">
+                <div className="relative w-full bg-black" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${selectedVideo}`}
+                    title={`Vídeo de ${player.nombre} ${player.apellido}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {player.videos_youtube.map((v: any, idx: number) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedVideo(v.youtube_id)}
+                  aria-current={selectedVideo === v.youtube_id}
+                  className={`group relative overflow-hidden rounded-xl border text-left transition ${
+                    selectedVideo === v.youtube_id
+                      ? "border-gold"
+                      : "border-hairline hover:border-gold-dark"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://img.youtube.com/vi/${v.youtube_id}/hqdefault.jpg`}
+                    alt=""
+                    className="w-full h-44 object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-gold-light font-bold text-sm">{v.titulo}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ===== PERFIL ===== */}
+        {tab === "perfil" && (
+          <section id="panel-perfil" role="tabpanel" className="max-w-3xl">
+            <h2 className="font-display text-2xl text-gold mb-8">Perfil</h2>
+            <p className="text-body text-lg leading-relaxed mb-10">{player.bio}</p>
+
+            <dl className="grid sm:grid-cols-2 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-xl overflow-hidden">
+              {[
+                { l: "Lugar de nacimiento", v: player.lugar_nacimiento },
+                { l: "Selección", v: player.seleccion },
+                { l: "Posición", v: player.posicion },
+                { l: "Peso", v: player.peso },
+              ]
+                .filter((d) => d.v)
+                .map((d, i) => (
+                  <div key={i} className="bg-elevated p-5">
+                    <dt className="text-xs text-gold-dark uppercase tracking-wider mb-1.5">
+                      {d.l}
+                    </dt>
+                    <dd className="font-bold text-body">{d.v}</dd>
+                  </div>
+                ))}
+            </dl>
+          </section>
+        )}
+      </div>
     </main>
   );
+}
+
+/**
+ * Acumulado de carrera. Los promedios se ponderan por partidos jugados, y los
+ * porcentajes se calculan sobre anotados/intentados reales: promediar los
+ * porcentajes de cada temporada daría un número falso, porque una temporada de
+ * 2 partidos pesaría igual que una de 27.
+ *
+ * Devuelve null si no hay totales (los jugadores sin fuente en vivo solo tienen
+ * promedios locales, y con eso no se puede calcular un porcentaje honesto).
+ */
+function calcularCarrera(temporadas: TemporadaVista[]) {
+  const conTotales = temporadas.filter((t) => t.totales);
+  if (conTotales.length === 0) return null;
+
+  const acc = {
+    pj: 0, min: 0, pts: 0, reb: 0, ast: 0, rob: 0, tap: 0,
+    fg2m: 0, fg2a: 0, fg3m: 0, fg3a: 0, ftm: 0, fta: 0,
+  };
+
+  for (const t of conTotales) {
+    const tot = t.totales!;
+    acc.pj += t.pj;
+    acc.min += tot.min;
+    acc.pts += tot.pts;
+    // Rebotes y asistencias solo están como promedio: se reconstruye el total.
+    acc.reb += t.reb * t.pj;
+    acc.ast += t.ast * t.pj;
+    acc.rob += t.rob * t.pj;
+    acc.tap += t.tap * t.pj;
+    acc.fg2m += tot.fg2m;
+    acc.fg2a += tot.fg2a;
+    acc.fg3m += tot.fg3m;
+    acc.fg3a += tot.fg3a;
+    acc.ftm += tot.ftm;
+    acc.fta += tot.fta;
+  }
+
+  if (acc.pj === 0) return null;
+
+  return {
+    ...acc,
+    min: acc.min / acc.pj,
+    pts: acc.pts / acc.pj,
+    reb: acc.reb / acc.pj,
+    ast: acc.ast / acc.pj,
+    rob: acc.rob / acc.pj,
+    tap: acc.tap / acc.pj,
+  };
+}
+
+function pct(hechos: number, intentos: number): string {
+  return intentos > 0 ? `${((hechos / intentos) * 100).toFixed(1)}%` : "—";
+}
+
+function formatFecha(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return new Intl.DateTimeFormat("es-DO", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(d);
 }

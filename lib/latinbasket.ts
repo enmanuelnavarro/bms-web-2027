@@ -33,6 +33,21 @@ export type LatinbasketSeason = {
   perdidas: number;
   /** Valoración (columna RNK de la fuente). */
   valoracion: number;
+  /**
+   * Totales de la temporada. Hacen falta para calcular porcentajes de carrera
+   * exactos: promediar porcentajes de varias temporadas da un número falso,
+   * porque no pondera por intentos.
+   */
+  totales: {
+    min: number;
+    pts: number;
+    fg2m: number;
+    fg2a: number;
+    fg3m: number;
+    fg3a: number;
+    ftm: number;
+    fta: number;
+  } | null;
 };
 
 export type LatinbasketProfile = {
@@ -242,6 +257,12 @@ function parseSeasons(lines: string[]): LatinbasketSeason[] {
     if (vistas.has(clave)) continue;
     vistas.add(clave);
 
+    // La tabla "Summary" precede a la de promedios y trae los acumulados, con
+    // los tiros en formato "126-199" (anotados-intentados).
+    const iSum = lines.indexOf("Summary", i);
+    const totales =
+      iSum >= 0 && iSum < iAvg ? parseTotals(lines.slice(iSum + 17, iSum + 33)) : null;
+
     out.push({
       temporada,
       competicion,
@@ -261,10 +282,27 @@ function parseSeasons(lines: string[]): LatinbasketSeason[] {
       rob: num(fila[13]),
       perdidas: num(fila[14]),
       valoracion: num(fila[15]),
+      totales,
     });
   }
 
   return out;
+}
+
+function parseTotals(fila: string[]): LatinbasketSeason["totales"] {
+  if (fila.length < 7) return null;
+  const [fg2m, fg2a] = split(fila[4]);
+  const [fg3m, fg3a] = split(fila[5]);
+  const [ftm, fta] = split(fila[6]);
+  // Sin intentos de tiro la fila no sirve para calcular nada.
+  if (fg2a + fg3a + fta === 0) return null;
+  return { min: num(fila[2]), pts: num(fila[3]), fg2m, fg2a, fg3m, fg3a, ftm, fta };
+}
+
+/** "126-199" → [126, 199]. */
+function split(celda: string | undefined): [number, number] {
+  const m = /^(\d+)\s*-\s*(\d+)$/.exec((celda ?? "").trim());
+  return m ? [Number(m[1]), Number(m[2])] : [0, 0];
 }
 
 /** 6'5'' → "1.96m". La fuente solo publica pies y pulgadas. */

@@ -498,6 +498,81 @@ main li {
   }
 }
 
+/* --- Ficha de jugador: banda de cabecera --- */
+/* Franjas diagonales muy tenues sobre el degradado, para que la banda tenga
+   textura sin competir con la foto ni con el nombre. */
+.player-hero {
+  background:
+    repeating-linear-gradient(
+      112deg,
+      rgba(201, 162, 39, 0.055) 0 58px,
+      transparent 58px 116px
+    ),
+    linear-gradient(118deg, #121212 0%, #1b1508 52%, #2b2210 100%);
+}
+
+/* Pestañas de la ficha: subrayado dorado en la activa. */
+.player-tab {
+  position: relative;
+  padding: 1.1rem 0.25rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(217, 212, 199, 0.6);
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+.player-tab:hover {
+  color: var(--color-gold-light);
+}
+.player-tab[aria-selected="true"] {
+  color: var(--color-gold);
+}
+.player-tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: var(--color-gold);
+}
+
+/* Tabla de estadísticas al estilo de las fichas federativas. */
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.stat-table thead th {
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  padding: 0.7rem 0.75rem;
+  white-space: nowrap;
+}
+.stat-table tbody td {
+  padding: 0.8rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+.stat-table tbody tr:nth-child(even) {
+  background: rgba(201, 162, 39, 0.035);
+}
+.stat-table tbody tr:hover {
+  background: rgba(201, 162, 39, 0.08);
+}
+.stat-table tfoot td {
+  padding: 0.85rem 0.75rem;
+  font-weight: 800;
+  color: var(--color-gold);
+  border-top: 2px solid var(--color-gold);
+  background: rgba(201, 162, 39, 0.06);
+  white-space: nowrap;
+}
+
 /* --- Tarjetas del feed de Instagram --- */
 .ig-card {
   display: block;
