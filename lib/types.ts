@@ -47,7 +47,15 @@ export interface Player {
   redes_sociales: {
     instagram?: string;
     twitter?: string;
+    facebook?: string;
   };
+  lugar_nacimiento?: string;
+  seleccion?: string;
+  /**
+   * Ficha del jugador en latinbasket.com. Si está, /api/players/[id]/stats
+   * sirve sus datos en vivo desde ahí. Ver lib/latinbasket.ts.
+   */
+  latinbasket_url?: string;
 }
 
 export interface News {

@@ -15,6 +15,45 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+type TemporadaVista = {
+  temporada: string;
+  equipo: string;
+  liga: string;
+  pj: number;
+  minutes: number;
+  pts: number;
+  reb: number;
+  ast: number;
+  rob: number;
+  tap: number;
+  fg: number;
+  three: number;
+  ft: number;
+};
+
+type LiveProfile = {
+  fuente: string;
+  fuente_url: string;
+  obtenido: string;
+  equipo_actual: string | null;
+  liga_actual: string | null;
+  temporadas: Array<{
+    temporada: string;
+    competicion: string;
+    equipo: string;
+    pj: number;
+    min: number;
+    pts: number;
+    reb: number;
+    ast: number;
+    rob: number;
+    tap: number;
+    fg2_pct: number;
+    fg3_pct: number;
+    ft_pct: number;
+  }>;
+};
+
 export default function PlayerProfile({
   params,
 }: {
@@ -24,13 +63,55 @@ export default function PlayerProfile({
   const player = playersData.find((p: any) => p.id === id);
   const [selectedVideo, setSelectedVideo] = useState(player?.videos_youtube[0]?.youtube_id || null);
   const [mounted, setMounted] = useState(false);
+  const [live, setLive] = useState<LiveProfile | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const chartData = (player?.estadisticas_temporada || []).map((s: any) => ({
-    temporada: s.temporada,
+  // Datos en vivo desde latinbasket.com, vía /api/players/[id]/stats. Solo se
+  // pide si el jugador tiene fuente configurada. Si falla, la ficha se queda
+  // con los datos locales: nunca se vacía por un error de la fuente.
+  useEffect(() => {
+    if (!player?.latinbasket_url) return;
+    let cancelado = false;
+
+    fetch(`/api/players/${id}/stats`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!cancelado && d?.temporadas?.length) setLive(d);
+      })
+      .catch(() => {
+        /* silencio: los datos locales ya están en pantalla */
+      });
+
+    return () => {
+      cancelado = true;
+    };
+  }, [id, player?.latinbasket_url]);
+
+  // Las temporadas en vivo mandan sobre las locales cuando llegan.
+  const temporadas: TemporadaVista[] = live
+    ? live.temporadas.map((t) => ({
+        temporada: t.temporada,
+        equipo: t.equipo,
+        liga: t.competicion,
+        pj: t.pj,
+        minutes: t.min,
+        pts: t.pts,
+        reb: t.reb,
+        ast: t.ast,
+        rob: t.rob,
+        tap: t.tap,
+        fg: t.fg2_pct,
+        three: t.fg3_pct,
+        ft: t.ft_pct,
+      }))
+    : ((player?.estadisticas_temporada as TemporadaVista[]) ?? []);
+
+  const chartData = temporadas.map((s) => ({
+    // Con varias competiciones en la misma temporada, el año solo no distingue.
+    temporada: live ? `${s.temporada} · ${s.liga}` : s.temporada,
     PTS: s.pts,
     REB: s.reb,
     AST: s.ast,
@@ -210,10 +291,30 @@ export default function PlayerProfile({
       )}
 
       {/* ESTADÍSTICAS */}
-      {player.estadisticas_temporada && player.estadisticas_temporada.length > 0 && (
+      {temporadas.length > 0 && (
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-7xl">
-            <h2 className="text-lg md:text-xl font-bold text-gold mb-10">Estadísticas</h2>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+              <h2 className="text-lg md:text-xl font-bold text-gold">Estadísticas</h2>
+              {live && (
+                <p className="text-xs text-body/60">
+                  Datos actualizados desde{" "}
+                  <a
+                    href={live.fuente_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold-dark hover:text-gold underline"
+                  >
+                    {live.fuente}
+                  </a>{" "}
+                  ·{" "}
+                  {new Date(live.obtenido).toLocaleString("es-DO", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                  })}
+                </p>
+              )}
+            </div>
 
             {/* GRÁFICO DE EVOLUCIÓN */}
             {mounted && chartData.length > 0 && (
@@ -262,7 +363,7 @@ export default function PlayerProfile({
                   </tr>
                 </thead>
                 <tbody>
-                  {player.estadisticas_temporada.map((stat: any, idx: number) => (
+                  {temporadas.map((stat, idx) => (
                     <tr key={idx} className="border-b border-hairline hover:bg-ink transition">
                       <td className="px-4 py-3 font-bold text-gold-light">{stat.temporada}</td>
                       <td className="px-4 py-3 text-center">{stat.pj}</td>

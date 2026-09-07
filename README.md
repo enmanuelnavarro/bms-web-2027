@@ -219,6 +219,64 @@ Solo se activa si `INSTAGRAM_ACCESS_TOKEN` está vacío.
 
 ---
 
+## 📊 API DE DATOS EN VIVO (latinbasket.com)
+
+Las estadísticas de un jugador pueden leerse automáticamente de su ficha en
+latinbasket.com, para no tener que actualizarlas a mano cada temporada.
+
+### Cómo se activa
+
+Añadir `latinbasket_url` al jugador en `lib/players.json`:
+
+```json
+{
+  "id": "jassel-perez",
+  "latinbasket_url": "https://basketball.latinbasket.com/player/Jassel-Perez/585446"
+}
+```
+
+Con eso, la ficha del jugador pide los datos al arrancar y la API queda
+disponible. Sin `latinbasket_url`, el jugador sigue usando los datos locales.
+
+### El endpoint
+
+```
+GET /api/players/[id]/stats
+```
+
+| Respuesta | Cuándo |
+|---|---|
+| `200` | Perfil leído: datos personales, agencias, países y promedios por temporada |
+| `404 jugador_no_encontrado` | El id no está en `players.json` |
+| `404 sin_fuente_configurada` | El jugador no tiene `latinbasket_url` |
+| `502 fuente_no_disponible` | La fuente no respondió o cambió la maquetación |
+
+La URL de origen **no se acepta por query string** a propósito: sale de
+`players.json`. Si se aceptara, esto sería un proxy abierto y cualquiera podría
+usar el servidor para pedir URLs arbitrarias.
+
+### Caché
+
+Se revalida cada 6 horas (`LATINBASKET_REVALIDATE` en `lib/latinbasket.ts`), con
+`stale-while-revalidate` de 24 h. La fuente no cambia más a menudo y así no se
+la castiga con peticiones.
+
+### Qué puede romperse
+
+latinbasket.com no ofrece API, así que `lib/latinbasket.ts` parsea el HTML. Si
+cambian la maquetación, el parser deja de encontrar datos. Está escrito para
+degradar, no para reventar: devuelve `null`, lo registra en el log del servidor
+y la ficha se queda con los datos locales de `players.json`. Conviene revisar
+`/api/players/jassel-perez/stats` de vez en cuando.
+
+### Procedencia
+
+La ficha muestra "Datos actualizados desde latinbasket.com" con enlace a la
+ficha de origen y la hora de lectura. Es lo correcto cuando se publican datos de
+un tercero, y además permite comprobar de un vistazo si el feed sigue vivo.
+
+---
+
 ## 🖼️ BANNER DINÁMICO DEL HERO
 
 `components/HeroCarousel.tsx` rota las láminas definidas en `BANNER_SLIDES`
