@@ -109,7 +109,18 @@
         "ft": 100.0
       }
     ],
-    "videos_youtube": [],
+    "videos_youtube": [
+      {
+        "titulo": "Mejores jugadas · Finales BSN Puerto Rico 2026",
+        "youtube_id": "HGkVzYXEB6g",
+        "tipo": "highlights"
+      },
+      {
+        "titulo": "Sus mejores jugadas · Liga Endesa 2025-26",
+        "youtube_id": "Oyyisck4ehQ",
+        "tipo": "jugadas_destacadas"
+      }
+    ],
     "bio": "Escolta dominicano de 1,96 m nacido en San Cristóbal. En la temporada 2025-2026 debutó en la Liga Endesa con el Coviran Granada tras destacar en Primera FEB con el Grupo Alega Cantabria, y en 2026 firmó su mejor registro anotador con los Vaqueros de Bayamón en el BSN de Puerto Rico (19,6 puntos y 4,1 asistencias por partido). Internacional con República Dominicana desde 2022, ha disputado el Mundial FIBA y la FIBA AmeriCup. Ha competido en España, Puerto Rico, Colombia, Nicaragua, Venezuela, Estados Unidos y República Dominicana.",
     "redes_sociales": {
       "instagram": "",
