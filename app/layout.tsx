@@ -179,6 +179,7 @@ export default function RootLayout({
                   <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram de BMS (@${SITE.instagramHandle})`} className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">IG</a>
                   <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook de BMS" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">FB</a>
                   <a href={SITE.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X de BMS" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-sm">X</a>
+                  <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube de BMS" className="w-9 h-9 rounded-full border border-hairline text-gold hover:bg-gold hover:text-ink flex items-center justify-center transition text-xs">YT</a>
                 </div>
               </div>
             </div>

@@ -145,6 +145,7 @@ NEXT_PUBLIC_IG_WIDGET_HTML=
 NEXT_PUBLIC_FACEBOOK="https://www.facebook.com/BASKETMANAGEMENTSOLUTIONS"
 NEXT_PUBLIC_INSTAGRAM="https://www.instagram.com/bmsrdagency"
 NEXT_PUBLIC_TWITTER="https://x.com/bmsrdagency"
+NEXT_PUBLIC_YOUTUBE="https://www.youtube.com/@bmsagencyrd"
 ```
 
 ### Para Obtener Resend API Key
