@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { fetchLatinbasketProfile, LATINBASKET_REVALIDATE } from "@/lib/latinbasket";
+import { fetchLatinbasketProfile } from "@/lib/latinbasket";
 import playersData from "@/lib/players.json";
 
 // Datos en vivo de un jugador, leídos de su ficha en latinbasket.com.
@@ -11,7 +11,7 @@ import playersData from "@/lib/players.json";
 // players.json. Si se aceptara, esto sería un proxy abierto y cualquiera podría
 // usar el servidor para pedir URLs arbitrarias.
 
-export const revalidate = LATINBASKET_REVALIDATE;
+export const revalidate = 21600;
 
 type Params = { params: Promise<{ id: string }> };
 
