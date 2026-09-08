@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { fetchLatinbasketProfile } from "@/lib/latinbasket";
+import { fetchLatinbasketProfile, LATINBASKET_REVALIDATE } from "@/lib/latinbasket";
 import playersData from "@/lib/players.json";
 
 // Datos en vivo de un jugador, leídos de su ficha en latinbasket.com.
