@@ -2,16 +2,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { BANNER_SLIDES, STOCK_IMAGES } from "@/lib/images";
 import { SITE } from "@/lib/site";
+import newsData from "@/lib/news.json";
+import {
+  ESTADO_ESTILOS,
+  destacados,
+  estadoKey,
+  fotoDe,
+  nombreCompleto,
+  titularEstadistico,
+} from "@/lib/players";
 import CountUp from "@/components/CountUp";
 import HeroCarousel from "@/components/HeroCarousel";
 import InstagramSection from "@/components/InstagramSection";
 import ServiceTabs from "@/components/ServiceTabs";
 
-const featuredPlayers = [
-  { id: "gelvis-solano", name: "Gelvis Solano", position: "Base", stat: "14.2 PTS · 5.6 AST", img: STOCK_IMAGES.players.placeholder_1 },
-  { id: "victor-liz", name: "Víctor Liz", position: "Alero", stat: "16.8 PTS · 6.4 REB", img: STOCK_IMAGES.players.placeholder_2 },
-  { id: "andersson-garcia", name: "Andersson García", position: "Alero", stat: "14.6 PTS · 6.1 REB", img: STOCK_IMAGES.players.placeholder_3 },
-];
+// Salen de la base de jugadores, no de una lista escrita a mano: así la
+// portada no puede quedarse con nombres o cifras que ya no son ciertos.
+const featuredPlayers = destacados(3);
 
 const leagues = [
   { name: "NBA", region: "Estados Unidos" },
@@ -37,11 +44,10 @@ const testimonials = [
   },
 ];
 
-const news = [
-  { slug: "victor-liz-lidera-lnb", tag: "Jugador", date: "28 Jun 2026", title: "Víctor Liz Lidera la Anotación en la LNB" },
-  { slug: "gelvis-solano-disponible", tag: "Agencia", date: "25 Jun 2026", title: "Gelvis Solano Disponible para la Próxima Temporada" },
-  { slug: "andersson-garcia-marineros", tag: "Jugador", date: "20 Jun 2026", title: "Andersson García Brilla con los Marineros de Puerto Plata" },
-];
+const news = newsData
+  .filter((n) => n.destacada)
+  .sort((a, b) => b.fecha.localeCompare(a.fecha))
+  .slice(0, 3);
 
 export default function Home() {
   return (
@@ -175,20 +181,34 @@ export default function Home() {
                 href={`/jugadores/${p.id}`}
                 className="group relative overflow-hidden rounded-2xl card-dark hover:border-gold-dark transition-colors"
               >
-                <div className="relative h-96">
-                  <Image src={p.img} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                <div className="relative h-96 bg-gradient-to-b from-elevated to-ink">
+                  <Image
+                    src={fotoDe(p)}
+                    alt={nombreCompleto(p)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
                   <span aria-hidden="true" className="absolute top-4 left-4 font-display text-2xl text-gold/40">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="absolute top-4 right-4 px-3 py-1 bg-gold text-ink rounded-full text-xs font-bold">
-                    Disponible
-                  </span>
+                  {p.estado && (
+                    <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${ESTADO_ESTILOS[estadoKey(p)]}`}>
+                      {p.estado}
+                    </span>
+                  )}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{p.position}</p>
-                  <h3 className="font-display text-2xl text-gold-light mb-1.5 group-hover:text-gold transition-colors">{p.name}</h3>
-                  <p className="text-body text-sm font-semibold">{p.stat}</p>
+                  {p.posicion && (
+                    <p className="text-gold font-bold text-xs uppercase tracking-widest mb-2">{p.posicion}</p>
+                  )}
+                  <h3 className="font-display text-2xl text-gold-light mb-1.5 group-hover:text-gold transition-colors">
+                    {nombreCompleto(p)}
+                  </h3>
+                  <p className="text-body text-sm font-semibold">
+                    {titularEstadistico(p) ?? [p.equipo_actual, p.pais].filter(Boolean).join(" · ")}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -315,13 +335,13 @@ export default function Home() {
             {news.map((n) => (
               <Link key={n.slug} href={`/noticias/${n.slug}`} className="group">
                 <div className="relative h-56 rounded-2xl overflow-hidden bg-ink border border-hairline mb-6">
-                  <Image src={STOCK_IMAGES.newsDefault} alt={n.title} fill className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={n.imagen} alt={n.titulo} fill className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-2.5 py-1 border border-hairline text-gold text-xs font-bold rounded-full uppercase tracking-wider">{n.tag}</span>
-                  <span className="text-xs text-body/60">{n.date}</span>
+                  <span className="px-2.5 py-1 border border-hairline text-gold text-xs font-bold rounded-full uppercase tracking-wider">{n.categoria}</span>
+                  <span className="text-xs text-body/60">{new Date(n.fecha).toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" })}</span>
                 </div>
-                <h3 className="text-lg font-black text-gold-light group-hover:text-gold transition leading-snug">{n.title}</h3>
+                <h3 className="text-lg font-black text-gold-light group-hover:text-gold transition leading-snug">{n.titulo}</h3>
               </Link>
             ))}
           </div>

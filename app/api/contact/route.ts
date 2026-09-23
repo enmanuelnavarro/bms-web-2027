@@ -5,7 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { nombre, email, telefono, asunto, mensaje, oficina } = await request.json();
+    const { nombre, email, telefono, asunto, mensaje, oficina, jugador } =
+      await request.json();
 
     // Validación básica
     if (!nombre || !email || !mensaje) {
@@ -39,13 +40,16 @@ export async function POST(request: NextRequest) {
       from: "BMS Agency <noreply@bmsrd.com>",
       to: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "players@bmsrd.com",
       cc: process.env.NEXT_PUBLIC_INFO_EMAIL || "info@bmsrd.com",
-      subject: `Nueva solicitud de contacto - ${asunto}`,
+      subject: jugador
+        ? `Solicitud de información - ${jugador}`
+        : `Nueva solicitud de contacto - ${asunto}`,
       html: `
         <h2>Nueva solicitud de contacto recibida</h2>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Teléfono:</strong> ${telefono || "No proporcionado"}</p>
         <p><strong>Asunto:</strong> ${asunto}</p>
+        ${jugador ? `<p><strong>Jugador consultado:</strong> ${jugador}</p>` : ""}
         <p><strong>Oficina de interés:</strong> ${oficina === "rd" ? "República Dominicana" : "Miami, Florida"}</p>
         <hr/>
         <h3>Mensaje:</h3>

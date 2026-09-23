@@ -1,23 +1,43 @@
 export interface VideoItem {
   titulo: string;
-  youtube_id: string;
-  tipo: "highlights" | "jugadas_destacadas";
+  /** Identificador de YouTube. Para Vimeo u otra fuente, usa `url`. */
+  youtube_id?: string;
+  /** URL completa: sirve para Vimeo o cualquier alojamiento externo. */
+  url?: string;
+  tipo?: "highlights" | "jugadas_destacadas" | "partido" | "entrevista";
 }
 
+/**
+ * Promedios de una temporada. Las claves coinciden con las que escribe el
+ * importador y con las que devuelve /api/players/[id]/stats.
+ */
 export interface StatSeason {
   temporada: string;
   equipo: string;
+  /** Competición, p. ej. "Puerto Rico-BSN". */
   liga: string;
   pj: number;
-  min: number;
+  minutes: number;
   pts: number;
   reb: number;
   ast: number;
   rob: number;
   tap: number;
-  fg_pct: number;
-  three_pct: number;
-  ft_pct: number;
+  /** Porcentaje de tiros de 2, ya en número (63.3, no "63.3%"). */
+  fg: number;
+  three: number;
+  ft: number;
+  /** Acumulados, si la fuente los da. Hacen falta para la media de carrera. */
+  totales?: {
+    min: number;
+    pts: number;
+    fg2m: number;
+    fg2a: number;
+    fg3m: number;
+    fg3a: number;
+    ftm: number;
+    fta: number;
+  } | null;
 }
 
 export interface TeamHistory {
@@ -27,35 +47,61 @@ export interface TeamHistory {
   pais: string;
 }
 
+/**
+ * Ficha del jugador en una web de referencia (LatinBasket o Eurobasket). Es un
+ * enlace de consulta: la web sirve siempre sus propios datos, nunca depende de
+ * leer la fuente en cada visita.
+ */
+export interface PlayerSource {
+  name: string;
+  url: string;
+}
+
+/**
+ * Un jugador de la agencia. Lo genera scripts/import-players.mjs desde el
+ * Excel de BMS; el acceso va por lib/players.ts, no por el JSON.
+ *
+ * Todo lo que puede faltar es `null` a propósito: la ficha se adapta y no se
+ * rellena con datos inventados.
+ */
 export interface Player {
+  /** Slug, y a la vez la URL: /jugadores/<id>. */
   id: string;
+  /** Identificador de la base de la agencia, p. ej. "BMS-002". */
+  bms_id: string | null;
   nombre: string;
   apellido: string;
-  foto: string;
-  nacionalidad: string;
-  fecha_nacimiento: string;
-  altura: string;
-  peso: string;
-  posicion: string;
-  equipo_actual: string;
-  liga_actual: string;
-  disponibilidad: "disponible" | "bajo_contrato" | "en_negociacion";
-  historial_equipos: TeamHistory[];
-  estadisticas_temporada: StatSeason[];
-  videos_youtube: VideoItem[];
-  bio: string;
+  /** Ruta en /public. Null si aún no hay fotografía propia. */
+  foto: string | null;
+  nacionalidad: string | null;
+  fecha_nacimiento: string | null;
+  altura_cm: number | null;
+  altura_ft: string | null;
+  peso_kg: number | null;
+  peso_lb: number | null;
+  /** Posición en castellano, p. ej. "Escolta / Alero". */
+  posicion: string | null;
+  /** Código original del Excel, p. ej. "SG/SF". */
+  posicion_codigo: string | null;
+  /** "Nacional" o "Importado". */
+  tipo_jugador: string | null;
+  equipo_actual: string | null;
+  liga_actual: string | null;
+  pais: string | null;
+  /** Estado tal cual lo publica la base: "Activo", "Disponible"… */
+  estado: string | null;
+  source: PlayerSource | null;
+  lugar_nacimiento: string | null;
+  seleccion: string | null;
+  bio: string | null;
   redes_sociales: {
     instagram?: string;
     twitter?: string;
     facebook?: string;
   };
-  lugar_nacimiento?: string;
-  seleccion?: string;
-  /**
-   * Ficha del jugador en latinbasket.com. Si está, /api/players/[id]/stats
-   * sirve sus datos en vivo desde ahí. Ver lib/latinbasket.ts.
-   */
-  latinbasket_url?: string;
+  historial_equipos: TeamHistory[];
+  estadisticas_temporada: StatSeason[];
+  videos_youtube: VideoItem[];
 }
 
 export interface News {
