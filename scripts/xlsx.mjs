@@ -31,11 +31,22 @@ function decode(s) {
     .replace(/&([a-z]+);/gi, (m, n) => named[n.toLowerCase()] ?? m);
 }
 
+// Según quién genere el fichero, las etiquetas llevan prefijo de espacio de
+// nombres (<x:sheet>) o no (<sheet>). Se acepta cualquiera.
+const P = "(?:[A-Za-z0-9]+:)?";
+const et = (nombre, flags = "g") =>
+  new RegExp(`<${P}${nombre}\\b([^>]*)(?:\\/>|>([\\s\\S]*?)<\\/${P}${nombre}>)`, flags);
+
 /** Todo el texto de los <t> que haya dentro del fragmento. */
 function textOf(xml) {
   const out = [];
-  for (const m of xml.matchAll(/<t(?:\s[^>]*)?>([\s\S]*?)<\/t>/g)) out.push(decode(m[1]));
+  for (const m of xml.matchAll(et("t"))) out.push(decode(m[2] ?? ""));
   return out.join("");
+}
+
+/** Contenido del primer <v> del fragmento. */
+function valueOf(xml) {
+  return et("v", "").exec(xml)?.[2] ?? null;
 }
 
 /** "BC12" → 54 (índice de columna, base 0). */
@@ -49,7 +60,7 @@ function colIndex(ref) {
 function sharedStrings(zipPath, lista) {
   if (!lista.includes("xl/sharedStrings.xml")) return [];
   const xml = unzip(zipPath, "xl/sharedStrings.xml");
-  return [...xml.matchAll(/<si>([\s\S]*?)<\/si>/g)].map((m) => textOf(m[1]));
+  return [...xml.matchAll(et("si"))].map((m) => textOf(m[2] ?? ""));
 }
 
 /**
@@ -70,7 +81,7 @@ export function readWorkbook(zipPath) {
   const wb = unzip(zipPath, "xl/workbook.xml");
   const hojas = {};
 
-  for (const m of wb.matchAll(/<sheet\b[^>]*\/>/g)) {
+  for (const m of wb.matchAll(et("sheet"))) {
     const nombre = decode(/name="([^"]+)"/.exec(m[0])?.[1] ?? "");
     const rid = new RegExp(`r:id="([^"]+)"`).exec(m[0])?.[1] ?? "";
     let target = (relMap.get(rid) ?? "").replace(/^\//, "");
@@ -86,9 +97,9 @@ export function readWorkbook(zipPath) {
 function parseSheet(xml, shared) {
   const filas = [];
 
-  for (const fila of xml.matchAll(/<row\b[^>]*>([\s\S]*?)<\/row>/g)) {
+  for (const fila of xml.matchAll(et("row"))) {
     const celdas = [];
-    for (const c of fila[1].matchAll(/<c\b([^>]*)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
+    for (const c of (fila[2] ?? "").matchAll(et("c"))) {
       const attrs = c[1];
       const cuerpo = c[2] ?? "";
       const ref = /r="([A-Z]+\d+)"/.exec(attrs)?.[1];
@@ -97,12 +108,11 @@ function parseSheet(xml, shared) {
 
       let valor = "";
       if (tipo === "s") {
-        const idx = Number(/<v>([\s\S]*?)<\/v>/.exec(cuerpo)?.[1] ?? "-1");
-        valor = shared[idx] ?? "";
-      } else if (tipo === "inlineStr") {
-        valor = textOf(cuerpo);
+        valor = shared[Number(valueOf(cuerpo) ?? "-1")] ?? "";
+      } else if (tipo === "inlineStr" || tipo === "str") {
+        valor = tipo === "str" ? decode(valueOf(cuerpo) ?? "") : textOf(cuerpo);
       } else {
-        valor = decode(/<v>([\s\S]*?)<\/v>/.exec(cuerpo)?.[1] ?? "");
+        valor = decode(valueOf(cuerpo) ?? "");
       }
 
       while (celdas.length < i) celdas.push("");

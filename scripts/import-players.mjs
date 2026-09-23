@@ -33,6 +33,7 @@ const limpio = (v) => {
   return VACIO.has(s.toLowerCase()) ? null : s;
 };
 
+
 const sinAcentos = (s) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 
@@ -82,7 +83,9 @@ const NACIONALIDADES = {
   venezolana: "Venezuela",
 };
 
-// Códigos de la hoja LEYENDA del Excel, con su nombre en castellano.
+// Posiciones, en castellano. El Excel las ha escrito de dos formas según la
+// versión —códigos (PG, SG/SF) y nombres en inglés (Point Guard, Swingman)—,
+// así que se aceptan ambas.
 const POSICIONES = {
   PG: "Base",
   SG: "Escolta",
@@ -91,12 +94,21 @@ const POSICIONES = {
   C: "Pívot",
   G: "Guardia",
   F: "Ala",
+  "POINT GUARD": "Base",
+  "SHOOTING GUARD": "Escolta",
+  "SMALL FORWARD": "Alero",
+  "POWER FORWARD": "Ala-Pívot",
+  CENTER: "Pívot",
+  GUARD: "Guardia",
+  FORWARD: "Ala",
+  // Swingman es quien juega de escolta y de alero indistintamente.
+  SWINGMAN: "Escolta / Alero",
 };
 
 // El Excel usa etiquetas de gestión interna; "Link bloqueado" no es un estado
 // del jugador, es una nota del proceso de scraping.
 const ESTADOS = {
-  "link bloqueado": "Por validar",
+  "link bloqueado": null,
 };
 
 function normalizaNacionalidad(valor) {
@@ -124,7 +136,8 @@ function normalizaPosicion(codigo) {
 
 function normalizaEstado(valor) {
   if (!valor) return null;
-  return ESTADOS[valor.toLowerCase()] ?? valor;
+  const clave = valor.toLowerCase();
+  return clave in ESTADOS ? ESTADOS[clave] : valor;
 }
 
 /** El Excel escribe las fechas como MM/DD/AAAA. Devuelve ISO o null. */
@@ -190,6 +203,20 @@ function fuenteDesdeUrl(url) {
   return { name: "Perfil externo", url };
 }
 
+/**
+ * Las fichas de origen terminan en un identificador numérico. Si hay algo
+ * detrás suele ser una errata al copiar y el enlace no abre; se avisa, pero
+ * no se toca: corregirlo a ojo sería inventar a qué jugador apunta.
+ */
+function urlSospechosa(url) {
+  try {
+    const ruta = new URL(url).pathname.replace(/\/$/, "");
+    return !/\/\d+$/.test(ruta);
+  } catch {
+    return true;
+  }
+}
+
 /** Busca /public/players/<slug>.(png|jpg|webp). */
 function fotoDe(slug) {
   if (!existsSync(DIR_FOTOS)) return null;
@@ -245,7 +272,7 @@ function hojaJugadores(libro) {
 
 // -------------------------------------------------------------------- import
 
-function importar(rutaExcel, { dry = false } = {}) {
+function importar(rutaExcel, { dry = false, conservarAusentes = false } = {}) {
   const libro = readWorkbook(rutaExcel);
   const { nombre: hoja, filas } = hojaJugadores(libro);
   if (filas.length < 2) throw new Error(`La hoja "${hoja}" no tiene filas de datos.`);
@@ -271,6 +298,16 @@ function importar(rutaExcel, { dry = false } = {}) {
     const celda = (clave) =>
       col[clave] === undefined ? null : limpio(fila[col[clave]]);
 
+    /**
+     * Valor del Excel y, si esa celda viene vacía o como "Por validar", el que
+     * ya estuviera publicado en la web. Nunca se escribe "Por validar" como
+     * dato: o hay valor real, o el campo se queda vacío y la ficha lo omite.
+     */
+    const dato = (clave, anterior = null, transforma = (x) => x) => {
+      const v = celda(clave);
+      return v === null ? anterior : (transforma(v) ?? anterior);
+    };
+
     const nombreCompleto = celda("nombre_completo");
     if (!nombreCompleto) continue;
     if (PLACEHOLDERS.has(nombreCompleto.toLowerCase())) {
@@ -291,7 +328,9 @@ function importar(rutaExcel, { dry = false } = {}) {
 
     const previo = porSlug.get(slug) ?? {};
     const { nombre, apellido } = partirNombre(nombreCompleto);
-    const { posicion, posicion_codigo } = normalizaPosicion(celda("posicion"));
+    const pos = normalizaPosicion(celda("posicion"));
+    const posicion = pos.posicion ?? previo.posicion ?? null;
+    const posicion_codigo = pos.posicion_codigo ?? previo.posicion_codigo ?? null;
 
     const equipoBruto = celda("equipo_actual");
     let equipo =
@@ -320,8 +359,14 @@ function importar(rutaExcel, { dry = false } = {}) {
 
     // El esquema anterior guardaba la ficha externa en `latinbasket_url`; se
     // migra a `source` para que Eurobasket quepa en el mismo campo.
+    const urlExcel = celda("url");
+    if (urlExcel && urlSospechosa(urlExcel)) {
+      avisos.push(
+        `${nombreCompleto}: la URL de la ficha externa no acaba en un identificador numérico (${urlExcel}). Revísala, puede estar mal copiada.`
+      );
+    }
     const fuente =
-      fuenteDesdeUrl(celda("url")) ??
+      fuenteDesdeUrl(urlExcel) ??
       previo.source ??
       fuenteDesdeUrl(previo.latinbasket_url) ??
       null;
@@ -337,25 +382,28 @@ function importar(rutaExcel, { dry = false } = {}) {
 
       foto: fotoDe(slug) ?? previo.foto ?? null,
 
-      nacionalidad: normalizaNacionalidad(celda("nacionalidad")) ?? previo.nacionalidad ?? null,
-      fecha_nacimiento: fechaISO(celda("fecha_nacimiento")) ?? previo.fecha_nacimiento ?? null,
+      nacionalidad: dato("nacionalidad", previo.nacionalidad ?? null, normalizaNacionalidad),
+      fecha_nacimiento: dato("fecha_nacimiento", previo.fecha_nacimiento ?? null, fechaISO),
 
-      altura_cm:
-        numero(celda("altura_cm")) ?? previo.altura_cm ?? medidaLegado(previo.altura, 100),
-      altura_ft: celda("altura_ft") ?? previo.altura_ft ?? null,
-      peso_kg: numero(celda("peso_kg")) ?? previo.peso_kg ?? medidaLegado(previo.peso, 1),
-      peso_lb: numero(celda("peso_lb")) ?? previo.peso_lb ?? null,
+      altura_cm: dato(
+        "altura_cm",
+        previo.altura_cm ?? medidaLegado(previo.altura, 100),
+        numero
+      ),
+      altura_ft: dato("altura_ft", previo.altura_ft ?? null),
+      peso_kg: dato("peso_kg", previo.peso_kg ?? medidaLegado(previo.peso, 1), numero),
+      peso_lb: dato("peso_lb", previo.peso_lb ?? null, numero),
 
-      posicion: posicion ?? previo.posicion ?? null,
-      posicion_codigo: posicion_codigo ?? previo.posicion_codigo ?? null,
-      tipo_jugador: celda("tipo_jugador") ?? previo.tipo_jugador ?? null,
+      posicion,
+      posicion_codigo,
+      tipo_jugador: dato("tipo_jugador", previo.tipo_jugador ?? null),
 
       equipo_actual: equipoFinal,
       // El Excel no trae liga: solo sobrevive la que ya hubiera si el equipo
       // sigue siendo el mismo.
       liga_actual: liga,
-      pais: celda("pais") ?? previo.pais ?? null,
-      estado: normalizaEstado(celda("estado")) ?? previo.estado ?? null,
+      pais: dato("pais", previo.pais ?? null),
+      estado: dato("estado", previo.estado ?? null, normalizaEstado),
 
       source: fuente,
 
@@ -370,12 +418,22 @@ function importar(rutaExcel, { dry = false } = {}) {
     });
   }
 
-  // Fichas que están en la web pero no en el Excel: se conservan y se avisa,
-  // borrarlas en silencio rompería enlaces ya publicados.
+  // El Excel es el listado oficial de representados: quien no está en él deja
+  // de estar en la web. Se avisa uno a uno, nunca en silencio, y el histórico
+  // queda en git por si hay que recuperar alguna ficha.
   for (const p of actuales) {
-    if (!vistos.has(p.id)) {
-      avisos.push(`"${p.id}" no aparece en el Excel; se conserva la ficha existente.`);
+    if (vistos.has(p.id)) continue;
+    if (conservarAusentes) {
+      avisos.push(`"${p.id}" no aparece en el Excel; se conserva por --conservar-ausentes.`);
       salida.push(p);
+    } else {
+      const editorial =
+        p.estadisticas_temporada?.length || p.historial_equipos?.length || p.bio;
+      avisos.push(
+        `BAJA: "${p.id}" no aparece en el Excel y se retira de la web${
+          editorial ? " (tenía contenido editorial: biografía, estadísticas o trayectoria)" : ""
+        }.`
+      );
     }
   }
 
@@ -390,14 +448,17 @@ function importar(rutaExcel, { dry = false } = {}) {
 
 const args = process.argv.slice(2);
 const dry = args.includes("--dry");
+const conservarAusentes = args.includes("--conservar-ausentes");
 const ruta = args.find((a) => !a.startsWith("--"));
 
 if (!ruta) {
-  console.error("Uso: node scripts/import-players.mjs [--dry] <fichero.xlsx>");
+  console.error(
+    "Uso: node scripts/import-players.mjs [--dry] [--conservar-ausentes] <fichero.xlsx>"
+  );
   process.exit(1);
 }
 
-const { salida, avisos, hoja, columnas } = importar(ruta, { dry });
+const { salida, avisos, hoja, columnas } = importar(ruta, { dry, conservarAusentes });
 
 console.log(`Hoja leída: ${hoja}`);
 console.log(`Columnas reconocidas: ${Object.keys(columnas).join(", ")}`);
