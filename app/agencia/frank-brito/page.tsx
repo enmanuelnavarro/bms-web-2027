@@ -23,13 +23,12 @@ export default function FrankBritoProfile() {
     <main className="bg-ink text-body">
       {/* HERO EDITORIAL */}
       <div className="relative bg-ink text-body overflow-hidden isolate border-b border-hairline">
-        <span aria-hidden="true" className="ghost-num absolute -bottom-8 right-4 z-0">03</span>
         <div className="container-pro relative z-10 py-20 md:py-28">
           <Link href="/agencia" className="link-arrow text-body/70 hover:text-gold mb-10 flex w-fit">
             <span className="rotate-180 arrow">→</span> Volver a la Agencia
           </Link>
           <div className="eyebrow text-gold-dark mb-8 flex w-fit">
-            <span className="eyebrow-num">03</span> {executive.cargo}
+            {executive.cargo}
           </div>
           <h1 className="headline-lg text-gold">{executive.nombre}</h1>
           <p className="text-lg text-gold-light">{executive.certificacion}</p>

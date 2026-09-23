@@ -13,7 +13,6 @@ export default function AgencyPage() {
   return (
     <main className="min-h-screen bg-ink text-body">
       <PageHero
-        num="03"
         eyebrow="Sobre Nosotros"
         title={<>{SITE.legalName}</>}
         subtitle={`${SITE.taglineEs}. Agencia con licencia FIBA #${SITE.fibaLicense}, fundada en ${SITE.founded}.`}
@@ -25,7 +24,7 @@ export default function AgencyPage() {
         <div className="container-pro grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-7">
             <div className="eyebrow text-gold-dark mb-8">
-              <span className="eyebrow-num">01</span> Nuestra Misión
+              Nuestra Misión
             </div>
             <p className="text-2xl md:text-3xl font-semibold leading-relaxed text-gold-light">
               {SITE.mission}
@@ -44,7 +43,7 @@ export default function AgencyPage() {
       <section className="section-pad bg-elevated border-y border-hairline">
         <div className="container-pro">
           <div className="eyebrow text-gold-dark mb-8">
-            <span className="eyebrow-num">02</span> Qué Hacemos
+            Qué Hacemos
           </div>
           <h2 className="headline-lg text-gold mb-16 max-w-3xl">Servicios integrales</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
@@ -90,7 +89,7 @@ export default function AgencyPage() {
       <section className="section-pad bg-elevated border-y border-hairline">
         <div className="container-pro">
           <div className="eyebrow text-gold-dark mb-8">
-            <span className="eyebrow-num">03</span> Liderazgo
+            Liderazgo
           </div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <h2 className="headline-lg text-gold max-w-2xl">El equipo detrás de BMS</h2>

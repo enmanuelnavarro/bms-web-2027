@@ -183,7 +183,7 @@ main li {
   line-height: 1.75;
 }
 
-/* --- Eyebrow numerado tipo "01 — INICIO" --- */
+/* --- Eyebrow de sección --- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -192,12 +192,6 @@ main li {
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-}
-.eyebrow .eyebrow-num {
-  font-family: var(--font-display), sans-serif;
-  font-size: 0.9rem;
-  color: var(--gold);
-  letter-spacing: 0.05em;
 }
 .eyebrow::before {
   content: "";

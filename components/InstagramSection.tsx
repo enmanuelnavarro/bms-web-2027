@@ -31,7 +31,7 @@ export default async function InstagramSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <div className="eyebrow text-gold-dark mb-8">
-              <span className="eyebrow-num">08</span> En Directo
+              En Directo
             </div>
             <h2 className="headline-lg text-gold mb-0">
               Nuestros jugadores,<br />

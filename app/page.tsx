@@ -74,7 +74,7 @@ export default function Home() {
           <div className="container-pro relative z-10 pt-16 pb-16 lg:pt-36 lg:pb-28">
             <div className="max-w-3xl">
               <div className="eyebrow text-gold-dark mb-10 animate-fadeUp">
-                <span className="eyebrow-num">01</span> Agencia FIBA · Representación de Jugadores
+                Agencia FIBA · Representación de Jugadores
               </div>
 
               <h1 className="headline-xl text-gold mb-10 animate-fadeUp">
@@ -133,7 +133,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <div className="lg:col-span-7">
               <div className="eyebrow text-gold-dark mb-10">
-                <span className="eyebrow-num">02</span> Quiénes Somos
+                Quiénes Somos
               </div>
               <h2 className="headline-lg text-gold">
                 Un socio fiable<br />
@@ -165,7 +165,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div>
               <div className="eyebrow text-gold-dark mb-8">
-                <span className="eyebrow-num">03</span> Talento BMS
+                Talento BMS
               </div>
               <h2 className="headline-lg text-gold mb-0">Jugadores destacados</h2>
             </div>
@@ -223,7 +223,7 @@ export default function Home() {
         <div className="container-pro">
           <div className="max-w-2xl mb-16">
             <div className="eyebrow text-gold-dark mb-8">
-              <span className="eyebrow-num">04</span> Qué Hacemos
+              Qué Hacemos
             </div>
             <h2 className="headline-lg text-gold">Servicios profesionales</h2>
             <p className="text-lg text-body">
@@ -242,7 +242,7 @@ export default function Home() {
         <div className="container-pro">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <div className="eyebrow text-gold-dark mb-8 justify-center">
-              <span className="eyebrow-num">05</span> Presencia Global
+              Presencia Global
             </div>
             <h2 className="headline-lg text-gold">En las mejores ligas</h2>
             <p className="text-lg text-body">
@@ -283,7 +283,7 @@ export default function Home() {
       <section id="testimonios" className="section-pad scroll-mt-28 bg-ink">
         <div className="container-pro">
           <div className="eyebrow text-gold-dark mb-8">
-            <span className="eyebrow-num">06</span> Testimonios
+            Testimonios
           </div>
           <h2 className="headline-lg text-gold mb-16 max-w-3xl">Lo que dicen nuestros jugadores</h2>
 
@@ -322,7 +322,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div>
               <div className="eyebrow text-gold-dark mb-8">
-                <span className="eyebrow-num">07</span> Actualidad
+                Actualidad
               </div>
               <h2 className="headline-lg text-gold mb-0">Últimas noticias</h2>
             </div>

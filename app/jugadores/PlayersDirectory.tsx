@@ -55,12 +55,9 @@ export default function PlayersDirectory() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/70" />
         </div>
-        <span aria-hidden="true" className="ghost-num absolute -bottom-8 right-4 z-0">
-          02
-        </span>
         <div className="container-pro relative z-10 py-24 md:py-32">
           <div className="eyebrow text-gold-dark mb-8">
-            <span className="eyebrow-num">02</span> Talento BMS
+            Talento BMS
           </div>
           <h1 className="headline-lg text-gold">Jugadores</h1>
           <p className="text-lg text-body max-w-2xl">

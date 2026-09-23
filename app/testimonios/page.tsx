@@ -70,10 +70,9 @@ export default function TestimonialsPage() {
     <main className="min-h-screen bg-ink text-body">
       {/* HEADER EDITORIAL */}
       <section className="relative bg-ink text-body overflow-hidden isolate border-b border-hairline">
-        <span aria-hidden="true" className="ghost-num absolute -bottom-8 right-4 z-0">05</span>
         <div className="container-pro relative z-10 py-24 md:py-32">
           <div className="eyebrow text-gold-dark mb-8">
-            <span className="eyebrow-num">05</span> Testimonios
+            Testimonios
           </div>
           <h1 className="headline-lg text-gold">Lo que dicen<br />nuestros jugadores</h1>
         </div>

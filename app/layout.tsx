@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Anton, Inter } from "next/font/google";
 import "./globals.css";
+import SiteHeader from "@/components/SiteHeader";
 import { SITE } from "@/lib/site";
 
 const display = Anton({
@@ -35,13 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navLinks = [
-  { href: "/", label: "Inicio", num: "01" },
-  { href: "/jugadores", label: "Jugadores", num: "02" },
-  { href: "/agencia", label: "Agencia", num: "03" },
-  { href: "/noticias", label: "Noticias", num: "04" },
-  { href: "/testimonios", label: "Testimonios", num: "05" },
-];
 
 export default function RootLayout({
   children,
@@ -52,52 +46,7 @@ export default function RootLayout({
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
       <body>
         {/* ===== HEADER ===== */}
-        <header className="bg-ink/90 backdrop-blur-md sticky top-0 z-50 border-b border-hairline">
-          <nav className="container-pro flex justify-between items-center h-20">
-            {/* LOGO */}
-            <a href="/" className="flex-shrink-0">
-              <Image
-                src="/logos/bms-oscuro.png"
-                alt="BMS — Basket Manager Sport"
-                width={104}
-                height={80}
-                priority
-                className="h-12 w-auto"
-              />
-            </a>
-
-            {/* NAV DESKTOP */}
-            <div className="hidden lg:flex items-center gap-9">
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  className="group flex items-baseline gap-1.5 text-sm font-semibold text-gold hover:text-gold-light transition"
-                >
-                  <span className="font-display text-[0.7rem] text-gold-dark opacity-90 group-hover:text-gold-light">
-                    {l.num}
-                  </span>
-                  {l.label}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="flex items-center gap-4">
-              <a
-                href="/contacto"
-                className="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 bg-gold hover:bg-gold-light text-ink text-sm font-bold rounded-full transition link-arrow"
-              >
-                Contacto <span className="arrow">→</span>
-              </a>
-              <button className="lg:hidden text-gold" aria-label="Menú">
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </nav>
-        </header>
+        <SiteHeader />
 
         {/* ===== MAIN ===== */}
         <main>{children}</main>
