@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "slug": "victor-liz-lidera-lnb",
+    "titulo": "Víctor Liz Lidera la Anotación en la Temporada de la LNB",
+    "fecha": "2026-06-28",
+    "categoria": "Jugador",
+    "imagen": "https://images.unsplash.com/photo-1504611828338-ce988e2c8b1d?w=1200&h=600&fit=crop",
+    "resumen": "El alero dominicano se mantiene entre los máximos anotadores con un promedio de 16.8 puntos por partido",
+    "contenido": "Víctor Liz continúa demostrando por qué es uno de los referentes del baloncesto dominicano. Con un promedio de 16.8 puntos y 6.4 rebotes por partido, el alero se ha consolidado como una de las máximas figuras ofensivas de la temporada en la Liga Nacional de Baloncesto.\n\nSu capacidad para anotar desde múltiples posiciones y su liderazgo dentro de la cancha lo mantienen como una pieza clave para su equipo. \"Víctor es un jugador de una entrega ejemplar. Su rendimiento habla por sí solo\", comentó el equipo directivo de BMS.\n\nCon esta temporada destacada, Víctor Liz reafirma su lugar entre los mejores aleros del país y refuerza su proyección hacia oportunidades en ligas internacionales.",
+    "autor": "BMS",
+    "jugadores_relacionados": [],
+    "destacada": true
+  },
+  {
+    "id": 2,
+    "slug": "gelvis-solano-disponible",
+    "titulo": "Gelvis Solano Disponible para la Próxima Temporada",
+    "fecha": "2026-06-25",
+    "categoria": "Agencia",
+    "imagen": "https://images.unsplash.com/photo-1546519638-68fa109ffbbe?w=1200&h=600&fit=crop",
+    "resumen": "El base dominicano queda disponible y varios equipos ya han mostrado interés en su fichaje",
+    "contenido": "Gelvis Solano, base con amplia experiencia en la Liga Nacional de Baloncesto dominicana, se encuentra disponible para la próxima temporada. Con promedios de 14.2 puntos y 5.6 asistencias, su perfil como director de juego lo convierte en una opción atractiva para cualquier equipo.\n\nVarios clubes ya han mostrado interés en incorporar al base a sus filas. Su visión de juego, capacidad de organización y experiencia son cualidades muy valoradas en el mercado actual.\n\n\"Gelvis está en un gran momento de su carrera y tiene mucho que aportar. Estamos gestionando las mejores opciones para él\", señaló el equipo de BMS.",
+    "autor": "BMS",
+    "jugadores_relacionados": [],
+    "destacada": true
+  },
+  {
+    "id": 3,
+    "slug": "andersson-garcia-marineros",
+    "titulo": "Andersson García Brilla con los Marineros de Puerto Plata",
+    "fecha": "2026-06-20",
+    "categoria": "Jugador",
+    "imagen": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&h=600&fit=crop",
+    "resumen": "El alero graduado de Texas A&M se consolida en la LNB dominicana con sólidos promedios",
+    "contenido": "Andersson García, alero dominicano de 2.01m graduado de Texas A&M University en 2025, continúa mostrando su versatilidad con los Marineros de Puerto Plata en la Liga Nacional de Baloncesto. Con promedios de 14.6 puntos y 6.1 rebotes, se perfila como una de las piezas jóvenes más interesantes de la liga.\n\nSu capacidad para anotar, rebotear y defender múltiples posiciones lo convierte en un perfil muy valorado de cara a futuras oportunidades internacionales. \"Andersson tiene un techo altísimo. Su etapa universitaria en Estados Unidos lo preparó muy bien\", señaló la dirección de BMS.\n\nDesde la agencia se evalúan con calma las opciones para dar el siguiente paso en la carrera del jugador, tanto en el mercado local como en ligas del exterior.",
+    "autor": "BMS",
+    "jugadores_relacionados": [],
+    "destacada": true
+  },
+  {
+    "id": 4,
+    "slug": "bms-talento-dominicano",
+    "titulo": "BMS Impulsa el Talento Dominicano en el Baloncesto Profesional",
+    "fecha": "2026-06-15",
+    "categoria": "Agencia",
+    "imagen": "https://images.unsplash.com/photo-1546519638-68fa109ffbbe?w=1200&h=600&fit=crop",
+    "resumen": "La agencia consolida su rol como puente entre el talento dominicano y las oportunidades internacionales",
+    "contenido": "Con oficinas en República Dominicana y Miami, BMS continúa fortaleciendo su compromiso con el desarrollo del baloncesto dominicano. La agencia representa a jugadores en la Liga Nacional de Baloncesto, la LNBP y otras competiciones profesionales del continente.\n\nEl trabajo de BMS se centra en abrir oportunidades para el talento local, brindando asesoramiento integral en la gestión de carrera, negociación de contratos y proyección internacional de sus representados.\n\n\"Nuestro objetivo es que el talento dominicano tenga las mismas oportunidades que cualquier jugador del mundo. El éxito de nuestros representados es nuestro éxito\", afirma la dirección de BMS.",
+    "autor": "BMS",
+    "jugadores_relacionados": [],
+    "destacada": false
+  }
+]

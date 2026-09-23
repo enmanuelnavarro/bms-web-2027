@@ -3,58 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-const newsDatabase = [
-  {
-    id: 1,
-    title: "Víctor Liz Lidera la Anotación en la Temporada de la LNB",
-    slug: "victor-liz-lidera-lnb",
-    date: "2026-06-28",
-    category: "Jugador",
-    image:
-      "https://images.unsplash.com/photo-1504611828338-ce988e2c8b1d?w=800&h=400&fit=crop",
-    excerpt:
-      "El alero dominicano se mantiene entre los máximos anotadores con un promedio de 16.8 puntos por partido",
-    content:
-      "Víctor Liz continúa demostrando por qué es uno de los referentes del baloncesto dominicano. Con un promedio de 16.8 puntos y 6.4 rebotes, el alero se ha consolidado como una pieza clave para su equipo esta temporada...",
-  },
-  {
-    id: 2,
-    title: "Gelvis Solano Disponible para la Próxima Temporada",
-    slug: "gelvis-solano-disponible",
-    date: "2026-06-25",
-    category: "Agencia",
-    image:
-      "https://images.unsplash.com/photo-1546519638-68fa109ffbbe?w=800&h=400&fit=crop",
-    excerpt: "El base dominicano queda disponible y varios equipos ya han mostrado interés en su fichaje",
-    content:
-      "Gelvis Solano, base con amplia experiencia en la LNB dominicana, se encuentra disponible para la próxima temporada. Con promedios de 14.2 puntos y 5.6 asistencias, su llegada representa una oportunidad para cualquier equipo que busque dirección en la cancha...",
-  },
-  {
-    id: 3,
-    title: "Andersson García Brilla con los Marineros de Puerto Plata",
-    slug: "andersson-garcia-marineros",
-    date: "2026-06-20",
-    category: "Jugador",
-    image:
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=400&fit=crop",
-    excerpt: "El alero graduado de Texas A&M se consolida en la LNB dominicana con sólidos promedios",
-    content:
-      "Andersson García, alero dominicano de 2.01m graduado de Texas A&M University, continúa mostrando su versatilidad con los Marineros de Puerto Plata en la LNB. Con 14.6 puntos y 6.1 rebotes de promedio, el jugador representado por BMS se perfila como una de las piezas jóvenes más interesantes de la liga...",
-  },
-  {
-    id: 4,
-    title: "BMS Impulsa el Talento Dominicano en el Baloncesto Profesional",
-    slug: "bms-talento-dominicano",
-    date: "2026-06-15",
-    category: "Agencia",
-    image:
-      "https://images.unsplash.com/photo-1546519638-68fa109ffbbe?w=800&h=400&fit=crop",
-    excerpt: "La agencia consolida su rol como puente entre el talento dominicano y las oportunidades internacionales",
-    content:
-      "Con oficinas en República Dominicana y Miami, BMS continúa fortaleciendo su compromiso con el desarrollo del baloncesto dominicano. La agencia representa a jugadores en la LNB, la LNBP y otras competiciones profesionales del continente...",
-  },
-];
+import newsDatabase from "@/lib/news.json";
 
 export default function NewsPage() {
   const [filterCategory, setFilterCategory] = useState("all");
@@ -62,15 +11,15 @@ export default function NewsPage() {
 
   const filteredNews = useMemo(() => {
     return newsDatabase.filter((item) => {
-      const matchesCategory = filterCategory === "all" || item.category === filterCategory;
+      const matchesCategory = filterCategory === "all" || item.categoria === filterCategory;
       const matchesSearch =
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+        item.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.resumen.toLowerCase().includes(searchTerm.toLowerCase());
       return matchesCategory && matchesSearch;
     });
   }, [filterCategory, searchTerm]);
 
-  const categories = ["all", ...new Set(newsDatabase.map((n) => n.category))];
+  const categories = ["all", ...new Set(newsDatabase.map((n) => n.categoria))];
 
   return (
     <main className="min-h-screen bg-ink text-body">
@@ -140,8 +89,8 @@ export default function NewsPage() {
                       {/* IMAGEN */}
                       <div className="relative h-48 md:h-auto overflow-hidden bg-ink">
                         <Image
-                          src={news.image}
-                          alt={news.title}
+                          src={news.imagen}
+                          alt={news.titulo}
                           fill
                           className="object-cover group-hover:scale-110 transition duration-300"
                         />
@@ -150,15 +99,15 @@ export default function NewsPage() {
                       {/* CONTENIDO */}
                       <div className="md:col-span-3 p-8 flex flex-col justify-center">
                         <span className="inline-block w-fit px-3 py-1 bg-gold text-ink font-bold text-xs rounded mb-4">
-                          {news.category}
+                          {news.categoria}
                         </span>
                         <h2 className="text-2xl font-bold text-gold group-hover:text-gold-light transition mb-4">
-                          {news.title}
+                          {news.titulo}
                         </h2>
-                        <p className="text-body/80 mb-5">{news.excerpt}</p>
+                        <p className="text-body/80 mb-5">{news.resumen}</p>
                         <div className="flex justify-between items-center text-sm text-body/60">
                           <span>
-                            {new Date(news.date).toLocaleDateString("es-ES", {
+                            {new Date(news.fecha).toLocaleDateString("es-ES", {
                               year: "numeric",
                               month: "long",
                               day: "numeric",
