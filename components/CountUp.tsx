@@ -21,7 +21,10 @@ function parseValue(value: string) {
 export default function CountUp({ value, className, durationMs = 1400 }: CountUpProps) {
   const parsed = parseValue(value);
   const ref = useRef<HTMLSpanElement | null>(null);
-  const [display, setDisplay] = useState(parsed ? `${parsed.prefix}0${parsed.suffix}` : value);
+  // Arranca en el valor final, no en cero: es lo que se sirve en el HTML, así
+  // que sin JavaScript —o antes de hidratar— la cifra que se lee es la buena.
+  // Un "+0 Años de Experiencia" en el marcado sería sencillamente falso.
+  const [display, setDisplay] = useState(value);
   const startedRef = useRef(false);
 
   useEffect(() => {
@@ -40,6 +43,12 @@ export default function CountUp({ value, className, durationMs = 1400 }: CountUp
 
     const el = ref.current;
     if (!el) return;
+
+    // Si ya está a la vista al cargar, se deja la cifra quieta: reiniciarla a
+    // cero para animarla daría un parpadeo del valor bueno al falso y vuelta.
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+
+    setDisplay(`${parsed.prefix}0${parsed.suffix}`);
 
     const animate = () => {
       if (startedRef.current) return;

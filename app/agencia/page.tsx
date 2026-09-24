@@ -15,7 +15,7 @@ export default function AgencyPage() {
       <PageHero
         eyebrow="Sobre Nosotros"
         title={<>{SITE.legalName}</>}
-        subtitle={`${SITE.taglineEs}. Agencia con licencia FIBA #${SITE.fibaLicense}, fundada en ${SITE.founded}.`}
+        subtitle={`${SITE.taglineEs}. Agencia con licencia FIBA #${SITE.fibaLicense} y más de ${SITE.yearsOfExperience} años de experiencia.`}
         image={STOCK_IMAGES.aboutAgency}
       />
 
@@ -34,7 +34,7 @@ export default function AgencyPage() {
             </p>
           </div>
           <div className="hidden lg:flex lg:col-span-5 justify-end pl-8" aria-hidden="true">
-            <span className="ghost-num">{String(SITE.founded).slice(2)}</span>
+            <span className="ghost-num">{SITE.yearsOfExperience}</span>
           </div>
         </div>
       </section>
@@ -47,16 +47,10 @@ export default function AgencyPage() {
           </div>
           <h2 className="headline-lg text-gold mb-16 max-w-3xl">Servicios integrales</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
-            {SERVICES.map((s, i) => (
-              <div key={i} className="group bg-ink p-8 hover:bg-elevated transition-colors">
-                <div className="flex items-start justify-between mb-8">
+            {SERVICES.map((s) => (
+              <div key={s.title} className="group bg-ink p-8 hover:bg-elevated transition-colors">
+                <div className="mb-8">
                   <span className="text-3xl">{s.icon}</span>
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-lg text-gold/25 group-hover:text-gold/60 transition-colors"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                 </div>
                 <h3 className="text-lg font-black text-gold mb-4">{s.title}</h3>
                 <p className="text-body/80 leading-relaxed text-sm">{s.text}</p>
@@ -69,12 +63,10 @@ export default function AgencyPage() {
       {/* ESTADÍSTICAS REALES */}
       <section className="section-pad">
         <div className="container-pro">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-2 max-w-3xl mx-auto gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
             {[
-              { number: "2009", label: "Año de Fundación" },
+              { number: `+${SITE.yearsOfExperience}`, label: "Años de Experiencia" },
               { number: "FIBA", label: "Agencia Licenciada" },
-              { number: "100+", label: "Jugadores Representados" },
-              { number: "2", label: "Sedes · Miami / RD" },
             ].map((stat, idx) => (
               <div key={idx} className="bg-elevated p-8 text-center">
                 <CountUp value={stat.number} className="block font-display text-4xl text-gold mb-3" />

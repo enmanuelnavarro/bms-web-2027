@@ -104,17 +104,37 @@ export interface Player {
   videos_youtube: VideoItem[];
 }
 
+/** Medio del que sale la información. La ficha lo enlaza al pie. */
+export interface NewsSource {
+  nombre: string;
+  url: string;
+}
+
+/**
+ * Noticia redactada por BMS a partir de una fuente verificable. El acceso va
+ * por lib/news.ts, no por el JSON.
+ */
 export interface News {
-  id: string;
+  /** Slug, y a la vez la URL: /noticias/<slug>. Único. */
+  slug: string;
   titulo: string;
+  /** ISO corta, "2026-09-24". Se respeta la fecha del hecho, no la de carga. */
   fecha: string;
   categoria: string;
-  jugadores_relacionados: string[];
-  imagen_portada: string;
+  /**
+   * Ruta en /public. Null mientras no haya una fotografía correcta del
+   * protagonista: antes un hueco con la marca que la foto de otro jugador.
+   */
+  imagen: string | null;
+  imagen_alt: string | null;
   resumen: string;
+  /** Párrafos separados por línea en blanco. */
   contenido: string;
   autor: string;
-  slug: string;
+  /** Id de un jugador del roster, si la noticia va de uno. */
+  jugador_relacionado: string | null;
+  destacada: boolean;
+  fuente: NewsSource;
 }
 
 export interface ExecutiveProfile {

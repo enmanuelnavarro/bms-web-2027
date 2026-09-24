@@ -47,7 +47,6 @@ export const STOCK_IMAGES = {
   aboutAgency: U(PHOTOS.arena_crowd, 1200, 600),
   contact: U(PHOTOS.ball_hands, 1200, 600),
   offices: U(PHOTOS.arena_aerial, 1200, 600),
-  newsDefault: U(PHOTOS.arena_stands, 600, 400),
 };
 
 /**

@@ -19,7 +19,7 @@ const sans = Inter({
 });
 
 const DESCRIPTION =
-  "BMS — Basket Manager Sport. Agencia con licencia FIBA desde 2009, con sedes en Miami y República Dominicana. Más de 100 jugadores de baloncesto profesional disponibles para clubes de todo el mundo: scouting, negociación y trámites FIBA de principio a fin.";
+  "BMS — Basket Manager Sport. Agencia con licencia FIBA y más de 17 años de experiencia representando jugadores de baloncesto profesional para clubes de todo el mundo: scouting, negociación y trámites FIBA de principio a fin.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -95,7 +95,7 @@ export default function RootLayout({
                   <li><a href="/jugadores" className="text-body/80 hover:text-gold-light transition">Jugadores</a></li>
                   <li><a href="/agencia" className="text-body/80 hover:text-gold-light transition">Agencia</a></li>
                   <li><a href="/noticias" className="text-body/80 hover:text-gold-light transition">Noticias</a></li>
-                  <li><a href="/testimonios" className="text-body/80 hover:text-gold-light transition">Testimonios</a></li>
+                  <li><a href="/contacto" className="text-body/80 hover:text-gold-light transition">Contacto</a></li>
                 </ul>
               </div>
 
@@ -139,9 +139,24 @@ export default function RootLayout({
               <p className="text-xs text-body/65">
                 &copy; 2026 BMS · Basket Manager Sport · Licencia FIBA #2014501744. Todos los derechos reservados.
               </p>
-              <div className="flex gap-6 text-xs text-body/65">
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-body/65">
                 <a href="#" className="hover:text-gold transition">Privacidad</a>
                 <a href="#" className="hover:text-gold transition">Términos</a>
+                {/* Crédito del estudio: al mismo peso que el resto de la
+                    franja legal, sin tocar la identidad de BMS. */}
+                <span className="text-body/50">
+                  Página web realizada por{" "}
+                  {/* Dominio sin www: www.netoutmedia.com no tiene registro DNS
+                      (NXDOMAIN), así que ese enlace no abriría. */}
+                  <a
+                    href="https://netoutmedia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-body/70 hover:text-gold transition"
+                  >
+                    NetoutMedia
+                  </a>
+                </span>
               </div>
             </div>
           </div>

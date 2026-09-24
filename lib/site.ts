@@ -1,6 +1,15 @@
 // Información REAL de la agencia — extraída de https://www.bmssportsagency.com
 // Fuente única de verdad para datos corporativos.
 
+/**
+ * Años de trayectoria, contados desde la fundación. Se calcula en vez de
+ * escribirse a mano para que la cifra institucional —"más de N años de
+ * experiencia"— no se quede vieja al cambiar de año: se recalcula en cada
+ * build. Todas las páginas son estáticas, así que el valor queda fijado ahí.
+ */
+const FUNDACION = 2009;
+const ANIOS_EXPERIENCIA = new Date().getFullYear() - FUNDACION;
+
 export const SITE = {
   name: "Basket Manager Sport",
   legalName: "BMS · Basket Manager Sport",
@@ -9,7 +18,9 @@ export const SITE = {
   domain: "bmsrd.com",
   url: "https://www.bmsrd.com",
   taglineEs: "Una empresa en la que puedes confiar",
-  founded: 2009,
+  founded: FUNDACION,
+  /** Cifra para "Más de {yearsOfExperience} años de experiencia". */
+  yearsOfExperience: ANIOS_EXPERIENCIA,
   fibaLicense: "2014501744",
   mission:
     "En BMS nos dedicamos a transformar la vida de jugadores y entrenadores de baloncesto, representándolos para conseguir contratos favorables y expandir sus carreras hacia diversos mercados globales.",

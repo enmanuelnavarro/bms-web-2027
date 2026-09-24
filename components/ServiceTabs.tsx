@@ -12,7 +12,7 @@ const DATA: Record<"jugadores" | "clubes", readonly Service[]> = {
     { icon: "🔍", title: "Scouting de Talento", text: "Identificamos y presentamos jugadores que encajan con el perfil y presupuesto de tu club." },
     { icon: "🤝", title: "Intermediación", text: "Gestionamos fichajes, cesiones y renovaciones con transparencia y rapidez." },
     { icon: "📊", title: "Análisis de Datos", text: "Informes estadísticos y de rendimiento para decisiones de fichaje bien fundadas." },
-    { icon: "🌍", title: "Alcance Internacional", text: "Acceso a un roster de más de 100 jugadores en más de 20 países." },
+    { icon: "🌍", title: "Alcance Internacional", text: "Acceso a un roster de jugadores representados en ligas de más de 20 países." },
     { icon: "📝", title: "Gestión Documental", text: "Tramitación de licencias FIBA, visados y documentación deportiva internacional." },
     { icon: "🎯", title: "Asesoría Estratégica", text: "Acompañamiento en la construcción de plantillas competitivas y sostenibles." },
   ],
@@ -44,17 +44,10 @@ export default function ServiceTabs() {
 
       {/* Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
-        {DATA[tab].map((s, i) => (
-          <div key={i} className="group bg-ink p-8 hover:bg-elevated transition-colors duration-300">
-            {/* El número es decorativo: tenue y separado del título. */}
-            <div className="flex items-start justify-between mb-8">
+        {DATA[tab].map((s) => (
+          <div key={s.title} className="group bg-ink p-8 hover:bg-elevated transition-colors duration-300">
+            <div className="mb-8">
               <span className="text-3xl">{s.icon}</span>
-              <span
-                aria-hidden="true"
-                className="font-display text-lg text-gold/25 group-hover:text-gold/60 transition-colors"
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
             </div>
             <h3 className="text-lg font-black text-gold group-hover:text-gold-light transition-colors mb-4">
               {s.title}

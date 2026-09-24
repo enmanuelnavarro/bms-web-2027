@@ -1,94 +1,143 @@
-"use client";
-
-import { use } from "react";
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
-import newsData from "@/lib/news.json";
+import { notFound } from "next/navigation";
 
-export default function NewsDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(params);
-  const news = newsData.find((n) => n.slug === slug);
+import NewsImage from "@/components/NewsImage";
+import { NEWS, fechaLarga, noticiaPorSlug } from "@/lib/news";
+import { getPlayer, nombreCompleto } from "@/lib/players";
+import { SITE } from "@/lib/site";
 
-  if (!news) {
-    return (
-      <div className="min-h-screen bg-ink flex items-center justify-center p-4">
-        <div className="text-center">
-          <h1 className="text-2xl md:text-3xl font-black text-gold mb-4">Noticia no encontrada</h1>
-          <Link href="/noticias" className="text-gold-light font-bold hover:text-gold">
-            ← Volver a noticias
-          </Link>
-        </div>
-      </div>
-    );
+type Params = { params: Promise<{ slug: string }> };
+
+/** Prerenderiza las fichas: son estáticas y así entran mejor en el índice. */
+export function generateStaticParams() {
+  return NEWS.map((n) => ({ slug: n.slug }));
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const noticia = noticiaPorSlug(slug);
+
+  if (!noticia) {
+    return { title: `Noticia no encontrada | ${SITE.shortName}` };
   }
+
+  const title = `${noticia.titulo} | ${SITE.shortName} Sport Agency`;
+  const url = `/noticias/${noticia.slug}`;
+
+  return {
+    title,
+    description: noticia.resumen,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      locale: "es_DO",
+      url,
+      siteName: SITE.legalName,
+      title,
+      description: noticia.resumen,
+      publishedTime: noticia.fecha,
+      images: noticia.imagen
+        ? [{ url: noticia.imagen, alt: noticia.imagen_alt ?? noticia.titulo }]
+        : undefined,
+    },
+  };
+}
+
+export default async function NewsDetailPage({ params }: Params) {
+  const { slug } = await params;
+  const noticia = noticiaPorSlug(slug);
+
+  if (!noticia) notFound();
+
+  // Solo se enlaza al jugador si sigue en el roster: un enlace a una ficha que
+  // ya no existe es peor que no tener enlace.
+  const jugador = noticia.jugador_relacionado ? getPlayer(noticia.jugador_relacionado) : undefined;
 
   return (
     <main className="min-h-screen bg-ink text-body">
-      {/* HERO CON IMAGEN */}
-      <section className="relative h-96 overflow-hidden border-b border-hairline">
-        <Image
-          src={news.imagen}
-          alt={news.titulo}
-          fill
+      {/* HERO */}
+      <section className="relative h-80 md:h-96 overflow-hidden border-b border-hairline isolate">
+        <NewsImage
+          noticia={noticia}
+          sizes="100vw"
+          priority
           className="object-cover opacity-60 grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" />
 
-        {/* CONTENIDO HERO */}
-        <div className="absolute bottom-0 left-0 right-0 p-8">
-          <Link href="/noticias" className="text-body/80 hover:text-gold mb-4 block">
-            ← Volver a noticias
-          </Link>
-          <span className="inline-block px-3 py-1 bg-gold text-ink font-bold text-sm rounded mb-4">
-            {news.categoria}
-          </span>
-          <h1 className="text-2xl md:text-3xl font-black text-gold mb-4 leading-tight">
-            {news.titulo}
-          </h1>
-          <div className="flex gap-4 text-body/70 text-sm">
-            <span>
-              {new Date(news.fecha).toLocaleDateString("es-ES", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="container-pro py-8">
+            <Link href="/noticias" className="link-arrow text-body/80 hover:text-gold mb-5 flex w-fit">
+              <span className="rotate-180 arrow">→</span> Volver a noticias
+            </Link>
+            <span className="inline-block px-2.5 py-1 border border-hairline bg-ink/60 text-gold text-xs font-bold rounded-full uppercase tracking-wider mb-4">
+              {noticia.categoria}
             </span>
-            <span>Por {news.autor}</span>
+            <h1 className="headline-lg text-gold max-w-4xl mb-4">{noticia.titulo}</h1>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-body/70 text-sm">
+              <time dateTime={noticia.fecha}>{fechaLarga(noticia.fecha)}</time>
+              <span>Por {noticia.autor}</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CONTENIDO */}
-      <section className="py-24 px-4">
+      {/* CUERPO */}
+      <section className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-3xl">
-          <article className="prose prose-invert max-w-none">
-            {news.contenido.split("\n\n").map((paragraph: string, idx: number) => (
-              <p
-                key={idx}
-                className="text-body text-lg leading-relaxed mb-7"
-              >
-                {paragraph}
+          <p className="text-xl text-gold-light font-semibold leading-relaxed mb-10">
+            {noticia.resumen}
+          </p>
+
+          <article>
+            {noticia.contenido.split("\n\n").map((parrafo, i) => (
+              <p key={i} className="text-body text-lg leading-relaxed mb-7">
+                {parrafo}
               </p>
             ))}
           </article>
+
+          {jugador && (
+            <div className="mt-12 pt-8 border-t border-hairline">
+              <p className="text-xs font-bold text-gold-dark uppercase tracking-[0.2em] mb-3">
+                Jugador relacionado
+              </p>
+              <Link
+                href={`/jugadores/${jugador.id}`}
+                className="link-arrow text-gold-light text-lg border-b-2 border-gold pb-1"
+              >
+                {nombreCompleto(jugador)} <span className="arrow">→</span>
+              </Link>
+            </div>
+          )}
+
+          {/* Crédito de la fuente: discreto, pero siempre comprobable. */}
+          <p className="mt-12 text-sm text-body/60">
+            Fuente:{" "}
+            <a
+              href={noticia.fuente.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold hover:text-gold-light underline underline-offset-4 transition"
+            >
+              {noticia.fuente.nombre}
+            </a>
+          </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 bg-elevated border-y border-hairline mt-12">
+      <section className="py-20 px-4 bg-elevated border-y border-hairline">
         <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-lg md:text-xl font-bold text-gold mb-5">
             ¿Interesado en nuestros jugadores?
           </h2>
           <p className="text-body mb-10">
-            Explora nuestro directorio completo de jugadores representados
+            Explora el directorio completo de jugadores representados por BMS.
           </p>
           <Link href="/jugadores" className="btn-gold">
-            Ver Jugadores
+            Ver jugadores
           </Link>
         </div>
       </section>

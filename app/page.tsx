@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { BANNER_SLIDES, STOCK_IMAGES } from "@/lib/images";
 import { SITE } from "@/lib/site";
-import newsData from "@/lib/news.json";
 import {
   ESTADO_ESTILOS,
   destacados,
@@ -11,6 +10,8 @@ import {
   nombreCompleto,
   titularEstadistico,
 } from "@/lib/players";
+import NewsImage from "@/components/NewsImage";
+import { destacadas, fechaCorta } from "@/lib/news";
 import CountUp from "@/components/CountUp";
 import HeroCarousel from "@/components/HeroCarousel";
 import InstagramSection from "@/components/InstagramSection";
@@ -31,23 +32,9 @@ const leagues = [
   { name: "Liga Sudamericana", region: "Sudamérica" },
 ];
 
-const testimonials = [
-  {
-    quote: "BMS transformó mi carrera. Su profesionalismo y red de contactos me abrieron puertas que jamás imaginé.",
-    name: "Víctor Liz",
-    role: "Alero Profesional",
-  },
-  {
-    quote: "El equipo de BMS se preocupa de verdad por el jugador. Me acompañaron en cada paso de mi desarrollo.",
-    name: "Gelvis Solano",
-    role: "Base Profesional",
-  },
-];
-
-const news = newsData
-  .filter((n) => n.destacada)
-  .sort((a, b) => b.fecha.localeCompare(a.fecha))
-  .slice(0, 3);
+// La portada enseña solo las destacadas y manda al listado: no es una
+// página de noticias.
+const news = destacadas(3);
 
 export default function Home() {
   return (
@@ -84,14 +71,14 @@ export default function Home() {
 
               <div className="animate-fadeUp">
                 <p className="text-lg md:text-xl text-body leading-relaxed max-w-xl mb-6">
-                  Conectamos a clubes de todo el mundo con más de 100 jugadores
-                  profesionales de baloncesto. Te presentamos perfiles que encajan con tu
+                  Conectamos a clubes de todo el mundo con jugadores profesionales
+                  de baloncesto. Te presentamos perfiles que encajan con tu
                   sistema, tu presupuesto y tu calendario.
                 </p>
                 <p className="text-base text-body/70 leading-relaxed max-w-xl mb-10">
-                  Agencia con licencia FIBA #{SITE.fibaLicense}, con sedes en Miami y
-                  República Dominicana desde {SITE.founded}. Nos ocupamos del scouting, la
-                  negociación y los trámites internacionales de principio a fin.
+                  Agencia con licencia FIBA #{SITE.fibaLicense} y más de{" "}
+                  {SITE.yearsOfExperience} años de experiencia. Nos ocupamos del scouting,
+                  la negociación y los trámites internacionales de principio a fin.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -109,12 +96,12 @@ export default function Home() {
 
         {/* Barra de stats */}
         <div className="relative z-10 border-t border-hairline bg-elevated/60">
-          <div className="container-pro grid grid-cols-2 md:grid-cols-4 divide-x divide-[rgba(201,162,39,0.15)]">
+          {/* Dos cifras, centradas: al quitar las otras dos, repartirlas a lo
+              ancho del contenedor las dejaba flotando. */}
+          <div className="container-pro grid grid-cols-2 max-w-3xl mx-auto divide-x divide-[rgba(201,162,39,0.15)]">
             {[
-              { number: "100+", label: "Jugadores Representados" },
-              { number: "2009", label: "Fundación" },
+              { number: `+${SITE.yearsOfExperience}`, label: "Años de Experiencia" },
               { number: "FIBA", label: "Agencia Licenciada" },
-              { number: "2", label: "Sedes · Miami / RD" },
             ].map((s, i) => (
               <div key={i} className="py-10 px-4 text-center">
                 <CountUp value={s.number} className="block font-display text-4xl md:text-5xl text-gold mb-3" />
@@ -140,7 +127,8 @@ export default function Home() {
                 para tu <span className="text-gold-light">plantilla</span>
               </h2>
               <p className="text-lg text-body leading-relaxed max-w-2xl mb-10">
-                Llevamos más de 25 años representando jugadores de baloncesto profesional,
+                Llevamos más de {SITE.yearsOfExperience} años representando jugadores de baloncesto
+                profesional,
                 y ese mismo tiempo trabajando con los clubes que los fichan. Conocemos a
                 cada jugador de nuestro roster de primera mano: su nivel real, su carácter
                 y qué necesita para rendir en tu equipo.
@@ -151,7 +139,7 @@ export default function Home() {
             </div>
             {/* Número decorativo: aislado en su propia columna, muy tenue. */}
             <div className="hidden lg:flex lg:col-span-5 justify-end pl-8" aria-hidden="true">
-              <span className="ghost-num">25</span>
+              <span className="ghost-num">{SITE.yearsOfExperience}</span>
             </div>
           </div>
         </div>
@@ -175,7 +163,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {featuredPlayers.map((p, i) => (
+            {featuredPlayers.map((p) => (
               <Link
                 key={p.id}
                 href={`/jugadores/${p.id}`}
@@ -190,9 +178,6 @@ export default function Home() {
                     className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                  <span aria-hidden="true" className="absolute top-4 left-4 font-display text-2xl text-gold/40">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   {p.estado && (
                     <span className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${ESTADO_ESTILOS[estadoKey(p)]}`}>
                       {p.estado}
@@ -267,7 +252,6 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
             {leagues.map((l, i) => (
               <div key={i} className="bg-ink p-8 text-center hover:bg-elevated transition-colors">
-                <p className="font-display text-xs text-gold-dark mb-3">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="font-black text-gold">{l.name}</h3>
                 <p className="text-sm text-body/70">{l.region}</p>
               </div>
@@ -277,47 +261,11 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/* 06 · TESTIMONIOS                                              */}
+      {/* NOTICIAS                                                      */}
       {/* ============================================================ */}
-      {/* scroll-mt extra: el header sticky (h-20) no debe tapar el título. */}
-      <section id="testimonios" className="section-pad scroll-mt-28 bg-ink">
-        <div className="container-pro">
-          <div className="eyebrow text-gold-dark mb-8">
-            Testimonios
-          </div>
-          <h2 className="headline-lg text-gold mb-16 max-w-3xl">Lo que dicen nuestros jugadores</h2>
-
-          <div className="grid md:grid-cols-2 gap-px bg-[rgba(201,162,39,0.15)] border border-hairline rounded-2xl overflow-hidden">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-elevated p-10">
-                <div className="text-gold text-lg mb-6">★★★★★</div>
-                <p className="text-xl md:text-2xl font-semibold leading-relaxed text-gold-light mb-8">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-gold text-ink font-black flex items-center justify-center">
-                    {t.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-bold text-gold">{t.name}</p>
-                    <p className="text-sm text-body/70">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Link href="/testimonios" className="link-arrow text-gold-light">
-              Ver todos los testimonios <span className="arrow">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 07 · NOTICIAS                                                 */}
-      {/* ============================================================ */}
-      <section className="section-pad bg-elevated border-y border-hairline">
+      {/* border-b: Instagram también va sobre bg-ink y sin la línea las dos
+          secciones se leerían como un único bloque. */}
+      <section className="section-pad bg-ink border-b border-hairline">
         <div className="container-pro">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div>
@@ -333,15 +281,29 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {news.map((n) => (
-              <Link key={n.slug} href={`/noticias/${n.slug}`} className="group">
-                <div className="relative h-56 rounded-2xl overflow-hidden bg-ink border border-hairline mb-6">
-                  <Image src={n.imagen} alt={n.titulo} fill className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105" />
+              <Link key={n.slug} href={`/noticias/${n.slug}`} className="group flex flex-col">
+                <div className="relative h-56 rounded-2xl overflow-hidden bg-elevated border border-hairline mb-6">
+                  <NewsImage
+                    noticia={n}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-2.5 py-1 border border-hairline text-gold text-xs font-bold rounded-full uppercase tracking-wider">{n.categoria}</span>
-                  <span className="text-xs text-body/60">{new Date(n.fecha).toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" })}</span>
+                <span className="w-fit px-2.5 py-1 border border-hairline text-gold text-xs font-bold rounded-full uppercase tracking-wider mb-4">
+                  {n.categoria}
+                </span>
+                <h3 className="text-lg font-black text-gold-light group-hover:text-gold transition leading-snug mb-3">
+                  {n.titulo}
+                </h3>
+                <p className="text-sm text-body/75 leading-relaxed mb-5 line-clamp-3">{n.resumen}</p>
+                <div className="mt-auto flex items-center justify-between gap-4 text-xs">
+                  <time dateTime={n.fecha} className="text-body/60">
+                    {fechaCorta(n.fecha)}
+                  </time>
+                  <span className="text-gold font-bold group-hover:text-gold-light whitespace-nowrap">
+                    Leer más →
+                  </span>
                 </div>
-                <h3 className="text-lg font-black text-gold-light group-hover:text-gold transition leading-snug">{n.titulo}</h3>
               </Link>
             ))}
           </div>

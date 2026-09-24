@@ -61,8 +61,8 @@ export default function PlayersDirectory() {
           </div>
           <h1 className="headline-lg text-gold">Jugadores</h1>
           <p className="text-lg text-body max-w-2xl">
-            Explora nuestro roster de {PLAYERS.length} jugadores representados en ligas de
-            todo el mundo.
+            Explora nuestro roster de jugadores representados en ligas de todo el
+            mundo.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function PlayersDirectory() {
             />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <Selector
               etiqueta="Posición"
               valor={posicion}
@@ -106,12 +106,6 @@ export default function PlayersDirectory() {
               opciones={estados}
               textoTodos="Todos"
             />
-
-            <div className="flex items-end">
-              <p className="text-sm text-body/70" aria-live="polite">
-                {filtrados.length} resultado{filtrados.length !== 1 ? "s" : ""}
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -127,7 +121,7 @@ export default function PlayersDirectory() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filtrados.map((p, i) => {
+              {filtrados.map((p) => {
                 const contexto = contextoEquipo(p);
                 return (
                   <Link
@@ -146,12 +140,6 @@ export default function PlayersDirectory() {
                         className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                      <span
-                        aria-hidden="true"
-                        className="absolute top-4 left-4 font-display text-2xl text-gold/40"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                       {p.estado && (
                         <span
                           className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${
