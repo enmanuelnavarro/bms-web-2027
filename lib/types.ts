@@ -137,28 +137,43 @@ export interface News {
   fuente: NewsSource;
 }
 
+/**
+ * Ficha de una persona del equipo de BMS. Casi todo es opcional porque no
+ * todos los perfiles traen lo mismo: el gerente tiene licencia FIBA y cifras
+ * de carrera, y otro puesto puede no tener ninguna de las dos. Lo que no hay
+ * no se inventa: la página se salta la sección.
+ */
 export interface ExecutiveProfile {
   id: string;
   nombre: string;
   cargo: string;
-  certificacion: string;
+  /** Línea bajo el nombre en la cabecera. */
+  subtitulo: string;
   foto: string;
+  /** Sello sobre la foto, si lo hay: «Agente FIBA». */
+  insignia?: { titulo: string; pie: string };
+  /** Frase del bloque dorado. */
+  destacado?: string;
+  /** Si es una cita textual suya se entrecomilla; si no, va tal cual. */
+  destacado_es_cita?: boolean;
+  /** Título del texto largo: «Trayectoria», «Perfil»… */
+  bio_titulo: string;
   bio: string;
-  cita_destacada: string;
-  anios_experiencia: number;
-  jugadores_gestionados: number;
-  paises_experiencia: string[];
-  logros: Array<{
+  logros?: Array<{
     titulo: string;
     valor: string | number;
     icono?: string;
   }>;
-  redes_sociales: {
+  /** Lista de etiquetas: países, áreas de trabajo… */
+  etiquetas?: { titulo: string; items: string[] };
+  redes_sociales?: {
     linkedin?: string;
     instagram?: string;
     twitter?: string;
   };
   email_contacto?: string;
   telefono_contacto?: string;
+  /** Botón del final de la ficha de contacto. */
+  cta?: { texto: string; href: string };
   slug: string;
 }

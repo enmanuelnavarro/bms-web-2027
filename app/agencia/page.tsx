@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import PageHero from "@/components/PageHero";
 import { SITE, SERVICES } from "@/lib/site";
+import { executiveProfiles } from "@/lib/mockData";
 import { STOCK_IMAGES } from "@/lib/images";
 
 export const metadata = {
@@ -86,22 +88,36 @@ export default function AgencyPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <h2 className="headline-lg text-gold max-w-2xl">El equipo detrás de BMS</h2>
           </div>
-          <Link
-            href="/agencia/frank-brito"
-            className="group flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-ink border border-hairline rounded-2xl p-8 hover:border-gold transition"
-          >
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-ink font-display text-3xl flex-shrink-0">
-              F
-            </div>
-            <div className="flex-grow">
-              <h3 className="text-xl font-black text-gold">Frank Brito</h3>
-              <p className="text-gold-light font-bold">Gerente General · Agente FIBA Certificado</p>
-              <p className="text-body/80 mt-2">Más de 20 años representando jugadores de baloncesto en América Latina y el mundo.</p>
-            </div>
-            <span className="link-arrow text-gold-light whitespace-nowrap">
-              Ver perfil <span className="arrow">→</span>
-            </span>
-          </Link>
+          {/* Una tarjeta por persona: salen de lib/mockData.ts, así que añadir
+              a alguien al equipo no obliga a tocar esta página. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {executiveProfiles.map((persona) => (
+              <Link
+                key={persona.slug}
+                href={`/agencia/${persona.slug}`}
+                className="group flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-ink border border-hairline rounded-2xl p-8 hover:border-gold transition"
+              >
+                <div className="relative w-20 h-20 rounded-full overflow-hidden border border-hairline bg-elevated flex-shrink-0">
+                  <Image
+                    src={persona.foto}
+                    alt={`${persona.nombre}, ${persona.cargo} de BMS`}
+                    fill
+                    sizes="5rem"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-black text-gold">{persona.nombre}</h3>
+                  <p className="text-gold-light font-bold">
+                    {persona.cargo} · {persona.subtitulo}
+                  </p>
+                </div>
+                <span className="link-arrow text-gold-light whitespace-nowrap">
+                  Ver perfil <span className="arrow">→</span>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

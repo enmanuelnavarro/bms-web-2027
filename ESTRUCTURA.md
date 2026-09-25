@@ -123,7 +123,7 @@ accede por `lib/players.ts` (helpers de formato, filtros, destacados).
 | equipo actual | 33 | 62 % |
 | país | 32 | 60 % |
 | peso | 30 | 56 % |
-| **fotografía** | **6** | **11 %** |
+| fotografía | 48 | 91 % |
 | **biografía** | **6** | **11 %** |
 | **estadísticas** | **6** | **11 %** |
 | **historial de equipos** | **6** | **11 %** |
@@ -133,9 +133,22 @@ accede por `lib/players.ts` (helpers de formato, filtros, destacados).
 | selección | 1 | 1 % |
 | **liga actual** | **0** | **0 %** |
 
-Fotografías propias en `/public/players`: **solo 2** (`jassel-perez.png`,
-`jonathan-bello.png`). 4 jugadores apuntan a `placeholder-player.svg` y 47
-tienen `foto: null`.
+Fotografías propias en `/public/players`: **48**, una por jugador, con el
+nombre del fichero igual al `id` de la ficha (`luis-feliz.jpg`) — que es como
+las busca `scripts/import-players.mjs`, así que una reimportación las conserva.
+Siguen sin foto 5: Víctor Liz, Ernesto Hernández, Rich Polanco, Jean Karlo
+Iciano y Yuri Covington; su `foto` es `null` y la web pinta el marcador de la
+casa.
+
+Las de `/public/players` no son las que mandó la agencia, sino su versión ya
+encuadrada: **900x1125 (4:5) todas**, que es lo que hace que la rejilla se vea
+pareja. Los originales —recortes de prensa apaisados, capturas de Instagram,
+fotos de cancha entera— viven en `assets/fotos-originales/`, fuera de
+`/public`, y `scripts/normaliza-fotos.mjs` los convierte: quita las bandas
+negras, encuadra a 4:5 buscando la cara y guarda en WebP los recortes con
+fondo transparente (29) y en JPEG los que tienen fondo (19). De 19 MB a 5,5.
+Cuando llegue una foto nueva: se deja el original ahí con el nombre del `id` y
+se relanza el script.
 
 Los 53 tienen `estado: "Activo"` — el filtro de estado del directorio ofrece,
 por tanto, una sola opción. 21 no tienen país, así que el filtro de país los
@@ -152,9 +165,9 @@ jugador.
 ### `lib/mockData.ts` — perfil de Frank Brito
 **Contiene datos sin verificar** que se publican en `/agencia/frank-brito`:
 «más de 20 años de experiencia», «150+ jugadores representados», «12+ jugadores
-en NBA», «8 países», una foto de Unsplash de una persona que no es él, y
-perfiles de LinkedIn/Instagram/Twitter inventados (`linkedin.com/in/frankbrito`,
-etc.). El propio fichero avisa de que el email y el teléfono son placeholders.
+en NBA», «8 países» y perfiles de LinkedIn/Instagram/Twitter inventados
+(`linkedin.com/in/frankbrito`, etc.). La fotografía ya es la suya de verdad
+(`/equipo/frank-brito.jpg`). El propio fichero avisa de que el email y el teléfono son placeholders.
 
 > Contraste con la fuente real (Diario Libre, diciembre de 2014): tenía 24 años
 > y había empezado a los 17 → hoy serían ~19 años de carrera, no «más de 20».
@@ -199,6 +212,12 @@ está comprobado que el resto lo haga**.
 `/en-construccion` salvo que la cookie `bms_acceso` lleve el hash correcto
 (SHA-256, comparación en tiempo constante, cookie httpOnly de 30 días).
 
+Quedan fuera del cierre `/logos/`, `/icon.png`, `/favicon.ico`, `/players/`,
+`/equipo/` y `/banner/`: el optimizador de imágenes de Next pide esos ficheros
+al propio servidor con una petición interna que no lleva la cookie, y si el
+proxy la redirigía a las obras no se veía **ninguna** foto, tampoco con la
+clave puesta.
+
 **Estado actual: `SITE_PASSWORD` NO está configurada en Vercel**, así que en
 producción la web está abierta al público aunque la intención era tenerla
 cerrada. En local sí está y sí cierra.
@@ -227,13 +246,13 @@ Lista de partida, no exhaustiva. Se agradece que la auditoría la amplíe y la
 priorice.
 
 ### Contenido — el bloque más grande
-1. **47 de 53 jugadores sin fotografía.** Es una agencia de representación: el
-   catálogo es el producto y hoy está casi vacío visualmente.
+1. ~~47 de 53 jugadores sin fotografía~~ → resuelto: 48 con foto propia,
+   quedan 5 sin ella.
 2. **47 sin biografía, sin estadísticas y sin historial.**
 3. **Ninguno tiene liga actual**; 21 no tienen ni país.
 4. Casi todas las imágenes de la web son de archivo (Unsplash), no de BMS.
-5. El perfil de Frank Brito publica cifras sin verificar y una foto que no es
-   suya (§5).
+5. El perfil de Frank Brito publica cifras sin verificar (§5); la foto ya es
+   la suya.
 6. 5 de 6 noticias sin fotografía.
 
 ### Legal y confianza

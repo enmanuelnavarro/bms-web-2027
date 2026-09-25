@@ -169,13 +169,13 @@ export default function Home() {
                 href={`/jugadores/${p.id}`}
                 className="group relative overflow-hidden rounded-2xl card-dark hover:border-gold-dark transition-colors"
               >
-                <div className="relative h-96 bg-gradient-to-b from-elevated to-ink">
+                <div className="relative aspect-[4/5] bg-gradient-to-b from-elevated to-ink">
                   <Image
                     src={fotoDe(p)}
                     alt={nombreCompleto(p)}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
                   {p.estado && (
