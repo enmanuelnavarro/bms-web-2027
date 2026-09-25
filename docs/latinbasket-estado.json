@@ -1,10 +1,10 @@
 {
-  "ultima_revision": "2026-09-25T15:25:34.897Z",
+  "ultima_revision": "2026-09-25T23:27:48.422Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 53,
-    "actualizados": 50,
-    "sin_cambios": 0,
+    "actualizados": 1,
+    "sin_cambios": 49,
     "sin_lectura": 0,
     "omitidos": 3,
     "diferencias_pendientes": 50
@@ -12,8 +12,7 @@
   "resultados": [
     {
       "jugador": "victor-liz",
-      "estado": "actualizado",
-      "detalle": "estadísticas (1 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -25,8 +24,7 @@
     },
     {
       "jugador": "ernesto-hernandez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -43,8 +41,7 @@
     },
     {
       "jugador": "jonathan-bello",
-      "estado": "actualizado",
-      "detalle": "estadísticas (2 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -62,7 +59,7 @@
     {
       "jugador": "bernardo-polanco",
       "estado": "actualizado",
-      "detalle": "3 temporada(s) nuevas",
+      "detalle": "estadísticas (3 → 3 temporadas)",
       "temporadas": 3,
       "diferencias": [
         {
@@ -74,8 +71,7 @@
     },
     {
       "jugador": "jeromy-rodriguez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -92,8 +88,7 @@
     },
     {
       "jugador": "juan-rosario",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -110,8 +105,7 @@
     },
     {
       "jugador": "devontae-shuler",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -133,8 +127,7 @@
     },
     {
       "jugador": "jhery-matos",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -151,8 +144,7 @@
     },
     {
       "jugador": "miguel-simon",
-      "estado": "actualizado",
-      "detalle": "5 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 5,
       "diferencias": [
         {
@@ -169,8 +161,7 @@
     },
     {
       "jugador": "yeison-colome",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -182,8 +173,7 @@
     },
     {
       "jugador": "gelvis-solano",
-      "estado": "actualizado",
-      "detalle": "estadísticas (1 → 4 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 4,
       "diferencias": [
         {
@@ -200,8 +190,7 @@
     },
     {
       "jugador": "raymon-bastardo",
-      "estado": "actualizado",
-      "detalle": "3 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 3,
       "diferencias": [
         {
@@ -218,8 +207,7 @@
     },
     {
       "jugador": "emmanuel-omogbo",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -236,8 +224,7 @@
     },
     {
       "jugador": "nahziah-carter",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -249,8 +236,7 @@
     },
     {
       "jugador": "juan-guerrero",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -267,8 +253,7 @@
     },
     {
       "jugador": "luis-martinez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -280,8 +265,7 @@
     },
     {
       "jugador": "anderson-mirambeaux",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -293,8 +277,7 @@
     },
     {
       "jugador": "diego-colon",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -311,8 +294,7 @@
     },
     {
       "jugador": "richard-bautista",
-      "estado": "actualizado",
-      "detalle": "estadísticas (1 → 1 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -329,8 +311,7 @@
     },
     {
       "jugador": "randy-bautista",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -342,8 +323,7 @@
     },
     {
       "jugador": "luis-feliz",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -355,8 +335,7 @@
     },
     {
       "jugador": "bj-fitzgerald",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -373,8 +352,7 @@
     },
     {
       "jugador": "andres-fulgencio",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -391,8 +369,7 @@
     },
     {
       "jugador": "rich-polanco",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -409,8 +386,7 @@
     },
     {
       "jugador": "luis-morel",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -427,8 +403,7 @@
     },
     {
       "jugador": "farly-nunez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -445,8 +420,7 @@
     },
     {
       "jugador": "malvin-duran",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -463,8 +437,7 @@
     },
     {
       "jugador": "emmitt-williams",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -476,8 +449,7 @@
     },
     {
       "jugador": "theodore-parham-jr",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -499,8 +471,7 @@
     },
     {
       "jugador": "javier-del-rosario",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -517,8 +488,7 @@
     },
     {
       "jugador": "daylin-thomas",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -535,8 +505,7 @@
     },
     {
       "jugador": "darwin-rosario",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -553,8 +522,7 @@
     },
     {
       "jugador": "jordan-geronimo",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -571,8 +539,7 @@
     },
     {
       "jugador": "jean-quezada",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -589,8 +556,7 @@
     },
     {
       "jugador": "yeikson-montero",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -607,8 +573,7 @@
     },
     {
       "jugador": "jaison-valdez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -620,8 +585,7 @@
     },
     {
       "jugador": "caleb-huffman",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -633,8 +597,7 @@
     },
     {
       "jugador": "angel-gerardo-suero",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -646,8 +609,7 @@
     },
     {
       "jugador": "josmel-martinez",
-      "estado": "actualizado",
-      "detalle": "2 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -669,8 +631,7 @@
     },
     {
       "jugador": "jean-karlo-iciano",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -692,8 +653,7 @@
     },
     {
       "jugador": "edgar-tejeda",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -710,8 +670,7 @@
     },
     {
       "jugador": "reggie-quezada",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -723,8 +682,7 @@
     },
     {
       "jugador": "raimer-mercedes",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -741,8 +699,7 @@
     },
     {
       "jugador": "jesse-zarzuela",
-      "estado": "actualizado",
-      "detalle": "3 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 3,
       "diferencias": [
         {
@@ -754,8 +711,7 @@
     },
     {
       "jugador": "victor-martinez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -767,8 +723,7 @@
     },
     {
       "jugador": "brayan-martinez",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -790,8 +745,7 @@
     },
     {
       "jugador": "hysier-miller",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
@@ -803,8 +757,7 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "actualizado",
-      "detalle": "estadísticas (5 → 5 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 5,
       "diferencias": [
         {
@@ -826,8 +779,7 @@
     },
     {
       "jugador": "juan-suero",
-      "estado": "actualizado",
-      "detalle": "3 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 3,
       "diferencias": [
         {
@@ -844,8 +796,7 @@
     },
     {
       "jugador": "luismal-ferreiras",
-      "estado": "actualizado",
-      "detalle": "1 temporada(s) nuevas",
+      "estado": "sin cambios",
       "temporadas": 1,
       "diferencias": [
         {
