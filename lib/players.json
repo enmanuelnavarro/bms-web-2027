@@ -39,19 +39,54 @@
     ],
     "estadisticas_temporada": [
       {
-        "temporada": "2024-2025",
-        "equipo": "Capitanes de Arecibo",
-        "liga": "BSN",
+        "temporada": "2026",
+        "equipo": "Quebradillas",
+        "liga": "Puerto Rico-BSN",
         "pj": 32,
-        "minutes": 30.1,
-        "pts": 16.8,
-        "reb": 6.4,
-        "ast": 2.1,
-        "rob": 1.4,
-        "tap": 0.6,
-        "fg": 48,
-        "three": 34,
-        "ft": 77
+        "minutes": 29.8,
+        "pts": 11.6,
+        "reb": 4.7,
+        "ast": 2.6,
+        "rob": 0.8,
+        "tap": 0.3,
+        "fg": 57.6,
+        "three": 31.3,
+        "ft": 71.9,
+        "totales": {
+          "min": 953,
+          "pts": 371,
+          "fg2m": 91,
+          "fg2a": 158,
+          "fg3m": 40,
+          "fg3a": 128,
+          "ftm": 69,
+          "fta": 96
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Dominican Republic",
+        "liga": "FIBA AmeriCup",
+        "pj": 2,
+        "minutes": 20.5,
+        "pts": 5,
+        "reb": 1.5,
+        "ast": 1,
+        "rob": 0,
+        "tap": 0.5,
+        "fg": 75,
+        "three": 0,
+        "ft": 100,
+        "totales": {
+          "min": 41,
+          "pts": 10,
+          "fg2m": 3,
+          "fg2a": 4,
+          "fg3m": 0,
+          "fg3a": 5,
+          "ftm": 4,
+          "fta": 4
+        }
       }
     ],
     "videos_youtube": []
@@ -84,7 +119,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Piratas",
+        "liga": "Venezuela-SPB",
+        "pj": 14,
+        "minutes": 13.1,
+        "pts": 2.6,
+        "reb": 1.9,
+        "ast": 0.4,
+        "rob": 0.3,
+        "tap": 0.1,
+        "fg": 16.7,
+        "three": 29.6,
+        "ft": 66.7,
+        "totales": {
+          "min": 184,
+          "pts": 36,
+          "fg2m": 4,
+          "fg2a": 24,
+          "fg3m": 8,
+          "fg3a": 27,
+          "ftm": 4,
+          "fta": 6
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -135,8 +196,8 @@
     "estadisticas_temporada": [
       {
         "temporada": "2026",
-        "equipo": "Club Deportes Las Ánimas",
-        "liga": "LNB (Chile)",
+        "equipo": "Las Animas",
+        "liga": "Chile-LNB",
         "pj": 1,
         "minutes": 10,
         "pts": 6,
@@ -146,12 +207,22 @@
         "tap": 0,
         "fg": 66.7,
         "three": 0,
-        "ft": 50
+        "ft": 50,
+        "totales": {
+          "min": 10,
+          "pts": 6,
+          "fg2m": 2,
+          "fg2a": 3,
+          "fg3m": 0,
+          "fg3a": 3,
+          "ftm": 2,
+          "fta": 4
+        }
       },
       {
         "temporada": "2026",
-        "equipo": "Soles de Santo Domingo",
-        "liga": "LNB (Rep. Dominicana)",
+        "equipo": "Soles",
+        "liga": "Dominican Republic-LNB",
         "pj": 12,
         "minutes": 31.5,
         "pts": 18.8,
@@ -161,7 +232,17 @@
         "tap": 0.2,
         "fg": 59.5,
         "three": 30,
-        "ft": 57
+        "ft": 57,
+        "totales": {
+          "min": 378,
+          "pts": 226,
+          "fg2m": 66,
+          "fg2a": 111,
+          "fg3m": 15,
+          "fg3a": 50,
+          "ftm": 49,
+          "fta": 86
+        }
       }
     ],
     "videos_youtube": []
@@ -194,7 +275,83 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "San Salvador",
+        "liga": "El Salvador-Liga MB",
+        "pj": 6,
+        "minutes": 40.5,
+        "pts": 34.5,
+        "reb": 7.3,
+        "ast": 3.7,
+        "rob": 1.7,
+        "tap": 0.5,
+        "fg": 58.8,
+        "three": 44.6,
+        "ft": 77.8,
+        "totales": {
+          "min": 243,
+          "pts": 207,
+          "fg2m": 40,
+          "fg2a": 68,
+          "fg3m": 33,
+          "fg3a": 74,
+          "ftm": 28,
+          "fta": 36
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Metapan",
+        "liga": "El Salvador-Liga MB",
+        "pj": 8,
+        "minutes": 32.8,
+        "pts": 19.5,
+        "reb": 4.6,
+        "ast": 2.6,
+        "rob": 1.1,
+        "tap": 0,
+        "fg": 55.9,
+        "three": 36.5,
+        "ft": 80.5,
+        "totales": {
+          "min": 262,
+          "pts": 156,
+          "fg2m": 33,
+          "fg2a": 59,
+          "fg3m": 19,
+          "fg3a": 52,
+          "ftm": 33,
+          "fta": 41
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Correcaminos",
+        "liga": "United Cup",
+        "pj": 4,
+        "minutes": 21.5,
+        "pts": 7.3,
+        "reb": 3,
+        "ast": 0.8,
+        "rob": 0.5,
+        "tap": 0.3,
+        "fg": 36.8,
+        "three": 30.8,
+        "ft": 60,
+        "totales": {
+          "min": 86,
+          "pts": 29,
+          "fg2m": 7,
+          "fg2a": 19,
+          "fg3m": 4,
+          "fg3a": 13,
+          "ftm": 3,
+          "fta": 5
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -225,7 +382,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2025",
+        "equipo": "Motilones",
+        "liga": "Colombia",
+        "pj": 10,
+        "minutes": 14.1,
+        "pts": 2.4,
+        "reb": 2.9,
+        "ast": 0.3,
+        "rob": 0.9,
+        "tap": 0.2,
+        "fg": 30.3,
+        "three": 0,
+        "ft": 50,
+        "totales": {
+          "min": 141,
+          "pts": 24,
+          "fg2m": 10,
+          "fg2a": 33,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 4,
+          "fta": 8
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -256,7 +439,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gigantes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 34,
+        "minutes": 14.6,
+        "pts": 5.2,
+        "reb": 4.7,
+        "ast": 0.6,
+        "rob": 0.6,
+        "tap": 1.3,
+        "fg": 61.7,
+        "three": 26.8,
+        "ft": 73,
+        "totales": {
+          "min": 498,
+          "pts": 176,
+          "fg2m": 58,
+          "fg2a": 94,
+          "fg3m": 11,
+          "fg3a": 41,
+          "ftm": 27,
+          "fta": 37
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -287,7 +496,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Dominican Republic-LNB",
+        "pj": 10,
+        "minutes": 27,
+        "pts": 13.1,
+        "reb": 2.3,
+        "ast": 1.9,
+        "rob": 1.4,
+        "tap": 0.1,
+        "fg": 51,
+        "three": 40,
+        "ft": 61.9,
+        "totales": {
+          "min": 270,
+          "pts": 131,
+          "fg2m": 26,
+          "fg2a": 51,
+          "fg3m": 22,
+          "fg3a": 55,
+          "ftm": 13,
+          "fta": 21
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -349,7 +584,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026-2027",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
+        "pj": 2,
+        "minutes": 8.5,
+        "pts": 3.5,
+        "reb": 1.5,
+        "ast": 0,
+        "rob": 0,
+        "tap": 0.5,
+        "fg": 100,
+        "three": 100,
+        "ft": 0,
+        "totales": {
+          "min": 17,
+          "pts": 7,
+          "fg2m": 2,
+          "fg2a": 2,
+          "fg3m": 1,
+          "fg3a": 1,
+          "ftm": 0,
+          "fta": 0
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -380,7 +641,133 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gaiteros",
+        "liga": "Venezuela-SPB",
+        "pj": 24,
+        "minutes": 21.6,
+        "pts": 6.1,
+        "reb": 5.3,
+        "ast": 0.8,
+        "rob": 0.5,
+        "tap": 0.5,
+        "fg": 56.6,
+        "three": 0,
+        "ft": 68.4,
+        "totales": {
+          "min": 518,
+          "pts": 146,
+          "fg2m": 60,
+          "fg2a": 106,
+          "fg3m": 0,
+          "fg3a": 1,
+          "ftm": 26,
+          "fta": 38
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Panteras",
+        "liga": "Mexico-LNBP",
+        "pj": 9,
+        "minutes": 16.8,
+        "pts": 4.9,
+        "reb": 4.3,
+        "ast": 0.4,
+        "rob": 0.9,
+        "tap": 0.7,
+        "fg": 52.8,
+        "three": 0,
+        "ft": 54.5,
+        "totales": {
+          "min": 151,
+          "pts": 44,
+          "fg2m": 19,
+          "fg2a": 36,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 6,
+          "fta": 11
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Mexico-LBE",
+        "pj": 14,
+        "minutes": 34.8,
+        "pts": 17.4,
+        "reb": 11,
+        "ast": 2.5,
+        "rob": 1.8,
+        "tap": 0.7,
+        "fg": 52.4,
+        "three": 0,
+        "ft": 60.3,
+        "totales": {
+          "min": 487,
+          "pts": 244,
+          "fg2m": 100,
+          "fg2a": 191,
+          "fg3m": 0,
+          "fg3a": 5,
+          "ftm": 44,
+          "fta": 73
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Aguada",
+        "liga": "Uruguay-LUB",
+        "pj": 2,
+        "minutes": 17,
+        "pts": 4.5,
+        "reb": 5.5,
+        "ast": 0.5,
+        "rob": 1,
+        "tap": 1,
+        "fg": 37.5,
+        "three": 0,
+        "ft": 75,
+        "totales": {
+          "min": 34,
+          "pts": 9,
+          "fg2m": 3,
+          "fg2a": 8,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 3,
+          "fta": 4
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Aguada",
+        "liga": "Basketball Champions League Americas",
+        "pj": 2,
+        "minutes": 19,
+        "pts": 9,
+        "reb": 3.5,
+        "ast": 0.5,
+        "rob": 0.5,
+        "tap": 0,
+        "fg": 53.3,
+        "three": 0,
+        "ft": 100,
+        "totales": {
+          "min": 38,
+          "pts": 18,
+          "fg2m": 8,
+          "fg2a": 15,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 2,
+          "fta": 2
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -411,7 +798,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Piratas",
+        "liga": "Venezuela-SPB",
+        "pj": 23,
+        "minutes": 34.8,
+        "pts": 18.9,
+        "reb": 3.6,
+        "ast": 3.3,
+        "rob": 1.6,
+        "tap": 0.3,
+        "fg": 57.1,
+        "three": 32.5,
+        "ft": 70.7,
+        "totales": {
+          "min": 800,
+          "pts": 435,
+          "fg2m": 100,
+          "fg2a": 175,
+          "fg3m": 55,
+          "fg3a": 169,
+          "ftm": 70,
+          "fta": 99
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Caneros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 21,
+        "minutes": 31.5,
+        "pts": 22.2,
+        "reb": 3.3,
+        "ast": 4.1,
+        "rob": 1.7,
+        "tap": 0.1,
+        "fg": 57.2,
+        "three": 33.9,
+        "ft": 62.5,
+        "totales": {
+          "min": 661,
+          "pts": 466,
+          "fg2m": 107,
+          "fg2a": 187,
+          "fg3m": 64,
+          "fg3a": 189,
+          "ftm": 60,
+          "fta": 96
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -460,19 +898,104 @@
     ],
     "estadisticas_temporada": [
       {
-        "temporada": "2024-2025",
-        "equipo": "Dewa United Banten",
-        "liga": "IBL",
-        "pj": 30,
-        "minutes": 28.5,
-        "pts": 14.2,
-        "reb": 4.1,
-        "ast": 5.6,
-        "rob": 1.3,
-        "tap": 0.2,
-        "fg": 45,
-        "three": 36,
-        "ft": 82
+        "temporada": "2026",
+        "equipo": "Guaiqueries",
+        "liga": "Venezuela-SPB",
+        "pj": 40,
+        "minutes": 26.7,
+        "pts": 11.5,
+        "reb": 3.6,
+        "ast": 5.2,
+        "rob": 1.4,
+        "tap": 0.1,
+        "fg": 51.7,
+        "three": 26.8,
+        "ft": 72.2,
+        "totales": {
+          "min": 1067,
+          "pts": 460,
+          "fg2m": 92,
+          "fg2a": 178,
+          "fg3m": 53,
+          "fg3a": 198,
+          "ftm": 117,
+          "fta": 162
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "El Calor",
+        "liga": "Mexico-LNBP",
+        "pj": 2,
+        "minutes": 27.5,
+        "pts": 9,
+        "reb": 4.5,
+        "ast": 4,
+        "rob": 2,
+        "tap": 0,
+        "fg": 57.1,
+        "three": 30,
+        "ft": 50,
+        "totales": {
+          "min": 55,
+          "pts": 18,
+          "fg2m": 4,
+          "fg2a": 7,
+          "fg3m": 3,
+          "fg3a": 10,
+          "ftm": 1,
+          "fta": 2
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
+        "pj": 4,
+        "minutes": 14.3,
+        "pts": 5,
+        "reb": 1,
+        "ast": 3,
+        "rob": 0.8,
+        "tap": 0.5,
+        "fg": 33.3,
+        "three": 12.5,
+        "ft": 87.5,
+        "totales": {
+          "min": 57,
+          "pts": 20,
+          "fg2m": 5,
+          "fg2a": 15,
+          "fg3m": 1,
+          "fg3a": 8,
+          "ftm": 7,
+          "fta": 8
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Dominican Republic",
+        "liga": "FIBA AmeriCup",
+        "pj": 2,
+        "minutes": 11,
+        "pts": 0,
+        "reb": 1.5,
+        "ast": 2.5,
+        "rob": 1,
+        "tap": 0,
+        "fg": 0,
+        "three": 0,
+        "ft": 0,
+        "totales": {
+          "min": 22,
+          "pts": 0,
+          "fg2m": 0,
+          "fg2a": 1,
+          "fg3m": 0,
+          "fg3a": 2,
+          "ftm": 0,
+          "fta": 0
+        }
       }
     ],
     "videos_youtube": []
@@ -505,7 +1028,83 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Caneros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 21,
+        "minutes": 22.2,
+        "pts": 7.7,
+        "reb": 5.4,
+        "ast": 0.7,
+        "rob": 0.4,
+        "tap": 0.9,
+        "fg": 59.4,
+        "three": 52.9,
+        "ft": 84,
+        "totales": {
+          "min": 467,
+          "pts": 162,
+          "fg2m": 57,
+          "fg2a": 96,
+          "fg3m": 9,
+          "fg3a": 17,
+          "ftm": 21,
+          "fta": 25
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Quimsa",
+        "liga": "Argentina-La Liga",
+        "pj": 1,
+        "minutes": 5,
+        "pts": 2,
+        "reb": 2,
+        "ast": 0,
+        "rob": 0,
+        "tap": 0,
+        "fg": 50,
+        "three": 0,
+        "ft": 0,
+        "totales": {
+          "min": 5,
+          "pts": 2,
+          "fg2m": 1,
+          "fg2a": 2,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 0,
+          "fta": 0
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Comunicaciones",
+        "liga": "Argentina-Liga Argentina",
+        "pj": 37,
+        "minutes": 19.4,
+        "pts": 9.2,
+        "reb": 6.1,
+        "ast": 0.5,
+        "rob": 0.5,
+        "tap": 1.2,
+        "fg": 57.5,
+        "three": 41.9,
+        "ft": 86.1,
+        "totales": {
+          "min": 719,
+          "pts": 339,
+          "fg2m": 119,
+          "fg2a": 207,
+          "fg3m": 13,
+          "fg3a": 31,
+          "ftm": 62,
+          "fta": 72
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -536,7 +1135,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marineros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 14,
+        "minutes": 26.3,
+        "pts": 16.6,
+        "reb": 7,
+        "ast": 2.3,
+        "rob": 0.6,
+        "tap": 0.4,
+        "fg": 68,
+        "three": 33.3,
+        "ft": 66.7,
+        "totales": {
+          "min": 368,
+          "pts": 233,
+          "fg2m": 68,
+          "fg2a": 100,
+          "fg3m": 13,
+          "fg3a": 39,
+          "ftm": 58,
+          "fta": 87
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "NSA",
+        "liga": "Lebanon-DLBL",
+        "pj": 4,
+        "minutes": 33.3,
+        "pts": 17.8,
+        "reb": 12.8,
+        "ast": 2.8,
+        "rob": 1.5,
+        "tap": 0.5,
+        "fg": 42.9,
+        "three": 27.8,
+        "ft": 69,
+        "totales": {
+          "min": 133,
+          "pts": 71,
+          "fg2m": 18,
+          "fg2a": 42,
+          "fg3m": 5,
+          "fg3a": 18,
+          "ftm": 20,
+          "fta": 29
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -567,7 +1217,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gaiteros",
+        "liga": "Venezuela-SPB",
+        "pj": 34,
+        "minutes": 28.9,
+        "pts": 18.7,
+        "reb": 4.1,
+        "ast": 3,
+        "rob": 1.9,
+        "tap": 0.9,
+        "fg": 55.3,
+        "three": 32.8,
+        "ft": 64,
+        "totales": {
+          "min": 983,
+          "pts": 635,
+          "fg2m": 205,
+          "fg2a": 371,
+          "fg3m": 40,
+          "fg3a": 122,
+          "ftm": 105,
+          "fta": 164
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -598,7 +1274,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026-2027",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
+        "pj": 2,
+        "minutes": 11.5,
+        "pts": 3.5,
+        "reb": 3.5,
+        "ast": 1.5,
+        "rob": 0,
+        "tap": 0,
+        "fg": 75,
+        "three": 0,
+        "ft": 50,
+        "totales": {
+          "min": 23,
+          "pts": 7,
+          "fg2m": 3,
+          "fg2a": 4,
+          "fg3m": 0,
+          "fg3a": 3,
+          "ftm": 1,
+          "fta": 2
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -629,7 +1331,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Centauros",
+        "liga": "Venezuela-SPB",
+        "pj": 11,
+        "minutes": 34.5,
+        "pts": 20.3,
+        "reb": 5.3,
+        "ast": 2.8,
+        "rob": 1.2,
+        "tap": 0.2,
+        "fg": 64.7,
+        "three": 23.2,
+        "ft": 73.2,
+        "totales": {
+          "min": 379,
+          "pts": 223,
+          "fg2m": 66,
+          "fg2a": 102,
+          "fg3m": 13,
+          "fg3a": 56,
+          "ftm": 52,
+          "fta": 71
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -660,7 +1388,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Reales",
+        "liga": "Dominican Republic-LNB",
+        "pj": 25,
+        "minutes": 18.1,
+        "pts": 8.4,
+        "reb": 2.9,
+        "ast": 1,
+        "rob": 0.2,
+        "tap": 0.5,
+        "fg": 62.7,
+        "three": 35.5,
+        "ft": 68.5,
+        "totales": {
+          "min": 453,
+          "pts": 210,
+          "fg2m": 37,
+          "fg2a": 59,
+          "fg3m": 33,
+          "fg3a": 93,
+          "ftm": 37,
+          "fta": 54
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -691,7 +1445,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Cocodrilos",
+        "liga": "Venezuela-SPB",
+        "pj": 36,
+        "minutes": 30.6,
+        "pts": 18.7,
+        "reb": 3.1,
+        "ast": 2.6,
+        "rob": 1.1,
+        "tap": 0,
+        "fg": 51.5,
+        "three": 36.2,
+        "ft": 82,
+        "totales": {
+          "min": 1101,
+          "pts": 672,
+          "fg2m": 120,
+          "fg2a": 233,
+          "fg3m": 97,
+          "fg3a": 268,
+          "ftm": 141,
+          "fta": 172
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Titanes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 6,
+        "minutes": 25.5,
+        "pts": 16.5,
+        "reb": 1.5,
+        "ast": 0.8,
+        "rob": 0.3,
+        "tap": 0,
+        "fg": 46.2,
+        "three": 39.6,
+        "ft": 85.7,
+        "totales": {
+          "min": 153,
+          "pts": 99,
+          "fg2m": 12,
+          "fg2a": 26,
+          "fg3m": 21,
+          "fg3a": 53,
+          "ftm": 12,
+          "fta": 14
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -734,19 +1539,29 @@
     ],
     "estadisticas_temporada": [
       {
-        "temporada": "2024-2025",
-        "equipo": "Titanes del Distrito Nacional",
-        "liga": "LNB",
-        "pj": 28,
-        "minutes": 25,
-        "pts": 11.8,
-        "reb": 3,
-        "ast": 4.6,
-        "rob": 1.3,
-        "tap": 0.1,
-        "fg": 43,
-        "three": 35,
-        "ft": 82
+        "temporada": "2026-2027",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
+        "pj": 2,
+        "minutes": 10,
+        "pts": 7,
+        "reb": 1,
+        "ast": 2,
+        "rob": 2.5,
+        "tap": 0,
+        "fg": 75,
+        "three": 100,
+        "ft": 50,
+        "totales": {
+          "min": 20,
+          "pts": 14,
+          "fg2m": 3,
+          "fg2a": 4,
+          "fg3m": 2,
+          "fg3a": 2,
+          "ftm": 2,
+          "fta": 4
+        }
       }
     ],
     "videos_youtube": []
@@ -779,7 +1594,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Titanes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 23,
+        "minutes": 16.6,
+        "pts": 5,
+        "reb": 3.3,
+        "ast": 3.5,
+        "rob": 1.1,
+        "tap": 0,
+        "fg": 50.6,
+        "three": 21.7,
+        "ft": 53.3,
+        "totales": {
+          "min": 382,
+          "pts": 115,
+          "fg2m": 42,
+          "fg2a": 83,
+          "fg3m": 5,
+          "fg3a": 23,
+          "ftm": 16,
+          "fta": 30
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -810,7 +1651,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marineros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 25.3,
+        "pts": 13.1,
+        "reb": 3.8,
+        "ast": 1.9,
+        "rob": 0.9,
+        "tap": 0.3,
+        "fg": 62.3,
+        "three": 25.5,
+        "ft": 61.9,
+        "totales": {
+          "min": 405,
+          "pts": 210,
+          "fg2m": 71,
+          "fg2a": 114,
+          "fg3m": 14,
+          "fg3a": 55,
+          "ftm": 26,
+          "fta": 42
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -841,7 +1708,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gigantes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 34,
+        "minutes": 31,
+        "pts": 19.8,
+        "reb": 4.8,
+        "ast": 3.5,
+        "rob": 0.9,
+        "tap": 0.2,
+        "fg": 51.1,
+        "three": 33,
+        "ft": 85.6,
+        "totales": {
+          "min": 1054,
+          "pts": 674,
+          "fg2m": 167,
+          "fg2a": 327,
+          "fg3m": 62,
+          "fg3a": 188,
+          "ftm": 154,
+          "fta": 180
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -872,7 +1765,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marineros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 15,
+        "minutes": 28.1,
+        "pts": 12.9,
+        "reb": 3.9,
+        "ast": 1.9,
+        "rob": 1.7,
+        "tap": 0,
+        "fg": 58.5,
+        "three": 25.6,
+        "ft": 77.8,
+        "totales": {
+          "min": 421,
+          "pts": 193,
+          "fg2m": 48,
+          "fg2a": 82,
+          "fg3m": 23,
+          "fg3a": 90,
+          "ftm": 28,
+          "fta": 36
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -903,7 +1822,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marineros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 19.7,
+        "pts": 6.5,
+        "reb": 4.1,
+        "ast": 1,
+        "rob": 0.3,
+        "tap": 0.2,
+        "fg": 47.4,
+        "three": 30,
+        "ft": 57.1,
+        "totales": {
+          "min": 315,
+          "pts": 104,
+          "fg2m": 37,
+          "fg2a": 78,
+          "fg3m": 6,
+          "fg3a": 20,
+          "ftm": 12,
+          "fta": 21
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -934,7 +1879,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marineros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 12,
+        "minutes": 11.6,
+        "pts": 5.8,
+        "reb": 1.8,
+        "ast": 0.6,
+        "rob": 0.8,
+        "tap": 0.3,
+        "fg": 50,
+        "three": 23.1,
+        "ft": 48.3,
+        "totales": {
+          "min": 139,
+          "pts": 70,
+          "fg2m": 19,
+          "fg2a": 38,
+          "fg3m": 6,
+          "fg3a": 26,
+          "ftm": 14,
+          "fta": 29
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -965,7 +1936,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2025-2026",
+        "equipo": "Burgos U22",
+        "liga": "Spain-U22 League",
+        "pj": 27,
+        "minutes": 18.9,
+        "pts": 10.6,
+        "reb": 2.2,
+        "ast": 0.7,
+        "rob": 1.4,
+        "tap": 0.3,
+        "fg": 53.1,
+        "three": 31.5,
+        "ft": 66.2,
+        "totales": {
+          "min": 510,
+          "pts": 285,
+          "fg2m": 52,
+          "fg2a": 98,
+          "fg3m": 46,
+          "fg3a": 146,
+          "ftm": 43,
+          "fta": 65
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -996,7 +1993,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Parque Hostos",
+        "liga": "Dominican Republic-LDC",
+        "pj": 9,
+        "minutes": 15,
+        "pts": 4.2,
+        "reb": 1.8,
+        "ast": 0.7,
+        "rob": 0,
+        "tap": 0,
+        "fg": 28.6,
+        "three": 31.6,
+        "ft": 57.1,
+        "totales": {
+          "min": 135,
+          "pts": 38,
+          "fg2m": 8,
+          "fg2a": 28,
+          "fg3m": 6,
+          "fg3a": 19,
+          "ftm": 4,
+          "fta": 7
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1027,7 +2050,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2025",
+        "equipo": "Carrib.Storm",
+        "liga": "Colombia",
+        "pj": 17,
+        "minutes": 31.3,
+        "pts": 19.7,
+        "reb": 10.9,
+        "ast": 1.1,
+        "rob": 0.9,
+        "tap": 1.6,
+        "fg": 66.9,
+        "three": 39.5,
+        "ft": 63.5,
+        "totales": {
+          "min": 532,
+          "pts": 335,
+          "fg2m": 115,
+          "fg2a": 172,
+          "fg3m": 17,
+          "fg3a": 43,
+          "ftm": 54,
+          "fta": 85
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1058,7 +2107,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2025-2026",
+        "equipo": "Nicaragua",
+        "liga": "World Cup",
+        "pj": 2,
+        "minutes": 17.5,
+        "pts": 2.5,
+        "reb": 2,
+        "ast": 1,
+        "rob": 0.5,
+        "tap": 0,
+        "fg": 25,
+        "three": 12.5,
+        "ft": 0,
+        "totales": {
+          "min": 35,
+          "pts": 5,
+          "fg2m": 1,
+          "fg2a": 4,
+          "fg3m": 1,
+          "fg3a": 8,
+          "ftm": 0,
+          "fta": 0
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1089,7 +2164,49 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Motilones",
+        "liga": "Colombia",
+        "pj": 1,
+        "minutes": 4,
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "rob": 0,
+        "tap": 0,
+        "fg": 0,
+        "three": 0,
+        "ft": 0,
+        "totales": null
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Dominican Republic-LNB",
+        "pj": 2,
+        "minutes": 9.5,
+        "pts": 3,
+        "reb": 3,
+        "ast": 0.5,
+        "rob": 0,
+        "tap": 0,
+        "fg": 60,
+        "three": 0,
+        "ft": 0,
+        "totales": {
+          "min": 19,
+          "pts": 6,
+          "fg2m": 3,
+          "fg2a": 5,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 0,
+          "fta": 0
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1120,7 +2237,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Dominican Republic",
+        "pj": 12,
+        "minutes": 9.9,
+        "pts": 2.8,
+        "reb": 1,
+        "ast": 0.5,
+        "rob": 0.3,
+        "tap": 0.2,
+        "fg": 33.3,
+        "three": 41.7,
+        "ft": 77.8,
+        "totales": {
+          "min": 119,
+          "pts": 34,
+          "fg2m": 6,
+          "fg2a": 18,
+          "fg3m": 5,
+          "fg3a": 12,
+          "ftm": 7,
+          "fta": 9
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1151,7 +2294,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 28.3,
+        "pts": 11.9,
+        "reb": 3.5,
+        "ast": 3.6,
+        "rob": 1.2,
+        "tap": 0.3,
+        "fg": 62.5,
+        "three": 28.6,
+        "ft": 70.2,
+        "totales": {
+          "min": 452,
+          "pts": 190,
+          "fg2m": 60,
+          "fg2a": 96,
+          "fg3m": 10,
+          "fg3a": 35,
+          "ftm": 40,
+          "fta": 57
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1182,7 +2351,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "El Calor",
+        "liga": "Mexico-LNBP",
+        "pj": 10,
+        "minutes": 17,
+        "pts": 6.2,
+        "reb": 4.1,
+        "ast": 0.9,
+        "rob": 0.5,
+        "tap": 0.9,
+        "fg": 55.6,
+        "three": 25,
+        "ft": 52,
+        "totales": {
+          "min": 170,
+          "pts": 62,
+          "fg2m": 20,
+          "fg2a": 36,
+          "fg3m": 3,
+          "fg3a": 12,
+          "ftm": 13,
+          "fta": 25
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Metros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 34,
+        "minutes": 19.2,
+        "pts": 7.4,
+        "reb": 3.3,
+        "ast": 0.7,
+        "rob": 0.6,
+        "tap": 0.9,
+        "fg": 60.1,
+        "three": 42.5,
+        "ft": 49.3,
+        "totales": {
+          "min": 654,
+          "pts": 251,
+          "fg2m": 83,
+          "fg2a": 138,
+          "fg3m": 17,
+          "fg3a": 40,
+          "ftm": 34,
+          "fta": 69
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1213,7 +2433,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Soles",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 27.3,
+        "pts": 9.1,
+        "reb": 7.9,
+        "ast": 0.8,
+        "rob": 0.4,
+        "tap": 0.9,
+        "fg": 49.5,
+        "three": 0,
+        "ft": 57,
+        "totales": {
+          "min": 436,
+          "pts": 145,
+          "fg2m": 50,
+          "fg2a": 101,
+          "fg3m": 0,
+          "fg3a": 2,
+          "ftm": 45,
+          "fta": 79
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1244,7 +2490,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Heroes",
+        "liga": "Venezuela-SPB",
+        "pj": 6,
+        "minutes": 28,
+        "pts": 17.3,
+        "reb": 4,
+        "ast": 2.5,
+        "rob": 1.8,
+        "tap": 0,
+        "fg": 54.5,
+        "three": 37,
+        "ft": 83.3,
+        "totales": {
+          "min": 168,
+          "pts": 104,
+          "fg2m": 24,
+          "fg2a": 44,
+          "fg3m": 17,
+          "fg3a": 46,
+          "ftm": 5,
+          "fta": 6
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1275,7 +2547,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Heroes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 25,
+        "minutes": 25.8,
+        "pts": 8.6,
+        "reb": 3.5,
+        "ast": 5.5,
+        "rob": 1.7,
+        "tap": 0.1,
+        "fg": 49.3,
+        "three": 34.5,
+        "ft": 55.3,
+        "totales": {
+          "min": 645,
+          "pts": 214,
+          "fg2m": 71,
+          "fg2a": 144,
+          "fg3m": 10,
+          "fg3a": 29,
+          "ftm": 42,
+          "fta": 76
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1306,7 +2604,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Heroes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 27,
+        "minutes": 29.7,
+        "pts": 15.3,
+        "reb": 3.1,
+        "ast": 2.4,
+        "rob": 1,
+        "tap": 0.2,
+        "fg": 58.4,
+        "three": 29.9,
+        "ft": 76.5,
+        "totales": {
+          "min": 802,
+          "pts": 414,
+          "fg2m": 122,
+          "fg2a": 209,
+          "fg3m": 35,
+          "fg3a": 117,
+          "ftm": 65,
+          "fta": 85
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Anorthosis",
+        "liga": "Cyprus-ECOMMBX BL",
+        "pj": 10,
+        "minutes": 35.6,
+        "pts": 15.8,
+        "reb": 4.6,
+        "ast": 4.4,
+        "rob": 1,
+        "tap": 0.2,
+        "fg": 48.8,
+        "three": 40,
+        "ft": 69.2,
+        "totales": {
+          "min": 356,
+          "pts": 158,
+          "fg2m": 40,
+          "fg2a": 82,
+          "fg3m": 20,
+          "fg3a": 50,
+          "ftm": 18,
+          "fta": 26
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1337,7 +2686,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Leones",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 34.6,
+        "pts": 20.4,
+        "reb": 5.8,
+        "ast": 3.1,
+        "rob": 1.4,
+        "tap": 0.2,
+        "fg": 56.8,
+        "three": 31.8,
+        "ft": 87.8,
+        "totales": {
+          "min": 554,
+          "pts": 327,
+          "fg2m": 71,
+          "fg2a": 125,
+          "fg3m": 28,
+          "fg3a": 88,
+          "ftm": 101,
+          "fta": 115
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1368,7 +2743,58 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2025-2026",
+        "equipo": "Nicaragua",
+        "liga": "World Cup",
+        "pj": 2,
+        "minutes": 23,
+        "pts": 8.5,
+        "reb": 7,
+        "ast": 0,
+        "rob": 1,
+        "tap": 0,
+        "fg": 36.8,
+        "three": 25,
+        "ft": 0,
+        "totales": {
+          "min": 46,
+          "pts": 17,
+          "fg2m": 7,
+          "fg2a": 19,
+          "fg3m": 1,
+          "fg3a": 4,
+          "ftm": 0,
+          "fta": 0
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Nicaragua",
+        "liga": "FIBA AmeriCup",
+        "pj": 2,
+        "minutes": 25.5,
+        "pts": 6.5,
+        "reb": 5,
+        "ast": 2,
+        "rob": 1,
+        "tap": 0.5,
+        "fg": 40,
+        "three": 16.7,
+        "ft": 100,
+        "totales": {
+          "min": 51,
+          "pts": 13,
+          "fg2m": 4,
+          "fg2a": 10,
+          "fg3m": 1,
+          "fg3a": 6,
+          "ftm": 2,
+          "fta": 2
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1399,7 +2825,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gigantes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 29,
+        "minutes": 12.3,
+        "pts": 5.7,
+        "reb": 0.8,
+        "ast": 1,
+        "rob": 0.4,
+        "tap": 0,
+        "fg": 55.6,
+        "three": 37.5,
+        "ft": 75,
+        "totales": {
+          "min": 357,
+          "pts": 166,
+          "fg2m": 35,
+          "fg2a": 63,
+          "fg3m": 24,
+          "fg3a": 64,
+          "ftm": 24,
+          "fta": 32
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1430,7 +2882,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gigantes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 31,
+        "minutes": 13.1,
+        "pts": 3.9,
+        "reb": 1.5,
+        "ast": 2.2,
+        "rob": 0.3,
+        "tap": 0.1,
+        "fg": 47.9,
+        "three": 35.8,
+        "ft": 65.5,
+        "totales": {
+          "min": 407,
+          "pts": 122,
+          "fg2m": 23,
+          "fg2a": 48,
+          "fg3m": 19,
+          "fg3a": 53,
+          "ftm": 19,
+          "fta": 29
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1461,7 +2939,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Leones",
+        "liga": "Dominican Republic-LNB",
+        "pj": 16,
+        "minutes": 30.6,
+        "pts": 19.7,
+        "reb": 3.3,
+        "ast": 3.5,
+        "rob": 1.3,
+        "tap": 0.1,
+        "fg": 57.5,
+        "three": 41.1,
+        "ft": 73.5,
+        "totales": {
+          "min": 489,
+          "pts": 315,
+          "fg2m": 84,
+          "fg2a": 146,
+          "fg3m": 37,
+          "fg3a": 90,
+          "ftm": 36,
+          "fta": 49
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1492,7 +2996,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2024-2025",
+        "equipo": "Interclube",
+        "liga": "Angola-Unitel Basket",
+        "pj": 17,
+        "minutes": 33.4,
+        "pts": 14.7,
+        "reb": 3.7,
+        "ast": 2.8,
+        "rob": 1.5,
+        "tap": 0.1,
+        "fg": 58.2,
+        "three": 29.3,
+        "ft": 82.8,
+        "totales": {
+          "min": 567,
+          "pts": 250,
+          "fg2m": 53,
+          "fg2a": 91,
+          "fg3m": 24,
+          "fg3a": 82,
+          "ftm": 72,
+          "fta": 87
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1523,7 +3053,83 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Gaiteros",
+        "liga": "Venezuela-SPB",
+        "pj": 30,
+        "minutes": 30.1,
+        "pts": 17,
+        "reb": 2.5,
+        "ast": 3.7,
+        "rob": 1.5,
+        "tap": 0.1,
+        "fg": 47.8,
+        "three": 42,
+        "ft": 80.5,
+        "totales": {
+          "min": 903,
+          "pts": 509,
+          "fg2m": 88,
+          "fg2a": 184,
+          "fg3m": 89,
+          "fg3a": 212,
+          "ftm": 66,
+          "fta": 82
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "El Calor",
+        "liga": "Mexico-LNBP",
+        "pj": 8,
+        "minutes": 24.6,
+        "pts": 11.3,
+        "reb": 1.8,
+        "ast": 3.3,
+        "rob": 0.5,
+        "tap": 0.3,
+        "fg": 41.3,
+        "three": 38.5,
+        "ft": 53.8,
+        "totales": {
+          "min": 197,
+          "pts": 90,
+          "fg2m": 19,
+          "fg2a": 46,
+          "fg3m": 15,
+          "fg3a": 39,
+          "ftm": 7,
+          "fta": 13
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Al Gharafa",
+        "liga": "Qatar-QBL",
+        "pj": 6,
+        "minutes": 33.8,
+        "pts": 22.8,
+        "reb": 4.3,
+        "ast": 4.3,
+        "rob": 0.5,
+        "tap": 0.5,
+        "fg": 65.1,
+        "three": 42.5,
+        "ft": 78.9,
+        "totales": {
+          "min": 203,
+          "pts": 137,
+          "fg2m": 28,
+          "fg2a": 43,
+          "fg3m": 17,
+          "fg3a": 40,
+          "ftm": 30,
+          "fta": 38
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1554,7 +3160,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Reales",
+        "liga": "Dominican Republic-LNB",
+        "pj": 25,
+        "minutes": 15.1,
+        "pts": 4.6,
+        "reb": 2.4,
+        "ast": 2.5,
+        "rob": 0.9,
+        "tap": 0,
+        "fg": 40,
+        "three": 29.4,
+        "ft": 90.9,
+        "totales": {
+          "min": 377,
+          "pts": 116,
+          "fg2m": 18,
+          "fg2a": 45,
+          "fg3m": 20,
+          "fg3a": 68,
+          "ftm": 20,
+          "fta": 22
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1585,7 +3217,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Caneros",
+        "liga": "Dominican Republic-LNB",
+        "pj": 20,
+        "minutes": 18.2,
+        "pts": 5.7,
+        "reb": 3.2,
+        "ast": 1,
+        "rob": 0.9,
+        "tap": 0.4,
+        "fg": 65.2,
+        "three": 32.6,
+        "ft": 52.9,
+        "totales": {
+          "min": 364,
+          "pts": 114,
+          "fg2m": 30,
+          "fg2a": 46,
+          "fg3m": 15,
+          "fg3a": 46,
+          "ftm": 9,
+          "fta": 17
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1647,7 +3305,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Heroes",
+        "liga": "Venezuela-SPB",
+        "pj": 3,
+        "minutes": 21.3,
+        "pts": 8,
+        "reb": 0.7,
+        "ast": 1.7,
+        "rob": 0.3,
+        "tap": 0,
+        "fg": 41.7,
+        "three": 33.3,
+        "ft": 71.4,
+        "totales": {
+          "min": 64,
+          "pts": 24,
+          "fg2m": 5,
+          "fg2a": 12,
+          "fg3m": 3,
+          "fg3a": 9,
+          "ftm": 5,
+          "fta": 7
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1704,8 +3388,8 @@
     "estadisticas_temporada": [
       {
         "temporada": "2026",
-        "equipo": "Vaqueros de Bayamón",
-        "liga": "BSN (Puerto Rico)",
+        "equipo": "Bayamon",
+        "liga": "Puerto Rico-BSN",
         "pj": 27,
         "minutes": 30.3,
         "pts": 19.6,
@@ -1715,12 +3399,22 @@
         "tap": 0.3,
         "fg": 63.3,
         "three": 33.7,
-        "ft": 83.5
+        "ft": 83.5,
+        "totales": {
+          "min": 817,
+          "pts": 530,
+          "fg2m": 126,
+          "fg2a": 199,
+          "fg3m": 59,
+          "fg3a": 175,
+          "ftm": 101,
+          "fta": 121
+        }
       },
       {
         "temporada": "2025-2026",
-        "equipo": "Coviran Granada",
-        "liga": "Liga Endesa (ACB)",
+        "equipo": "Granada",
+        "liga": "Spain-Liga Endesa",
         "pj": 23,
         "minutes": 21.8,
         "pts": 11.3,
@@ -1730,12 +3424,22 @@
         "tap": 0.3,
         "fg": 56.6,
         "three": 34.9,
-        "ft": 84.3
+        "ft": 84.3,
+        "totales": {
+          "min": 502,
+          "pts": 261,
+          "fg2m": 56,
+          "fg2a": 99,
+          "fg3m": 30,
+          "fg3a": 86,
+          "ftm": 59,
+          "fta": 70
+        }
       },
       {
         "temporada": "2025-2026",
-        "equipo": "Grupo Alega Cantabria",
-        "liga": "Primera FEB",
+        "equipo": "Cantabria",
+        "liga": "Spain-Primera FEB",
         "pj": 9,
         "minutes": 28.7,
         "pts": 15.1,
@@ -1745,12 +3449,22 @@
         "tap": 0.4,
         "fg": 50,
         "three": 50,
-        "ft": 80
+        "ft": 80,
+        "totales": {
+          "min": 258,
+          "pts": 136,
+          "fg2m": 24,
+          "fg2a": 48,
+          "fg3m": 20,
+          "fg3a": 40,
+          "ftm": 28,
+          "fta": 35
+        }
       },
       {
         "temporada": "2025-2026",
-        "equipo": "Rep. Dominicana",
-        "liga": "Mundial FIBA",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
         "pj": 5,
         "minutes": 23.6,
         "pts": 9.4,
@@ -1760,11 +3474,21 @@
         "tap": 0.2,
         "fg": 52.2,
         "three": 27.8,
-        "ft": 100
+        "ft": 100,
+        "totales": {
+          "min": 118,
+          "pts": 47,
+          "fg2m": 12,
+          "fg2a": 23,
+          "fg3m": 5,
+          "fg3a": 18,
+          "ftm": 8,
+          "fta": 8
+        }
       },
       {
         "temporada": "2025-2026",
-        "equipo": "Rep. Dominicana",
+        "equipo": "Dominican Republic",
         "liga": "FIBA AmeriCup",
         "pj": 2,
         "minutes": 19,
@@ -1775,7 +3499,17 @@
         "tap": 0,
         "fg": 83.3,
         "three": 25,
-        "ft": 100
+        "ft": 100,
+        "totales": {
+          "min": 38,
+          "pts": 20,
+          "fg2m": 5,
+          "fg2a": 6,
+          "fg3m": 2,
+          "fg3a": 8,
+          "ftm": 4,
+          "fta": 4
+        }
       }
     ],
     "videos_youtube": [
@@ -1882,7 +3616,83 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026",
+        "equipo": "Marinos",
+        "liga": "Venezuela-SPB",
+        "pj": 10,
+        "minutes": 22.8,
+        "pts": 9.2,
+        "reb": 4.9,
+        "ast": 2.3,
+        "rob": 1.2,
+        "tap": 0.2,
+        "fg": 46.6,
+        "three": 15.8,
+        "ft": 60,
+        "totales": {
+          "min": 228,
+          "pts": 92,
+          "fg2m": 34,
+          "fg2a": 73,
+          "fg3m": 3,
+          "fg3a": 19,
+          "ftm": 15,
+          "fta": 25
+        }
+      },
+      {
+        "temporada": "2026",
+        "equipo": "Gigantes",
+        "liga": "Dominican Republic-LNB",
+        "pj": 6,
+        "minutes": 27.2,
+        "pts": 13,
+        "reb": 5.8,
+        "ast": 3,
+        "rob": 0.8,
+        "tap": 0,
+        "fg": 58.1,
+        "three": 25,
+        "ft": 68.8,
+        "totales": {
+          "min": 163,
+          "pts": 78,
+          "fg2m": 25,
+          "fg2a": 43,
+          "fg3m": 2,
+          "fg3a": 8,
+          "ftm": 22,
+          "fta": 32
+        }
+      },
+      {
+        "temporada": "2025-2026",
+        "equipo": "Dominican Republic",
+        "liga": "FIBA AmeriCup",
+        "pj": 2,
+        "minutes": 10,
+        "pts": 3,
+        "reb": 2,
+        "ast": 0.5,
+        "rob": 0,
+        "tap": 1,
+        "fg": 60,
+        "three": 0,
+        "ft": 0,
+        "totales": {
+          "min": 20,
+          "pts": 6,
+          "fg2m": 3,
+          "fg2a": 5,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 0,
+          "fta": 0
+        }
+      }
+    ],
     "videos_youtube": []
   },
   {
@@ -1913,7 +3723,33 @@
     "bio": null,
     "redes_sociales": {},
     "historial_equipos": [],
-    "estadisticas_temporada": [],
+    "estadisticas_temporada": [
+      {
+        "temporada": "2026-2027",
+        "equipo": "Dominican Republic",
+        "liga": "World Cup",
+        "pj": 1,
+        "minutes": 10,
+        "pts": 4,
+        "reb": 3,
+        "ast": 0,
+        "rob": 0,
+        "tap": 1,
+        "fg": 25,
+        "three": 0,
+        "ft": 100,
+        "totales": {
+          "min": 10,
+          "pts": 4,
+          "fg2m": 1,
+          "fg2a": 4,
+          "fg3m": 0,
+          "fg3a": 0,
+          "ftm": 2,
+          "fta": 2
+        }
+      }
+    ],
     "videos_youtube": []
   }
 ]

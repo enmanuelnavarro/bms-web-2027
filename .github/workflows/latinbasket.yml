@@ -1,0 +1,96 @@
+name: Estadísticas desde LatinBasket
+
+# Relee la ficha de LatinBasket de cada representado y actualiza sus
+# estadísticas en lib/players.json. Al hacer push, Vercel redespliega y la web
+# queda con los datos nuevos: no hay que tocar nada a mano.
+#
+# El disparador es diario, pero el intervalo real son 48 h y lo hace cumplir
+# scripts/actualiza-latinbasket.ts. Es a propósito: "cada dos días" en cron
+# (`*/2` en el día del mes) se descuadra al final de cada mes —del día 31 salta
+# al 1— y dejaría huecos de un día. Con un disparador diario y el reloj dentro
+# del script, la cadencia es exacta.
+
+on:
+  schedule:
+    # 06:15 UTC = 02:15 en República Dominicana. Se evita la hora en punto,
+    # que es cuando GitHub acumula más retraso en la cola de cron.
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Saltarse el intervalo de 48 h"
+        type: boolean
+        default: false
+      dry:
+        description: "Simulación: no escribe nada"
+        type: boolean
+        default: false
+
+# Sin esto el paso de commit no puede escribir en el repositorio.
+permissions:
+  contents: write
+
+# Dos ejecuciones a la vez se pisarían al hacer push.
+concurrency:
+  group: latinbasket
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    # 50 fichas a 1,5 s son ~2 min; 15 da margen de sobra para reintentos.
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Node 24 ejecuta TypeScript sin compilar, así que el script puede
+          # importar lib/latinbasket.ts directamente en vez de duplicar el
+          # parser que ya usa la web.
+          node-version: "24"
+
+      - name: Leer LatinBasket
+        id: revision
+        run: |
+          node --no-warnings scripts/actualiza-latinbasket.ts \
+            ${{ inputs.force && '--force' || '' }} \
+            ${{ inputs.dry && '--dry' || '' }} \
+            | tee salida.txt
+          {
+            echo '## Revisión de LatinBasket'
+            echo '```'
+            cat salida.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          rm salida.txt
+
+      - name: Publicar los cambios
+        if: ${{ !inputs.dry }}
+        run: |
+          if git diff --quiet -- lib/players.json docs/latinbasket-estado.json; then
+            echo "Sin cambios que publicar."
+            exit 0
+          fi
+
+          # Se resume en el mensaje qué jugadores cambiaron, para que el
+          # histórico sirva de algo sin abrir el diff.
+          CAMBIADOS=$(node -e '
+            const e = require("./docs/latinbasket-estado.json");
+            const a = e.resultados.filter(r => r.estado === "actualizado");
+            console.log(a.map(r => `- ${r.jugador}: ${r.detalle}`).join("\n"));
+          ')
+          RESUMEN=$(node -e '
+            const e = require("./docs/latinbasket-estado.json");
+            const r = e.resumen;
+            console.log(`${r.actualizados} actualizados, ${r.sin_cambios} sin cambios, ${r.sin_lectura} sin lectura`);
+          ')
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/players.json docs/latinbasket-estado.json
+          git commit -m "Actualiza las estadísticas desde LatinBasket" \
+                     -m "$RESUMEN" \
+                     -m "$CAMBIADOS"
+          git push
