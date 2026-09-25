@@ -1,0 +1,869 @@
+{
+  "ultima_revision": "2026-09-25T15:25:34.897Z",
+  "intervalo_horas": 48,
+  "resumen": {
+    "revisados": 53,
+    "actualizados": 50,
+    "sin_cambios": 0,
+    "sin_lectura": 0,
+    "omitidos": 3,
+    "diferencias_pendientes": 50
+  },
+  "resultados": [
+    {
+      "jugador": "victor-liz",
+      "estado": "actualizado",
+      "detalle": "estadísticas (1 → 2 temporadas)",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Puerto Rican BSN"
+        }
+      ]
+    },
+    {
+      "jugador": "ernesto-hernandez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Piratas de la Guaira"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Venezuelan SPB"
+        }
+      ]
+    },
+    {
+      "jugador": "jonathan-bello",
+      "estado": "actualizado",
+      "detalle": "estadísticas (2 → 2 temporadas)",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Soles",
+          "fuente": "Club Deportes Las Animas"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Chilean LNB"
+        }
+      ]
+    },
+    {
+      "jugador": "bernardo-polanco",
+      "estado": "actualizado",
+      "detalle": "3 temporada(s) nuevas",
+      "temporadas": 3,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Salvadorean Liga MB"
+        }
+      ]
+    },
+    {
+      "jugador": "jeromy-rodriguez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "CDP Domingo Paulino Santiago"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "juan-rosario",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Gigantes de San Francisco"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "devontae-shuler",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Soles de Santo Domingo Este"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "sydney-curry",
+      "estado": "omitido",
+      "detalle": "fuente Eurobasket, sin parser"
+    },
+    {
+      "jugador": "jhery-matos",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Dominican Rep. National Team (2025-26)"
+        }
+      ]
+    },
+    {
+      "jugador": "miguel-simon",
+      "estado": "actualizado",
+      "detalle": "5 temporada(s) nuevas",
+      "temporadas": 5,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Gaiteros del Zulia",
+          "fuente": "Panteras de Aguascalientes"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        }
+      ]
+    },
+    {
+      "jugador": "yeison-colome",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "gelvis-solano",
+      "estado": "actualizado",
+      "detalle": "estadísticas (1 → 4 temporadas)",
+      "temporadas": 4,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Dominican Rep. National Team (2016-26)"
+        }
+      ]
+    },
+    {
+      "jugador": "raymon-bastardo",
+      "estado": "actualizado",
+      "detalle": "3 temporada(s) nuevas",
+      "temporadas": 3,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Club El Millón",
+          "fuente": "Caneros Del Este"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "emmanuel-omogbo",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Marineros de Puerto Plata"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "nahziah-carter",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Venezuelan SPB"
+        }
+      ]
+    },
+    {
+      "jugador": "juan-guerrero",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Dominican Rep. National Team (2016-26)"
+        }
+      ]
+    },
+    {
+      "jugador": "luis-martinez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Venezuelan SPB"
+        }
+      ]
+    },
+    {
+      "jugador": "anderson-mirambeaux",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "diego-colon",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Titanes del Distrito Nacional"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "richard-bautista",
+      "estado": "actualizado",
+      "detalle": "estadísticas (1 → 1 temporadas)",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Dominican Rep. National Team (2022-26)"
+        }
+      ]
+    },
+    {
+      "jugador": "randy-bautista",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "luis-feliz",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "bj-fitzgerald",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Gigantes",
+          "fuente": "El Calor de Cancun"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        }
+      ]
+    },
+    {
+      "jugador": "andres-fulgencio",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Marineros de Puerto Plata"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "rich-polanco",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Marineros de Puerto Plata"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "luis-morel",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Marineros de Puerto Plata"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "farly-nunez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Capitanes de La Villa",
+          "fuente": "Astros de Vega"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "malvin-duran",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Parque Hostos"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "emmitt-williams",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Colombian LPB"
+        }
+      ]
+    },
+    {
+      "jugador": "theodore-parham-jr",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Nicaraguan National Team. Parham Jr. graduated University of Pikeville"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "2023"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Nicaraguan National Team"
+        }
+      ]
+    },
+    {
+      "jugador": "javier-del-rosario",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Soles de Santo Domingo Este"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "daylin-thomas",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Soles de Santo Domingo Este"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "darwin-rosario",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Cuenca Basket Club"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Ecuadorian Liga Basquet Pro"
+        }
+      ]
+    },
+    {
+      "jugador": "jordan-geronimo",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "El Calor de Cancun"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        }
+      ]
+    },
+    {
+      "jugador": "jean-quezada",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Brumas de Jinotega"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Nicaraguan LSB"
+        }
+      ]
+    },
+    {
+      "jugador": "yeikson-montero",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Heroes",
+          "fuente": "Guerreros de Neumane"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Ecuadorian Liga Basquet Pro"
+        }
+      ]
+    },
+    {
+      "jugador": "jaison-valdez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "caleb-huffman",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "angel-gerardo-suero",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "josmel-martinez",
+      "estado": "actualizado",
+      "detalle": "2 temporada(s) nuevas",
+      "temporadas": 2,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Jaguares de la UAM"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Nicaraguan LSB"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Nicaraguan National Team (2023-26)"
+        }
+      ]
+    },
+    {
+      "jugador": "jean-karlo-iciano",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Gigantes de San Francisco"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "fecha_nacimiento",
+          "publicado": null,
+          "fuente": "1997-12-04"
+        }
+      ]
+    },
+    {
+      "jugador": "edgar-tejeda",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Gigantes de San Francisco"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "reggie-quezada",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "raimer-mercedes",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "UAM",
+          "fuente": "Plaza Fernando Valerio"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "jesse-zarzuela",
+      "estado": "actualizado",
+      "detalle": "3 temporada(s) nuevas",
+      "temporadas": 3,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Mexican LNBP"
+        }
+      ]
+    },
+    {
+      "jugador": "victor-martinez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "brayan-martinez",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": null,
+          "fuente": "Caneros Del Este"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "yuri-covington",
+      "estado": "omitido",
+      "detalle": "fuente Eurobasket, sin parser"
+    },
+    {
+      "jugador": "hysier-miller",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Venezuelan SPB"
+        }
+      ]
+    },
+    {
+      "jugador": "jassel-perez",
+      "estado": "actualizado",
+      "detalle": "estadísticas (5 → 5 temporadas)",
+      "temporadas": 5,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Covirán Granada",
+          "fuente": "Basquet Girona"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Spanish Liga Endesa"
+        }
+      ]
+    },
+    {
+      "jugador": "andersson-garcia",
+      "estado": "omitido",
+      "detalle": "fuente Eurobasket, sin parser"
+    },
+    {
+      "jugador": "juan-suero",
+      "estado": "actualizado",
+      "detalle": "3 temporada(s) nuevas",
+      "temporadas": 3,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Trotamundos",
+          "fuente": "Gigantes de San Francisco"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Dominican Rep"
+        }
+      ]
+    },
+    {
+      "jugador": "luismal-ferreiras",
+      "estado": "actualizado",
+      "detalle": "1 temporada(s) nuevas",
+      "temporadas": 1,
+      "diferencias": [
+        {
+          "campo": "equipo_actual",
+          "publicado": "Club Nacional de Football",
+          "fuente": "Nacional De Futbol Montevideo"
+        },
+        {
+          "campo": "liga_actual",
+          "publicado": null,
+          "fuente": "Uruguayan LUB"
+        },
+        {
+          "campo": "seleccion",
+          "publicado": null,
+          "fuente": "Dominican Rep. National Team (2024-26)"
+        }
+      ]
+    }
+  ]
+}
