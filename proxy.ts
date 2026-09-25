@@ -17,6 +17,15 @@ const LIBRES = [
   "/logos/",
   "/icon.png",
   "/favicon.ico",
+  // Las imágenes de /public tienen que pasar aunque el sitio esté cerrado:
+  // el optimizador de Next las pide al propio servidor con una petición
+  // interna, sin la cookie de acceso, y si el proxy la redirige a las obras
+  // recibe un 307 y responde "The requested resource isn't a valid image".
+  // Sin esto no se ve ni una foto, tampoco con la clave puesta. Lo que se
+  // cierra son las páginas y los datos; un .png suelto no enseña nada.
+  "/players/",
+  "/equipo/",
+  "/banner/",
 ];
 
 export default async function proxy(req: NextRequest) {

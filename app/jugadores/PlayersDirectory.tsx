@@ -129,15 +129,17 @@ export default function PlayersDirectory() {
                     href={`/jugadores/${p.id}`}
                     className="group relative rounded-2xl overflow-hidden card-dark hover:border-gold-dark transition-colors flex flex-col"
                   >
-                    <div className="relative w-full h-80 overflow-hidden bg-gradient-to-b from-elevated to-ink">
-                      {/* object-contain: las fotos son recortes de cuerpo
-                          entero y con cover se les corta la cabeza. */}
+                    <div className="relative w-full aspect-[4/5] overflow-hidden bg-gradient-to-b from-elevated to-ink">
+                      {/* Las fotos salen ya a 4:5 de scripts/normaliza-fotos.mjs,
+                          así que aquí no se recorta nada. object-top por si
+                          alguna entra sin pasar por el script: antes de cortar
+                          una cabeza, que corte los pies. */}
                       <Image
                         src={fotoDe(p)}
                         alt={nombreCompleto(p)}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                        className="object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
                       {p.estado && (
