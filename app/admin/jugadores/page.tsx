@@ -4,6 +4,7 @@ import { exigeAdmin } from "@/lib/admin/auth";
 import { todosLosJugadores, type Jugador } from "@/lib/jugadores";
 import { completitud } from "@/lib/completitud";
 import { nombreCompleto } from "@/lib/players";
+import Link from "next/link";
 import Listado from "./Listado";
 
 export const metadata: Metadata = {
@@ -51,11 +52,20 @@ export default async function JugadoresPage() {
 
   return (
     <div className="space-y-6">
-      <header>
-        <h1 className="text-2xl font-bold tracking-wide text-gold">Jugadores</h1>
-        <p className="mt-1 text-body/60">
-          {filas.length} representados · fichas completas al {media} % de media
-        </p>
+      <header className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold tracking-wide text-gold">Jugadores</h1>
+          <p className="mt-1 text-body/60">
+            {filas.length} representados · fichas completas al {media} % de media
+          </p>
+        </div>
+
+        <Link
+          href="/admin/jugadores/nuevo"
+          className="rounded bg-gold px-4 py-2 font-semibold text-ink transition hover:bg-gold-light"
+        >
+          Nuevo jugador
+        </Link>
       </header>
 
       {fallo ? (

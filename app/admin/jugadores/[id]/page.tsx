@@ -15,10 +15,17 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function JugadorPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function JugadorPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ nuevo?: string }>;
+}) {
   await exigeAdmin();
 
   const { id } = await params;
+  const { nuevo } = await searchParams;
   const jugador = await jugadorPorUuid(id);
   if (!jugador) notFound();
 
@@ -38,6 +45,13 @@ export default async function JugadorPage({ params }: { params: Promise<{ id: st
           /jugadores/{jugador.id}
         </p>
       </header>
+
+      {nuevo === "1" && (
+        <p className="rounded border border-gold/40 bg-gold/10 px-4 py-3 text-sm text-gold-light">
+          Jugador creado como borrador. Rellena la ficha y, cuando esté lista, cámbiala a
+          «Publicada» abajo del todo.
+        </p>
+      )}
 
       <Ficha
         jugador={jugador}

@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { db } from "@/lib/db";
@@ -54,6 +55,107 @@ const vacio = (v: FormDataEntryValue | null) => {
   const s = String(v ?? "").trim();
   return s === "" ? undefined : s;
 };
+
+
+// --------------------------------------------------------------------- crear
+
+/** "Ángel Luis Delgado" → "angel-luis-delgado". */
+function slugifica(texto: string): string {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/['\u2019.]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
+const alta = z.object({
+  nombre: z.string().trim().min(2, "Falta el nombre."),
+  apellido: z.string().trim().max(80).optional(),
+  slug: z
+    .string()
+    .trim()
+    .regex(/^[a-z0-9-]*$/, "La dirección solo admite minúsculas, números y guiones.")
+    .max(60)
+    .optional(),
+  bms_code: z.string().trim().max(20).optional(),
+});
+
+/**
+ * Da de alta un jugador con lo mínimo y manda a su ficha para rellenar el
+ * resto. Pedir veinte campos antes de crear nada es la forma más rápida de que
+ * nadie dé de alta a nadie.
+ *
+ * Entra como **borrador**: no se ve en la web hasta que alguien la publique a
+ * conciencia. Una ficha a medias delante de un club es peor que ninguna.
+ */
+export async function crearJugadorAction(_previo: Estado, datos: FormData): Promise<Estado> {
+  const admin = await exigeAdmin();
+
+  const leido = alta.safeParse({
+    nombre: datos.get("nombre"),
+    apellido: vacio(datos.get("apellido")),
+    slug: vacio(datos.get("slug")),
+    bms_code: vacio(datos.get("bms_code")),
+  });
+
+  if (!leido.success) {
+    return { error: leido.error.issues[0]?.message ?? "Revisa los datos.", ok: null };
+  }
+
+  const d = leido.data;
+  const slug = d.slug || slugifica(`${d.nombre} ${d.apellido ?? ""}`.trim());
+
+  if (!slug) {
+    return { error: "No se pudo componer la dirección. Escríbela a mano.", ok: null };
+  }
+
+  let id: string;
+
+  try {
+    const choca = (await db()`select 1 from players where slug = ${slug} limit 1`) as unknown[];
+    if (choca.length) {
+      return {
+        error: `Ya hay un jugador en /jugadores/${slug}. Cambia la dirección.`,
+        ok: null,
+      };
+    }
+
+    if (d.bms_code) {
+      const chocaCodigo = (await db()`
+        select 1 from players where bms_code = ${d.bms_code} limit 1
+      `) as unknown[];
+      if (chocaCodigo.length) {
+        return { error: `El código ${d.bms_code} ya está en uso.`, ok: null };
+      }
+    }
+
+    // Al final del orden, para no recolocar a los que ya están.
+    const [{ siguiente }] = (await db()`
+      select coalesce(max(orden), -1) + 1 as siguiente from players
+    `) as Array<{ siguiente: number }>;
+
+    const [fila] = (await db()`
+      insert into players (slug, nombre, apellido, bms_code, estado_publicacion, orden,
+                           actualizado_por)
+      values (${slug}, ${d.nombre}, ${d.apellido ?? ""}, ${d.bms_code ?? null},
+              'borrador', ${siguiente}, ${admin.id})
+      returning id
+    `) as Array<{ id: string }>;
+
+    id = fila.id;
+    await registra(admin, "players", id, "insert", { slug, nombre: d.nombre });
+    refresca();
+  } catch (err) {
+    console.error("[jugadores] fallo al crear:", err);
+    return { error: mensajeDe(err), ok: null };
+  }
+
+  // Fuera del try: redirect() funciona lanzando.
+  redirect(`/admin/jugadores/${id}?nuevo=1`);
+}
 
 export async function guardarJugadorAction(_previo: Estado, datos: FormData): Promise<Estado> {
   const admin = await exigeAdmin();
