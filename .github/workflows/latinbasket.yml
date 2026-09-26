@@ -1,8 +1,12 @@
 name: Estadísticas desde LatinBasket
 
 # Relee la ficha de LatinBasket de cada representado y actualiza sus
-# estadísticas en lib/players.json. Al hacer push, Vercel redespliega y la web
-# queda con los datos nuevos: no hay que tocar nada a mano.
+# estadísticas en la base de datos. La web las coge en la siguiente visita: no
+# hay que desplegar nada.
+#
+# Antes esto escribía en lib/players.json y commiteaba los datos. Desde que
+# existe el panel manda la base, así que lo único que se commitea es el informe
+# de la revisión, para que quede histórico de qué cambió y cuándo.
 #
 # El disparador es diario, pero el intervalo real son 48 h y lo hace cumplir
 # scripts/actualiza-latinbasket.ts. Es a propósito: "cada dos días" en cron
@@ -53,7 +57,17 @@ jobs:
 
       - name: Leer LatinBasket
         id: revision
+        env:
+          # La conexión a Neon. Se añade en Settings → Secrets and variables →
+          # Actions. Es la misma cadena que usa Vercel.
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Falta el secreto DATABASE_URL en el repositorio." >&2
+            echo "Settings → Secrets and variables → Actions → New repository secret" >&2
+            exit 1
+          fi
+
           node --no-warnings scripts/actualiza-latinbasket.ts \
             ${{ inputs.force && '--force' || '' }} \
             ${{ inputs.dry && '--dry' || '' }} \
@@ -69,7 +83,7 @@ jobs:
       - name: Publicar los cambios
         if: ${{ !inputs.dry }}
         run: |
-          if git diff --quiet -- lib/players.json docs/latinbasket-estado.json; then
+          if git diff --quiet -- docs/latinbasket-estado.json; then
             echo "Sin cambios que publicar."
             exit 0
           fi
@@ -89,8 +103,8 @@ jobs:
 
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lib/players.json docs/latinbasket-estado.json
-          git commit -m "Actualiza las estadísticas desde LatinBasket" \
+          git add docs/latinbasket-estado.json
+          git commit -m "Registra la revisión de LatinBasket" \
                      -m "$RESUMEN" \
                      -m "$CAMBIADOS"
           git push

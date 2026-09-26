@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 import ContactContent, { type JugadorConsultado } from "./ContactContent";
 import { SITE } from "@/lib/site";
-import { getPlayer, nombreCompleto } from "@/lib/players";
+import { nombreCompleto } from "@/lib/players";
+import { jugadorPorSlug } from "@/lib/jugadores";
 
 const DESCRIPTION = `Contacta con ${SITE.legalName}: oficinas en Miami y República Dominicana. Agencia con licencia FIBA para representación de jugadores de baloncesto profesional.`;
 
@@ -22,7 +23,7 @@ export default async function ContactoPage({
   // El botón "Solicitar información" de cada ficha llega con ?jugador=<slug>.
   // Solo se acepta si el slug existe: así no se puede inyectar un nombre
   // arbitrario en el correo que recibe la agencia.
-  const player = slug ? getPlayer(slug) : undefined;
+  const player = slug ? await jugadorPorSlug(slug) : undefined;
   const jugador: JugadorConsultado | null = player
     ? {
         id: player.id,

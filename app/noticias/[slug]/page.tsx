@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import NewsImage from "@/components/NewsImage";
 import { fechaLarga } from "@/lib/news";
 import { noticiaPorSlug, noticiasPublicadas } from "@/lib/noticias";
-import { getPlayer, nombreCompleto } from "@/lib/players";
+import { nombreCompleto } from "@/lib/players";
+import { jugadoresPublicados } from "@/lib/jugadores";
 import { SITE } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -55,7 +56,10 @@ export default async function NewsDetailPage({ params }: Params) {
   // ya no existe es peor que no tener enlace.
   // La noticia puede llevar varios jugadores; se filtran los que ya no estén
   // en el roster para no dejar un enlace roto.
-  const relacionados = noticia.jugadores.map(getPlayer).filter((p) => p !== undefined);
+  const roster = await jugadoresPublicados();
+  const relacionados = noticia.jugadores
+    .map((slug) => roster.find((j) => j.id === slug))
+    .filter((p) => p !== undefined);
 
   return (
     <main className="min-h-screen bg-ink text-body">

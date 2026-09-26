@@ -76,6 +76,30 @@ export async function subeImagen(fichero: File, carpeta: string): Promise<Imagen
 }
 
 /**
+ * Sube el archivo **tal cual llegó**, sin recomprimir.
+ *
+ * Es lo que un club se descarga del álbum para montar un flyer: la versión
+ * optimizada de la galería está pensada para cargar rápido en pantalla, y para
+ * imprimir o recortar no sirve. Ocupa más, pero es justo el material que la
+ * agencia quiere que circule.
+ */
+export async function subeOriginal(
+  fichero: File,
+  carpeta: string
+): Promise<{ url: string; path: string; bytes: number }> {
+  const datos = Buffer.from(await fichero.arrayBuffer());
+  const base = fichero.name.replace(/[^a-zA-Z0-9.-]+/g, "-").slice(0, 70);
+
+  const blob = await put(`${carpeta}/originales/${base || "foto"}`, datos as unknown as Buffer, {
+    access: "public",
+    contentType: fichero.type || "application/octet-stream",
+    addRandomSuffix: true,
+  });
+
+  return { url: blob.url, path: blob.pathname, bytes: datos.length };
+}
+
+/**
  * Borra una imagen del almacén. No lanza: si el fichero ya no está, la fila de
  * la base se tiene que poder borrar igual. Quedarse con una fila apuntando a
  * una imagen que no existe es peor que dejar un fichero huérfano.

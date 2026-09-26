@@ -42,20 +42,13 @@ export const SECCIONES: Seccion[] = [
     titulo: "Jugadores",
     texto: "Publicar y editar representados.",
     icono: "jugador",
-    lista: false,
-  },
-  {
-    href: "/admin/albumes",
-    titulo: "Álbumes",
-    texto: "Fotos que los clubes descargan.",
-    icono: "album",
-    lista: false,
+    lista: true,
   },
   {
     href: "/admin/contactos",
     titulo: "Contactos",
     texto: "Bandeja de mensajes del formulario.",
     icono: "sobre",
-    lista: false,
+    lista: true,
   },
 ];

@@ -7,17 +7,18 @@ import Image from "next/image";
 import { STOCK_IMAGES } from "@/lib/images";
 import {
   ESTADO_ESTILOS,
-  PLAYERS,
   contextoEquipo,
   estadoKey,
   fotoDe,
   nombreCompleto,
-  valoresDe,
 } from "@/lib/players";
+import type { Jugador } from "@/lib/jugadores";
 
 const TODOS = "all";
 
-export default function PlayersDirectory() {
+// Los jugadores llegan por props desde la página, que los lee de la base de
+// datos. Este componente solo filtra y pinta.
+export default function PlayersDirectory({ jugadores }: { jugadores: Jugador[] }) {
   const [busqueda, setBusqueda] = useState("");
   const [posicion, setPosicion] = useState(TODOS);
   const [pais, setPais] = useState(TODOS);
@@ -25,13 +26,17 @@ export default function PlayersDirectory() {
 
   // Las opciones salen de la propia base: si mañana entra una posición nueva
   // desde el Excel, aparece en el desplegable sin tocar este fichero.
-  const posiciones = useMemo(() => valoresDe("posicion"), []);
-  const paises = useMemo(() => valoresDe("pais"), []);
-  const estados = useMemo(() => valoresDe("estado"), []);
+  const unicos = (campo: "posicion" | "pais" | "estado") =>
+    [...new Set(jugadores.map((p) => p[campo]).filter(Boolean) as string[])].sort((a, b) =>
+      a.localeCompare(b, "es")
+    );
+  const posiciones = useMemo(() => unicos("posicion"), [jugadores]);
+  const paises = useMemo(() => unicos("pais"), [jugadores]);
+  const estados = useMemo(() => unicos("estado"), [jugadores]);
 
   const filtrados = useMemo(() => {
     const termino = busqueda.trim().toLowerCase();
-    return PLAYERS.filter((p) => {
+    return jugadores.filter((p) => {
       const coincideNombre =
         !termino || nombreCompleto(p).toLowerCase().includes(termino);
       const coincidePosicion = posicion === TODOS || p.posicion === posicion;
@@ -39,7 +44,7 @@ export default function PlayersDirectory() {
       const coincideEstado = estado === TODOS || p.estado === estado;
       return coincideNombre && coincidePosicion && coincidePais && coincideEstado;
     });
-  }, [busqueda, posicion, pais, estado]);
+  }, [jugadores, busqueda, posicion, pais, estado]);
 
   return (
     <main className="min-h-screen bg-ink text-body overflow-x-hidden">

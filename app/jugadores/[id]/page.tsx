@@ -3,18 +3,19 @@ import { notFound } from "next/navigation";
 
 import PlayerProfile from "./PlayerProfile";
 import { SITE } from "@/lib/site";
-import { getPlayer, getPlayerIds, nombreCompleto } from "@/lib/players";
+import { nombreCompleto } from "@/lib/players";
+import { jugadorPorSlug, jugadoresPublicados } from "@/lib/jugadores";
 
 type Params = { params: Promise<{ id: string }> };
 
 /** Prerenderiza las 35 fichas: son estáticas y así entran mejor en el índice. */
-export function generateStaticParams() {
-  return getPlayerIds().map((id) => ({ id }));
+export async function generateStaticParams() {
+  return (await jugadoresPublicados()).map((j) => ({ id: j.id }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { id } = await params;
-  const player = getPlayer(id);
+  const player = await jugadorPorSlug(id);
 
   if (!player) {
     return { title: `Jugador no encontrado | ${SITE.shortName}` };
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function PlayerPage({ params }: Params) {
   const { id } = await params;
-  const player = getPlayer(id);
+  const player = await jugadorPorSlug(id);
 
   if (!player) notFound();
 

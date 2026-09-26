@@ -4,7 +4,6 @@ import { STOCK_IMAGES } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import {
   ESTADO_ESTILOS,
-  destacados,
   estadoKey,
   fotoDe,
   nombreCompleto,
@@ -18,10 +17,10 @@ import HeroCarousel from "@/components/HeroCarousel";
 import InstagramSection from "@/components/InstagramSection";
 import ServiceTabs from "@/components/ServiceTabs";
 import { slidesDePortada } from "@/lib/slides";
+import { jugadoresDestacados, jugadoresPublicados } from "@/lib/jugadores";
 
 // Salen de la base de jugadores, no de una lista escrita a mano: así la
 // portada no puede quedarse con nombres o cifras que ya no son ciertos.
-const featuredPlayers = destacados(3);
 
 const leagues = [
   { name: "NBA", region: "Estados Unidos" },
@@ -43,6 +42,11 @@ export default async function Home() {
   // La portada enseña solo las destacadas y manda al listado: no es una
   // página de noticias.
   const news = await noticiasDestacadas(3);
+
+  // Manda lo marcado a mano en el panel; si nadie ha marcado nada, se
+  // puntúa como antes: fotografía y estadísticas.
+  const featuredPlayers = await jugadoresDestacados(3);
+  const roster = await jugadoresPublicados();
 
   return (
     <main className="bg-ink text-body">

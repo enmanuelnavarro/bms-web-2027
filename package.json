@@ -13,6 +13,8 @@
     "admin": "node --no-warnings scripts/crear-admin.ts",
     "prueba:auth": "node --no-warnings --conditions react-server scripts/prueba-auth.ts",
     "prueba:html": "node --no-warnings --conditions react-server scripts/prueba-html.ts",
+    "migra:noticias": "node --no-warnings scripts/migra-noticias.ts",
+    "migra:jugadores": "node --no-warnings scripts/migra-jugadores.ts",
     "latinbasket": "node --no-warnings scripts/actualiza-latinbasket.ts"
   },
   "keywords": [],

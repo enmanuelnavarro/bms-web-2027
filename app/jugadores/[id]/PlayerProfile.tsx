@@ -14,7 +14,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import type { Player, StatSeason } from "@/lib/types";
+import type { StatSeason } from "@/lib/types";
+import type { Jugador } from "@/lib/jugadores";
+import AlbumJugador from "@/components/AlbumJugador";
 import {
   ESTADO_ESTILOS,
   alturaTexto,
@@ -55,16 +57,23 @@ type LiveProfile = {
   }>;
 };
 
-type TabId = "estadisticas" | "trayectoria" | "videos" | "perfil";
+type TabId = "estadisticas" | "trayectoria" | "videos" | "fotos" | "perfil";
 
-const TABS: Array<{ id: TabId; label: string }> = [
-  { id: "estadisticas", label: "Estadísticas de carrera" },
-  { id: "trayectoria", label: "Trayectoria" },
-  { id: "videos", label: "Vídeos" },
-  { id: "perfil", label: "Perfil" },
-];
+/** La pestaña de fotos solo aparece si hay álbum: una vacía es una decepción. */
+function pestanas(conFotos: boolean): Array<{ id: TabId; label: string }> {
+  return [
+    { id: "estadisticas", label: "Estadísticas de carrera" },
+    { id: "trayectoria", label: "Trayectoria" },
+    { id: "videos", label: "Vídeos" },
+    ...(conFotos ? [{ id: "fotos" as const, label: "Fotos" }] : []),
+    { id: "perfil", label: "Perfil" },
+  ];
+}
 
-export default function PlayerProfile({ player }: { player: Player }) {
+export default function PlayerProfile({ player }: { player: Jugador }) {
+  const fotosPublicas = player.fotos.filter((f) => f.publicada);
+  const TABS = pestanas(fotosPublicas.length > 0);
+
   const [tab, setTab] = useState<TabId>("estadisticas");
   const [mounted, setMounted] = useState(false);
   const [live, setLive] = useState<LiveProfile | null>(null);
@@ -488,6 +497,13 @@ export default function PlayerProfile({ player }: { player: Player }) {
           </section>
         )}
 
+        {/* ===== FOTOS ===== */}
+        {tab === "fotos" && (
+          <section id="panel-fotos" role="tabpanel">
+            <AlbumJugador fotos={player.fotos} nombre={nombre} />
+          </section>
+        )}
+
         {/* ===== PERFIL ===== */}
         {tab === "perfil" && (
           <section id="panel-perfil" role="tabpanel" className="max-w-3xl">
@@ -548,7 +564,7 @@ export default function PlayerProfile({ player }: { player: Player }) {
 }
 
 /** Línea discreta con la ficha de referencia del jugador. */
-function Referencia({ fuente }: { fuente: NonNullable<Player["source"]> }) {
+function Referencia({ fuente }: { fuente: NonNullable<Jugador["source"]> }) {
   return (
     <p className="mt-8 text-xs text-body/45">
       Datos y referencia:{" "}
