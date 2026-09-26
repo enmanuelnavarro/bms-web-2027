@@ -115,6 +115,92 @@
 /* ==================================================================== */
 @layer components {
 
+/* ===== TEXTO CON FORMATO DE LAS NOTICIAS =====
+   Lo que escribe el editor visual del panel, tanto dentro del editor
+   (.prose-editor) como en la ficha pública (.prose-noticia). Mismas reglas en
+   los dos sitios a propósito: lo que se ve al escribir es lo que se publica. */
+.prose-editor :where(p),
+.prose-noticia :where(p) {
+  margin-bottom: 1.1em;
+  line-height: 1.75;
+}
+.prose-editor :where(p:last-child),
+.prose-noticia :where(p:last-child) {
+  margin-bottom: 0;
+}
+.prose-editor :where(h2),
+.prose-noticia :where(h2) {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 1.8em 0 0.6em;
+  line-height: 1.3;
+}
+.prose-editor :where(h3),
+.prose-noticia :where(h3) {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin: 1.5em 0 0.5em;
+}
+.prose-editor :where(ul, ol),
+.prose-noticia :where(ul, ol) {
+  margin: 0 0 1.1em 1.4em;
+}
+.prose-editor :where(ul),
+.prose-noticia :where(ul) {
+  list-style: disc;
+}
+.prose-editor :where(ol),
+.prose-noticia :where(ol) {
+  list-style: decimal;
+}
+.prose-editor :where(li),
+.prose-noticia :where(li) {
+  margin-bottom: 0.35em;
+  line-height: 1.7;
+}
+.prose-editor :where(blockquote),
+.prose-noticia :where(blockquote) {
+  border-left: 3px solid var(--gold-dark);
+  padding-left: 1em;
+  margin: 1.4em 0;
+  font-style: italic;
+  color: var(--gold-light);
+}
+.prose-editor :where(a),
+.prose-noticia :where(a) {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-editor :where(a):hover,
+.prose-noticia :where(a):hover {
+  color: var(--gold-light);
+}
+.prose-editor :where(strong),
+.prose-noticia :where(strong) {
+  font-weight: 700;
+  color: var(--gold-light);
+}
+.prose-editor :where(hr),
+.prose-noticia :where(hr) {
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 2em 0;
+}
+
+/* El texto de marcador del editor cuando está vacío. */
+.prose-editor :where(p.is-editor-empty:first-child)::before {
+  content: "Escribe aquí la noticia…";
+  color: var(--text-body);
+  opacity: 0.35;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+
 /* ===== CONTAINER PROFESIONAL ===== */
 .container-pro {
   margin: 0 auto;

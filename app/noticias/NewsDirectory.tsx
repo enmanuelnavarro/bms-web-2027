@@ -4,17 +4,20 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import NewsImage from "@/components/NewsImage";
-import { NEWS, categorias, fechaLarga } from "@/lib/news";
+import { fechaLarga } from "@/lib/news";
+import type { Noticia } from "@/lib/noticias";
 
-const CATEGORIAS = categorias();
-
-export default function NewsDirectory() {
+// Las noticias llegan por props desde la página, que las lee de la base de
+// datos. Antes se importaba lib/news.json aquí; ahora este componente solo
+// filtra y pinta.
+export default function NewsDirectory({ noticias }: { noticias: Noticia[] }) {
+  const CATEGORIAS = [...new Set(noticias.map((n) => n.categoria).filter(Boolean))];
   const [categoria, setCategoria] = useState("all");
   const [busqueda, setBusqueda] = useState("");
 
   const filtradas = useMemo(() => {
     const termino = busqueda.trim().toLowerCase();
-    return NEWS.filter((n) => {
+    return noticias.filter((n) => {
       const coincideCategoria = categoria === "all" || n.categoria === categoria;
       const coincideBusqueda =
         termino === "" ||
@@ -22,7 +25,7 @@ export default function NewsDirectory() {
         n.resumen.toLowerCase().includes(termino);
       return coincideCategoria && coincideBusqueda;
     });
-  }, [categoria, busqueda]);
+  }, [categoria, busqueda, noticias]);
 
   return (
     <main className="min-h-screen bg-ink text-body">

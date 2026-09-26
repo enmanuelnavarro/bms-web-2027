@@ -3,20 +3,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import NewsImage from "@/components/NewsImage";
-import { NEWS, fechaLarga, noticiaPorSlug } from "@/lib/news";
+import { fechaLarga } from "@/lib/news";
+import { noticiaPorSlug, noticiasPublicadas } from "@/lib/noticias";
 import { getPlayer, nombreCompleto } from "@/lib/players";
 import { SITE } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
 /** Prerenderiza las fichas: son estáticas y así entran mejor en el índice. */
-export function generateStaticParams() {
-  return NEWS.map((n) => ({ slug: n.slug }));
+export async function generateStaticParams() {
+  return (await noticiasPublicadas()).map((n) => ({ slug: n.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const noticia = noticiaPorSlug(slug);
+  const noticia = await noticiaPorSlug(slug);
 
   if (!noticia) {
     return { title: `Noticia no encontrada | ${SITE.shortName}` };
@@ -46,13 +47,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function NewsDetailPage({ params }: Params) {
   const { slug } = await params;
-  const noticia = noticiaPorSlug(slug);
+  const noticia = await noticiaPorSlug(slug);
 
   if (!noticia) notFound();
 
   // Solo se enlaza al jugador si sigue en el roster: un enlace a una ficha que
   // ya no existe es peor que no tener enlace.
-  const jugador = noticia.jugador_relacionado ? getPlayer(noticia.jugador_relacionado) : undefined;
+  // La noticia puede llevar varios jugadores; se filtran los que ya no estén
+  // en el roster para no dejar un enlace roto.
+  const relacionados = noticia.jugadores.map(getPlayer).filter((p) => p !== undefined);
 
   return (
     <main className="min-h-screen bg-ink text-body">
@@ -90,26 +93,36 @@ export default async function NewsDetailPage({ params }: Params) {
             {noticia.resumen}
           </p>
 
-          <article>
-            {noticia.contenido.split("\n\n").map((parrafo, i) => (
-              <p key={i} className="text-body text-lg leading-relaxed mb-7">
-                {parrafo}
-              </p>
-            ))}
-          </article>
+          {/* El cuerpo es HTML del editor visual del panel. Se sanea SIEMPRE al
+              guardarlo (lib/admin/html.ts), nunca aquí: lo que hay en la base
+              es seguro por construcción y esta página no tiene que acordarse. */}
+          <article
+            className="prose-noticia text-body text-lg"
+            dangerouslySetInnerHTML={{ __html: noticia.contenido_html }}
+          />
 
-          {jugador && (
+          {relacionados.length > 0 && (
             <div className="mt-12 pt-8 border-t border-hairline">
               <p className="text-xs font-bold text-gold-dark uppercase tracking-[0.2em] mb-3">
-                Jugador relacionado
+                {relacionados.length === 1 ? "Jugador relacionado" : "Jugadores relacionados"}
               </p>
-              <Link
-                href={`/jugadores/${jugador.id}`}
-                className="link-arrow text-gold-light text-lg border-b-2 border-gold pb-1"
-              >
-                {nombreCompleto(jugador)} <span className="arrow">→</span>
-              </Link>
+              <ul className="flex flex-wrap gap-x-8 gap-y-3">
+                {relacionados.map((j) => (
+                  <li key={j.id}>
+                    <Link
+                      href={`/jugadores/${j.id}`}
+                      className="link-arrow text-gold-light text-lg border-b-2 border-gold pb-1"
+                    >
+                      {nombreCompleto(j)} <span className="arrow">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          )}
+
+          {noticia.credito_imagen && (
+            <p className="mt-10 text-sm text-body/45">{noticia.credito_imagen}</p>
           )}
 
           {/* Crédito de la fuente: discreto, pero siempre comprobable. */}

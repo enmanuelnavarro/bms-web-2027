@@ -35,7 +35,7 @@ export const SECCIONES: Seccion[] = [
     titulo: "Noticias",
     texto: "Crear y publicar noticias.",
     icono: "noticia",
-    lista: false,
+    lista: true,
   },
   {
     href: "/admin/jugadores",

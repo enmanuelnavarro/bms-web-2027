@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import NewsDirectory from "./NewsDirectory";
 import { SITE } from "@/lib/site";
+import { noticiasPublicadas } from "@/lib/noticias";
 
 const DESCRIPTION = `Actualidad de ${SITE.legalName} y de los jugadores de baloncesto profesional que representa: fichajes, rendimiento en competición y compromisos con la selección.`;
 
@@ -19,6 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NoticiasPage() {
-  return <NewsDirectory />;
+export default async function NoticiasPage() {
+  return <NewsDirectory noticias={await noticiasPublicadas()} />;
 }

@@ -11,7 +11,8 @@ import {
   titularEstadistico,
 } from "@/lib/players";
 import NewsImage from "@/components/NewsImage";
-import { destacadas, fechaCorta } from "@/lib/news";
+import { fechaCorta } from "@/lib/news";
+import { noticiasDestacadas } from "@/lib/noticias";
 import CountUp from "@/components/CountUp";
 import HeroCarousel from "@/components/HeroCarousel";
 import InstagramSection from "@/components/InstagramSection";
@@ -33,15 +34,15 @@ const leagues = [
   { name: "Liga Sudamericana", region: "Sudamérica" },
 ];
 
-// La portada enseña solo las destacadas y manda al listado: no es una
-// página de noticias.
-const news = destacadas(3);
-
 export default async function Home() {
   // Las láminas salen de la base de datos, gestionadas desde /admin/banners. Si
   // todavía no hay ninguna, `slidesDePortada()` devuelve las de lib/images.ts:
   // la portada nunca se queda sin banner.
   const slides = await slidesDePortada();
+
+  // La portada enseña solo las destacadas y manda al listado: no es una
+  // página de noticias.
+  const news = await noticiasDestacadas(3);
 
   return (
     <main className="bg-ink text-body">

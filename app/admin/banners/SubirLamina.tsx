@@ -3,7 +3,8 @@
 import { useActionState, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 
-import { subirLaminaAction, VACIO, type Estado } from "./acciones";
+import { subirLaminaAction } from "./acciones";
+import { VACIO, type Estado } from "../estado";
 
 function Boton() {
   const { pending } = useFormStatus();

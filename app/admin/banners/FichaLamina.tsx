@@ -10,9 +10,8 @@ import {
   eliminarLaminaAction,
   guardarLaminaAction,
   moverLaminaAction,
-  VACIO,
-  type Estado,
 } from "./acciones";
+import { VACIO, type Estado } from "../estado";
 
 function Guardar() {
   const { pending } = useFormStatus();

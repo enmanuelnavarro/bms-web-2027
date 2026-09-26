@@ -16,9 +16,9 @@ import { ETIQUETA_SLIDES } from "@/lib/slides";
 // Y todas terminan igual: `refresca()`, que invalida la etiqueta de caché para
 // que la portada enseñe el cambio sin esperar a un despliegue.
 
-export type Estado = { error: string | null; ok: string | null };
+import type { Estado } from "../estado";
 
-export const VACIO: Estado = { error: null, ok: null };
+export type { Estado };
 
 function refresca() {
   // En Next 16 `revalidateTag` pide un segundo argumento, y no es lo que
