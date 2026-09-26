@@ -7,7 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate": "node --no-warnings scripts/db-migrate.ts",
+    "db:estado": "node --no-warnings scripts/db-migrate.ts --estado",
+    "admin": "node --no-warnings scripts/crear-admin.ts",
+    "prueba:auth": "node --no-warnings --conditions react-server scripts/prueba-auth.ts",
+    "latinbasket": "node --no-warnings scripts/actualiza-latinbasket.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +25,7 @@
     "react-dom": "^19.2.7",
     "recharts": "^3.9.1",
     "resend": "^6.16.0",
+    "server-only": "^0.0.1",
     "sharp": "^0.35.4",
     "zod": "^4.6.5"
   },

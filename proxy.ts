@@ -1,8 +1,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { COOKIE_ACCESO, iguales, tokenDeAcceso } from "@/lib/acceso";
+import { COOKIE_SESION, leeSesion } from "@/lib/admin/sesion";
 
-// Cierra la web entera mientras está en construcción. Ver lib/acceso.ts.
+// Dos puertas distintas, por orden:
+//
+//   1. /admin  → sesión de administrador (lib/admin/sesion.ts).
+//   2. resto   → clave del modo obras (lib/acceso.ts).
+//
+// El panel queda **fuera** del modo obras: tiene su propia autenticación, que
+// es más fuerte que una clave compartida, y quien sube contenido desde un
+// evento no debería tener que pasar dos cerrojos.
+//
+// Esto filtra la navegación, nada más. Un server action es un endpoint HTTP y
+// se puede llamar sin pasar por ninguna página, así que **toda escritura
+// vuelve a comprobar la sesión en el servidor** con `exigeAdmin()`. Ver
+// lib/admin/auth.ts.
 //
 // Va en proxy.ts, no en middleware.ts: Next 16 dejó obsoleto ese nombre.
 //
@@ -31,6 +44,21 @@ const LIBRES = [
 export default async function proxy(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
 
+  // --- Puerta 1: el panel ---------------------------------------------------
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    // El login tiene que ser accesible, o no hay forma de entrar nunca.
+    if (pathname === "/admin/login") return NextResponse.next();
+
+    const sesion = await leeSesion(req.cookies.get(COOKIE_SESION)?.value);
+    if (sesion) return NextResponse.next();
+
+    const login = req.nextUrl.clone();
+    login.pathname = "/admin/login";
+    login.search = pathname === "/admin" ? "" : `?volver=${encodeURIComponent(pathname + search)}`;
+    return NextResponse.redirect(login);
+  }
+
+  // --- Puerta 2: el modo obras ---------------------------------------------
   if (LIBRES.some((ruta) => pathname === ruta || pathname.startsWith(ruta))) {
     return NextResponse.next();
   }
