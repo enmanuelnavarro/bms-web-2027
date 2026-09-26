@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 
 import type { NoticiaAdmin } from "@/lib/noticias";
 import Editor from "./Editor";
+import SelectorDeFoco from "../SelectorDeFoco";
 import {
   crearNoticiaAction,
   guardarNoticiaAction,
@@ -69,6 +69,7 @@ export default function Formulario({
   );
 
   const [vistaPrevia, setVistaPrevia] = useState<string | null>(null);
+  const [foco, setFoco] = useState(noticia?.imagen_focus ?? "50% 50%");
   const [marcados, setMarcados] = useState<string[]>(noticia?.jugadores ?? []);
   const [buscar, setBuscar] = useState("");
 
@@ -188,23 +189,6 @@ export default function Formulario({
       <section className="space-y-4 rounded-lg border border-hairline bg-elevated p-4 sm:p-6">
         <h2 className="font-semibold text-gold">Portada</h2>
 
-        {(vistaPrevia || noticia?.imagen) && (
-          <div className="relative aspect-[16/9] max-w-md overflow-hidden rounded border border-hairline">
-            {vistaPrevia ? (
-              // eslint-disable-next-line @next/next/no-img-element -- blob: local, next/image no lo sirve
-              <img src={vistaPrevia} alt="Vista previa" className="h-full w-full object-cover" />
-            ) : (
-              <Image
-                src={noticia!.imagen!}
-                alt={noticia?.imagen_alt ?? ""}
-                fill
-                sizes="28rem"
-                className="object-cover"
-              />
-            )}
-          </div>
-        )}
-
         <Campo
           etiqueta={noticia?.imagen ? "Cambiar la imagen" : "Imagen"}
           ayuda="Se convierte a WebP y se limita a 2400 px. Si no subes ninguna, la ficha se apaña sin ella."
@@ -220,6 +204,29 @@ export default function Formulario({
             className="w-full rounded border border-hairline bg-ink px-3 py-2 text-sm text-body/80 file:mr-3 file:rounded file:border-0 file:bg-gold file:px-3 file:py-1.5 file:font-semibold file:text-ink"
           />
         </Campo>
+
+        {(vistaPrevia || noticia?.imagen) && (
+          <div>
+            <p className="mb-1.5 text-sm text-body/70">Encuadre</p>
+            <SelectorDeFoco
+              nombre="imagen_focus"
+              valor={foco}
+              onCambio={setFoco}
+              src={vistaPrevia ?? noticia?.imagen ?? null}
+              alt={noticia?.imagen_alt ?? "Portada de la noticia"}
+              recortes={[
+                { etiqueta: "Miniatura", ratio: 16 / 9 },
+                { etiqueta: "Cabecera", ratio: 21 / 9 },
+                { etiqueta: "Portada", ratio: 4 / 3 },
+              ]}
+            />
+          </div>
+        )}
+
+        {/* Si no hay imagen todavía, el valor viaja igual para no perderlo. */}
+        {!vistaPrevia && !noticia?.imagen && (
+          <input type="hidden" name="imagen_focus" value={foco} />
+        )}
 
         <div className="grid gap-4 sm:grid-cols-2">
           <Campo etiqueta="Descripción de la imagen">

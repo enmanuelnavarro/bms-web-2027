@@ -100,7 +100,9 @@ export default function NewsDirectory({ noticias }: { noticias: Noticia[] }) {
                   <div className="grid grid-cols-1 md:grid-cols-4">
                     <div className="relative h-48 md:h-auto md:min-h-[14rem] overflow-hidden bg-ink">
                       <NewsImage
-                        noticia={n}
+                        src={n.imagen}
+                        alt={n.imagen_alt ?? n.titulo}
+                        focus={n.imagen_focus}
                         sizes="(max-width: 768px) 100vw, 25vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />

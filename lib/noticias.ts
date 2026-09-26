@@ -23,6 +23,8 @@ export type Noticia = News & {
   /** HTML saneado. Las del JSON traen sus párrafos convertidos. */
   contenido_html: string;
   credito_imagen: string | null;
+  /** Punto que no se recorta, "50% 20%". Ver app/admin/SelectorDeFoco.tsx. */
+  imagen_focus: string;
   jugadores: string[];
   estado: "borrador" | "publicado";
 };
@@ -44,6 +46,7 @@ type Fila = {
   imagen_path: string | null;
   imagen_alt: string | null;
   imagen_credito: string | null;
+  imagen_focus: string;
   fuente_nombre: string;
   fuente_url: string;
   estado: "borrador" | "publicado";
@@ -67,6 +70,7 @@ function deFila(f: Fila): NoticiaAdmin {
     imagen_alt: f.imagen_alt,
     imagen_path: f.imagen_path,
     credito_imagen: f.imagen_credito,
+    imagen_focus: f.imagen_focus ?? "50% 50%",
     resumen: f.resumen ?? "",
     // `contenido` se conserva por compatibilidad con el tipo News; lo que
     // pintan las páginas es `contenido_html`.
@@ -96,6 +100,7 @@ function porDefecto(): Noticia[] {
       .map((p) => `<p>${escapa(p.trim())}</p>`)
       .join(""),
     credito_imagen: null,
+    imagen_focus: "50% 50%",
     jugadores: n.jugador_relacionado ? [n.jugador_relacionado] : [],
     estado: "publicado" as const,
   }));
@@ -112,7 +117,7 @@ function escapa(s: string): string {
 
 const SELECT = `
   select n.id, n.slug, n.titulo, n.resumen, n.contenido, n.categoria, n.autor,
-         n.imagen_url, n.imagen_path, n.imagen_alt, n.imagen_credito,
+         n.imagen_url, n.imagen_path, n.imagen_alt, n.imagen_credito, n.imagen_focus,
          n.fuente_nombre, n.fuente_url, n.estado, n.destacada, n.publicada_en,
          coalesce(
            (select array_agg(np.player_slug order by np.orden)

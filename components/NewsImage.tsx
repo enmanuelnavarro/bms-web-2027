@@ -1,9 +1,15 @@
 import Image from "next/image";
 
-import type { News } from "@/lib/types";
-
 type NewsImageProps = {
-  noticia: News;
+  /** URL de la portada, o null si la noticia todavía no tiene. */
+  src: string | null;
+  alt: string;
+  /**
+   * Punto que no se recorta (`object-position`), elegido desde el panel. La
+   * misma foto se sirve en tres proporciones muy distintas y centrarla siempre
+   * corta cabezas.
+   */
+  focus?: string;
   /** Se pasa a next/image para que no descargue más resolución de la que ocupa. */
   sizes: string;
   className?: string;
@@ -15,20 +21,26 @@ type NewsImageProps = {
  * protagonista, un hueco con la marca.
  *
  * El hueco es deliberado: una foto de archivo de otro jugador contaría algo
- * falso, y una URL inventada dejaría la tarjeta rota. Para publicar la
- * fotografía basta con subir el archivo a /public/players y apuntar `imagen`
- * en lib/news.json; no hay que tocar ningún componente.
+ * falso, y una URL inventada dejaría la tarjeta rota.
  */
-export default function NewsImage({ noticia, sizes, className, priority }: NewsImageProps) {
-  if (noticia.imagen) {
+export default function NewsImage({
+  src,
+  alt,
+  focus,
+  sizes,
+  className,
+  priority,
+}: NewsImageProps) {
+  if (src) {
     return (
       <Image
-        src={noticia.imagen}
-        alt={noticia.imagen_alt ?? noticia.titulo}
+        src={src}
+        alt={alt}
         fill
         sizes={sizes}
         priority={priority}
         className={className}
+        style={{ objectPosition: focus ?? "50% 50%" }}
       />
     );
   }

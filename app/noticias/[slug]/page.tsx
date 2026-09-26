@@ -59,15 +59,25 @@ export default async function NewsDetailPage({ params }: Params) {
 
   return (
     <main className="min-h-screen bg-ink text-body">
-      {/* HERO */}
-      <section className="relative h-80 md:h-96 overflow-hidden border-b border-hairline isolate">
+      {/* HERO
+          La fotografía se ve, no se insinúa. Antes iba en opacity-60 y
+          grayscale, como textura de fondo: con fotos de archivo tenía sentido,
+          pero ahora la agencia sube la foto real del protagonista y esconderla
+          es tirar el trabajo. Se sirve a todo color y el degradado se concentra
+          abajo, que es donde cae el titular y donde hace falta contraste.
+
+          El punto de recorte lo elige quien sube la foto desde el panel, así
+          que una cabecera tan apaisada ya no corta cabezas. */}
+      <section className="relative h-[22rem] md:h-[30rem] overflow-hidden border-b border-hairline isolate">
         <NewsImage
-          noticia={noticia}
+          src={noticia.imagen}
+          alt={noticia.imagen_alt ?? noticia.titulo}
+          focus={noticia.imagen_focus}
           sizes="100vw"
           priority
-          className="object-cover opacity-60 grayscale"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/10" />
 
         <div className="absolute bottom-0 left-0 right-0">
           <div className="container-pro py-8">
@@ -81,6 +91,9 @@ export default async function NewsDetailPage({ params }: Params) {
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-body/70 text-sm">
               <time dateTime={noticia.fecha}>{fechaLarga(noticia.fecha)}</time>
               <span>Por {noticia.autor}</span>
+              {noticia.credito_imagen && (
+                <span className="text-body/50">{noticia.credito_imagen}</span>
+              )}
             </div>
           </div>
         </div>
@@ -119,10 +132,6 @@ export default async function NewsDetailPage({ params }: Params) {
                 ))}
               </ul>
             </div>
-          )}
-
-          {noticia.credito_imagen && (
-            <p className="mt-10 text-sm text-body/45">{noticia.credito_imagen}</p>
           )}
 
           {/* Crédito de la fuente: discreto, pero siempre comprobable. */}

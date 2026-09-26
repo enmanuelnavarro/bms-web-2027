@@ -56,6 +56,11 @@ const esquema = z.object({
   destacada: z.boolean(),
   imagen_alt: z.string().trim().max(200).optional(),
   imagen_credito: z.string().trim().max(120).optional(),
+  imagen_focus: z
+    .string()
+    .trim()
+    .regex(/^\d{1,3}% \d{1,3}%$/, 'El encuadre se escribe como "50% 20%".')
+    .optional(),
 });
 
 function lee(datos: FormData) {
@@ -72,6 +77,7 @@ function lee(datos: FormData) {
     destacada: datos.get("destacada") === "on",
     imagen_alt: datos.get("imagen_alt") || undefined,
     imagen_credito: datos.get("imagen_credito") || undefined,
+    imagen_focus: datos.get("imagen_focus") || undefined,
   });
 }
 
@@ -119,13 +125,14 @@ export async function crearNoticiaAction(_previo: Estado, datos: FormData): Prom
 
     const [fila] = (await db()`
       insert into news (slug, titulo, resumen, contenido, categoria, autor,
-                        imagen_url, imagen_path, imagen_alt, imagen_credito,
+                        imagen_url, imagen_path, imagen_alt, imagen_credito, imagen_focus,
                         fuente_nombre, fuente_url, estado, destacada, publicada_en,
                         actualizado_por)
       values (${slug}, ${leido.data.titulo}, ${leido.data.resumen ?? null}, ${contenido},
               ${leido.data.categoria ?? null}, ${leido.data.autor || "BMS"},
               ${portada?.url ?? null}, ${portada?.path ?? null},
               ${leido.data.imagen_alt ?? null}, ${leido.data.imagen_credito ?? null},
+              ${leido.data.imagen_focus ?? "50% 50%"},
               ${leido.data.fuente_nombre}, ${leido.data.fuente_url},
               ${leido.data.estado}, ${leido.data.destacada}, ${leido.data.fecha},
               ${admin.id})
@@ -187,6 +194,7 @@ export async function guardarNoticiaAction(_previo: Estado, datos: FormData): Pr
              imagen_path = coalesce(${portada?.path ?? null}, imagen_path),
              imagen_alt = ${leido.data.imagen_alt ?? null},
              imagen_credito = ${leido.data.imagen_credito ?? null},
+             imagen_focus = ${leido.data.imagen_focus ?? "50% 50%"},
              fuente_nombre = ${leido.data.fuente_nombre},
              fuente_url = ${leido.data.fuente_url},
              estado = ${leido.data.estado},

@@ -68,13 +68,8 @@ export default async function BannersPage() {
           </p>
         ) : (
           <ul className="space-y-4">
-            {slides.map((s, i) => (
-              <FichaLamina
-                key={s.id}
-                slide={s}
-                primera={i === 0}
-                ultima={i === slides.length - 1}
-              />
+            {slides.map((s) => (
+              <FichaLamina key={s.id} slide={s} />
             ))}
           </ul>
         )}

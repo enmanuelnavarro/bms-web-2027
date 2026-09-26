@@ -291,7 +291,9 @@ export default async function Home() {
               <Link key={n.slug} href={`/noticias/${n.slug}`} className="group flex flex-col">
                 <div className="relative h-56 rounded-2xl overflow-hidden bg-elevated border border-hairline mb-6">
                   <NewsImage
-                    noticia={n}
+                    src={n.imagen}
+                    alt={n.imagen_alt ?? n.titulo}
+                    focus={n.imagen_focus}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
                   />
