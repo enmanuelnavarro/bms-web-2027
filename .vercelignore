@@ -6,3 +6,7 @@
 node_modules
 .DS_Store
 .claude
+
+# Los originales de las fotos solo hacen falta para volver a generar
+# /public/players con scripts/normaliza-fotos.mjs. 19 MB que Vercel no necesita.
+assets

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BANNER_SLIDES, STOCK_IMAGES } from "@/lib/images";
+import { STOCK_IMAGES } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import {
   ESTADO_ESTILOS,
@@ -11,11 +11,13 @@ import {
   titularEstadistico,
 } from "@/lib/players";
 import NewsImage from "@/components/NewsImage";
-import { destacadas, fechaCorta } from "@/lib/news";
+import { fechaCorta } from "@/lib/news";
+import { noticiasDestacadas } from "@/lib/noticias";
 import CountUp from "@/components/CountUp";
 import HeroCarousel from "@/components/HeroCarousel";
 import InstagramSection from "@/components/InstagramSection";
 import ServiceTabs from "@/components/ServiceTabs";
+import { slidesDePortada } from "@/lib/slides";
 
 // Salen de la base de jugadores, no de una lista escrita a mano: así la
 // portada no puede quedarse con nombres o cifras que ya no son ciertos.
@@ -32,11 +34,16 @@ const leagues = [
   { name: "Liga Sudamericana", region: "Sudamérica" },
 ];
 
-// La portada enseña solo las destacadas y manda al listado: no es una
-// página de noticias.
-const news = destacadas(3);
+export default async function Home() {
+  // Las láminas salen de la base de datos, gestionadas desde /admin/banners. Si
+  // todavía no hay ninguna, `slidesDePortada()` devuelve las de lib/images.ts:
+  // la portada nunca se queda sin banner.
+  const slides = await slidesDePortada();
 
-export default function Home() {
+  // La portada enseña solo las destacadas y manda al listado: no es una
+  // página de noticias.
+  const news = await noticiasDestacadas(3);
+
   return (
     <main className="bg-ink text-body">
       {/* ============================================================ */}
@@ -52,7 +59,7 @@ export default function Home() {
         <div className="relative">
           <div className="lg:absolute lg:inset-0 lg:z-0">
             <HeroCarousel
-              slides={[...BANNER_SLIDES]}
+              slides={slides}
               variant="hero"
               className="h-[16rem] sm:h-[22rem] lg:h-full lg:rounded-none lg:border-0"
             />
