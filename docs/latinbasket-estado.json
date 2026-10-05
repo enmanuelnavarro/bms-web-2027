@@ -1,12 +1,12 @@
 {
-  "ultima_revision": "2026-09-25T23:27:48.422Z",
+  "ultima_revision": "2026-10-05T03:35:56.893Z",
   "intervalo_horas": 48,
   "resumen": {
-    "revisados": 53,
-    "actualizados": 1,
-    "sin_cambios": 49,
+    "revisados": 54,
+    "actualizados": 5,
+    "sin_cambios": 45,
     "sin_lectura": 0,
-    "omitidos": 3,
+    "omitidos": 4,
     "diferencias_pendientes": 50
   },
   "resultados": [
@@ -24,18 +24,19 @@
     },
     {
       "jugador": "ernesto-hernandez",
-      "estado": "sin cambios",
-      "temporadas": 1,
+      "estado": "actualizado",
+      "detalle": "estadísticas (1 → 2 temporadas)",
+      "temporadas": 2,
       "diferencias": [
         {
           "campo": "equipo_actual",
           "publicado": null,
-          "fuente": "Piratas de la Guaira"
+          "fuente": "Motilones del Norte"
         },
         {
           "campo": "liga_actual",
           "publicado": null,
-          "fuente": "Venezuelan SPB"
+          "fuente": "Colombian LPB"
         }
       ]
     },
@@ -173,7 +174,8 @@
     },
     {
       "jugador": "gelvis-solano",
-      "estado": "sin cambios",
+      "estado": "actualizado",
+      "detalle": "estadísticas (4 → 4 temporadas)",
       "temporadas": 4,
       "diferencias": [
         {
@@ -522,7 +524,8 @@
     },
     {
       "jugador": "jordan-geronimo",
-      "estado": "sin cambios",
+      "estado": "actualizado",
+      "detalle": "estadísticas (2 → 2 temporadas)",
       "temporadas": 2,
       "diferencias": [
         {
@@ -674,6 +677,11 @@
       "temporadas": 1,
       "diferencias": [
         {
+          "campo": "equipo_actual",
+          "publicado": "Leones de Santo Domingo",
+          "fuente": "Gregorio Urbano Gilbert"
+        },
+        {
           "campo": "liga_actual",
           "publicado": null,
           "fuente": "Dominican Rep"
@@ -757,17 +765,18 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "sin cambios",
-      "temporadas": 5,
+      "estado": "actualizado",
+      "detalle": "estadísticas (5 → 1 temporadas)",
+      "temporadas": 1,
       "diferencias": [
         {
           "campo": "equipo_actual",
-          "publicado": "Covirán Granada",
+          "publicado": "Basket Girona",
           "fuente": "Basquet Girona"
         },
         {
           "campo": "liga_actual",
-          "publicado": null,
+          "publicado": "ACB",
           "fuente": "Spanish Liga Endesa"
         }
       ]
@@ -815,6 +824,11 @@
           "fuente": "Dominican Rep. National Team (2024-26)"
         }
       ]
+    },
+    {
+      "jugador": "jhonatan-araujo",
+      "estado": "omitido",
+      "detalle": "sin ficha externa"
     }
   ]
 }
