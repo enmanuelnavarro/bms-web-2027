@@ -54,6 +54,10 @@ jobs:
           # importar lib/latinbasket.ts directamente en vez de duplicar el
           # parser que ya usa la web.
           node-version: "24"
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
 
       - name: Leer LatinBasket
         id: revision
@@ -62,6 +66,7 @@ jobs:
           # Actions. Es la misma cadena que usa Vercel.
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
+          set -o pipefail
           if [ -z "$DATABASE_URL" ]; then
             echo "Falta el secreto DATABASE_URL en el repositorio." >&2
             echo "Settings → Secrets and variables → Actions → New repository secret" >&2
