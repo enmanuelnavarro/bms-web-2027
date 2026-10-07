@@ -1,5 +1,5 @@
 {
-  "ultima_revision": "2026-10-05T03:35:56.893Z",
+  "ultima_revision": "2026-10-07T13:29:56.971Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
@@ -25,7 +25,7 @@
     {
       "jugador": "ernesto-hernandez",
       "estado": "actualizado",
-      "detalle": "estadísticas (1 → 2 temporadas)",
+      "detalle": "estadísticas (2 → 2 temporadas)",
       "temporadas": 2,
       "diferencias": [
         {
@@ -766,8 +766,8 @@
     {
       "jugador": "jassel-perez",
       "estado": "actualizado",
-      "detalle": "estadísticas (5 → 1 temporadas)",
-      "temporadas": 1,
+      "detalle": "estadísticas (1 → 2 temporadas)",
+      "temporadas": 2,
       "diferencias": [
         {
           "campo": "equipo_actual",
