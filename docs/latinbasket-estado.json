@@ -1,10 +1,10 @@
 {
-  "ultima_revision": "2026-10-07T13:29:56.971Z",
+  "ultima_revision": "2026-10-10T12:38:06.658Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
-    "actualizados": 5,
-    "sin_cambios": 45,
+    "actualizados": 4,
+    "sin_cambios": 46,
     "sin_lectura": 0,
     "omitidos": 4,
     "diferencias_pendientes": 50
@@ -765,8 +765,7 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "actualizado",
-      "detalle": "estadísticas (1 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
