@@ -1,10 +1,10 @@
 {
-  "ultima_revision": "2026-10-10T12:38:06.658Z",
+  "ultima_revision": "2026-10-12T15:32:20.886Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
-    "actualizados": 4,
-    "sin_cambios": 46,
+    "actualizados": 2,
+    "sin_cambios": 48,
     "sin_lectura": 0,
     "omitidos": 4,
     "diferencias_pendientes": 50
@@ -24,8 +24,7 @@
     },
     {
       "jugador": "ernesto-hernandez",
-      "estado": "actualizado",
-      "detalle": "estadísticas (2 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -174,8 +173,7 @@
     },
     {
       "jugador": "gelvis-solano",
-      "estado": "actualizado",
-      "detalle": "estadísticas (4 → 4 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 4,
       "diferencias": [
         {
@@ -524,8 +522,7 @@
     },
     {
       "jugador": "jordan-geronimo",
-      "estado": "actualizado",
-      "detalle": "estadísticas (2 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
@@ -765,7 +762,8 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "sin cambios",
+      "estado": "actualizado",
+      "detalle": "estadísticas (2 → 2 temporadas)",
       "temporadas": 2,
       "diferencias": [
         {
