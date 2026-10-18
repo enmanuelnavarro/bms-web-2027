@@ -1,10 +1,10 @@
 {
-  "ultima_revision": "2026-10-15T11:34:54.130Z",
+  "ultima_revision": "2026-10-18T11:11:26.299Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
-    "actualizados": 3,
-    "sin_cambios": 47,
+    "actualizados": 2,
+    "sin_cambios": 48,
     "sin_lectura": 0,
     "omitidos": 4,
     "diferencias_pendientes": 50
@@ -319,6 +319,11 @@
           "campo": "liga_actual",
           "publicado": null,
           "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "fecha_nacimiento",
+          "publicado": null,
+          "fuente": "1989-11-30"
         }
       ]
     },
@@ -365,6 +370,11 @@
           "campo": "liga_actual",
           "publicado": null,
           "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "fecha_nacimiento",
+          "publicado": null,
+          "fuente": "1995-03-15"
         }
       ]
     },
@@ -666,6 +676,11 @@
           "campo": "liga_actual",
           "publicado": null,
           "fuente": "Dominican Rep"
+        },
+        {
+          "campo": "fecha_nacimiento",
+          "publicado": null,
+          "fuente": "1997-10-24"
         }
       ]
     },
@@ -763,8 +778,7 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "actualizado",
-      "detalle": "estadísticas (2 → 2 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 2,
       "diferencias": [
         {
