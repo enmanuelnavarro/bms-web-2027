@@ -1,5 +1,5 @@
 {
-  "ultima_revision": "2026-10-18T11:11:26.299Z",
+  "ultima_revision": "2026-10-20T11:43:25.905Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
@@ -59,8 +59,7 @@
     },
     {
       "jugador": "bernardo-polanco",
-      "estado": "actualizado",
-      "detalle": "estadísticas (3 → 3 temporadas)",
+      "estado": "sin cambios",
       "temporadas": 3,
       "diferencias": [
         {
@@ -778,7 +777,8 @@
     },
     {
       "jugador": "jassel-perez",
-      "estado": "sin cambios",
+      "estado": "actualizado",
+      "detalle": "estadísticas (2 → 2 temporadas)",
       "temporadas": 2,
       "diferencias": [
         {
