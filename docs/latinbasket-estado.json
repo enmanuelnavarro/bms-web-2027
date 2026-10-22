@@ -1,10 +1,10 @@
 {
-  "ultima_revision": "2026-10-20T11:43:25.905Z",
+  "ultima_revision": "2026-10-22T11:58:09.196Z",
   "intervalo_horas": 48,
   "resumen": {
     "revisados": 54,
-    "actualizados": 2,
-    "sin_cambios": 48,
+    "actualizados": 3,
+    "sin_cambios": 47,
     "sin_lectura": 0,
     "omitidos": 4,
     "diferencias_pendientes": 50
@@ -59,7 +59,8 @@
     },
     {
       "jugador": "bernardo-polanco",
-      "estado": "sin cambios",
+      "estado": "actualizado",
+      "detalle": "estadísticas (3 → 3 temporadas)",
       "temporadas": 3,
       "diferencias": [
         {
@@ -341,7 +342,7 @@
     {
       "jugador": "bj-fitzgerald",
       "estado": "sin cambios",
-      "temporadas": 1,
+      "temporadas": 0,
       "diferencias": [
         {
           "campo": "equipo_actual",
